@@ -1,30 +1,30 @@
-# camburdeco
-Proyecto integrador digital-house. Ecommerce CamburDeco
+# CamburDeco
+## Proyecto integrador digital-house. Ecommerce CamburDeco
 
-Tem·tica y p¸blico del sitio: Cambur Deco es un emprendimiento de productos en cemento gestado en La Plata, con envÌos
-a todo el paÌs.
-La marca est· orientada a la producciÛn de objetos artesanales para decoraciÛn de interior. Si bien principalmente, para el ·mbito hogareÒo, tambiÈn cuenta con un porcentaje de ventas
-mayoristas destinadas a la reventa, souvenir de eventos, o decoraciÛn de espacios colectivos.
+Tem√°tica y p√∫blico del sitio: Cambur Deco es un emprendimiento de productos en cemento gestado en La Plata, con env√≠os a todo el pa√≠s.
+La marca est√° orientada a la producci√≥n de objetos artesanales para decoraci√≥n de interior. Si bien principalmente, para el √°mbito hogare√±o, tambi√©n cuenta con un porcentaje de ventas mayoristas destinadas a la reventa, souvenir de eventos, o decoraci√≥n de espacios colectivos.
 
-En cuanto al grupo objetivo, los principales interesados en los productos ocupan una franja
-etaria entre los 20 y los 60 aÒos, siendo mujeres casi el 80% de los consumidores.
+En cuanto al grupo objetivo, los principales interesados en los productos ocupan una franja etaria entre los 20 y los 60 a√±os, siendo mujeres casi el 80% de los consumidores.
 
-Sitios de referencia:
+## Sitios de referencia:
 
-- https://camburdeco.mitiendanube.com
-- https://www.viveroelbambu.com.ar
--
--
--
+C√≥mo referencia para el desarrollo del Ecommerce se toman en cuenta las siguientes webs:
 
-Tablero colaborativo: 
+  - [CamburDeco - Original Site](https://camburdeco.mitiendanube.com)
+  - [Vivero el Bambu](https://www.viveroelbambu.com.ar)
+  - [Vivero de vida](https://viveroverdevida.com.ar)
+  - [Vivero Online](https://www.viveroonline.com.co)
+  - [Vivero Mario](https://www.viveromario.com.ar)
 
-- https://trello.com/b/WsJYydy1/sprint1
 
-Integrantes del grupo:
+## Tablero colaborativo: 
 
-- Enrique Gonzalez:
+- [Sprint 1](https://trello.com/b/WsJYydy1/sprint1)
 
-- Kevin Scalesi:
+## Integrantes del grupo:
 
-- Santiago Bernstein: Tengo 31 aÒos, soy de la ciudad de La Plata. Trabajo como Liquidador  de prestaciones en una obra social. No cuento con experiencia en programaciÛn, y este va a ser mi primer proyecto de diseÒo web. 
+- **Enrique Gonzalez:**
+
+- **Kevin Scalesi:** Tengo 31 a√±os, vivo en la ciudad de Mendoza. Soy Ingeniero en Mecatr√≥nica y trabajo como desarrollador de software junior de sistemas tecnolog√≠cos complejos. Tengo conocimientos en programaci√≥n, sin embargo esta √°rea es completamente nueva para mi. Espero poder aportar mi tiempo y conocimiento al desarrollo de este nuevo desaf√≠o.
+
+- **Santiago Bernstein:** Tengo 31 a√±os, soy de la ciudad de La Plata. Trabajo como Liquidador  de prestaciones en una obra social. No cuento con experiencia en programaci√≥n, y este va a ser mi primer proyecto de dise√±o web. 
