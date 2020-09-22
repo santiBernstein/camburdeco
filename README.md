@@ -23,8 +23,8 @@ Cómo referencia para el desarrollo del Ecommerce se toman en cuenta las siguien
 
 ## Integrantes del grupo:
 
-- **Enrique Gonzalez:**
-
 - **Kevin Scalesi:** Tengo 31 años, vivo en la ciudad de Mendoza. Soy Ingeniero en Mecatrónica y trabajo como desarrollador de software junior de sistemas tecnologícos complejos. Tengo conocimientos en programación, sin embargo esta área es completamente nueva para mi. Espero poder aportar mi tiempo y conocimiento al desarrollo de este nuevo desafío.
 
 - **Santiago Bernstein:** Tengo 31 años, soy de la ciudad de La Plata. Trabajo como Liquidador  de prestaciones en una obra social. No cuento con experiencia en programación, y este va a ser mi primer proyecto de diseño web. 
+
+- **Enrique Gonzalez Boselli:** Tengo algunos años y vivo de Rosario. Soy un profesional del derecho y si bien no tengo mucho conocimiento en este area, resulta todo un desafío para mi, poder aprender y resolver todas aquellas cuestiones que plantea la programación y el desarrollo web.
