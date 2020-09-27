@@ -1,0 +1,23 @@
+{
+  "name": "camburdeco",
+  "version": "1.0.0",
+  "description": "Proyecto Integrador",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+  "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santiBernstein/camburdeco.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/santiBernstein/camburdeco/issues"
+  },
+  "homepage": "https://github.com/santiBernstein/camburdeco#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
