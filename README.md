@@ -20,6 +20,7 @@ Cómo referencia para el desarrollo del Ecommerce se toman en cuenta las siguien
 ## Tablero colaborativo: 
 
 - [Sprint 1](https://trello.com/b/WsJYydy1/sprint1)
+- [Sprint 2](https://trello.com/b/HssNWv8W/sprint2)
 
 ## Integrantes del grupo:
 

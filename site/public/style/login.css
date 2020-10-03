@@ -1,0 +1,45 @@
+:root {
+    --main-color: #ffdb00;
+    --bkgd-color: #fbfbb0;
+    --bkgd-campo-color: #fff; 
+    --shad-color: #cbcbc7 ;
+    --text-color: #17cff3; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+#login {
+    border: 1px solid var(--main-color);
+    margin: 10% 3%;
+    padding: 3%;
+    background-color: var(--bkgd-color);
+}
+
+#login .titulo {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#login .ingreso, .boton {
+    width: 100%;
+    margin: 10px 0px;
+    border: none;
+    height: 30px;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px var(--shad-color);
+}
+
+#login .ingreso {
+    background-color: var(--bkgd-campo-color);
+}
+
+#login .boton {
+    background-color: var(--main-color);
+}

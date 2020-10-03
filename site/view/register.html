@@ -4,14 +4,60 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cambur Deco</title>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="register.css">
     </head>
     <body>
-        
-        register
+        <header>
+           
+            <nav class="barra-contain d-flex space-bet">
+                        <div>                        
+                            <a class="lin-vertical" href="/register">Crear Cuenta</a>
+                            <a href="/login">Iniciar Sesión</a>
+                        </div>  
+                        <div class="last-item content-end">
+                            <a href="/productCart">Mis Compras<i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                     
+            </nav>
 
-    
+            <div id="logo-header">
+
+                        <img src="logo-chico.png" alt="logo">
+
+            </div>
+                               
+
+            <nav class="menu-contain d-flex w-80">                        
+                            
+                                <a href="/">INICIO</a>
+                                <a href="/productDetail">PRODUCTOS</a>
+                                <a href="#">CONTACTO</a>
+                                <a href="#">QUIENES SOMOS</a>                            
+                        
+            </nav>               
+                               
+        </header>
+        <section id="registro">
+            <div class="titulo">
+                REGISTRARSE
+            </div>
+            <form action="/" method="POST">
+                <input class="ingreso" type="text" id="nombre" name="nombre" placeholder="Nombre">
+
+                <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
+
+                <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
+
+                <input class="ingreso" type="confirmapassword" id="confirmapassword" name="confirmapassword" placeholder="Confirmar Contraseña"></p>
+            
+                <p><input class="boton" type="submit" value="Crear cuenta"></p>
+            </form>
+        </section>
+        <footer>
+
+        </footer>        
     </body>
 </html>
