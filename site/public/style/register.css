@@ -1,7 +1,7 @@
 :root {
     --main-color: #ffdb00;
     --bkgd-color: #fbfbb0;
-    --bkgd-campo-color: #fff; 
+    --bkgd-campo-color: rgb(27, 22, 22); 
     --shad-color: #cbcbc7 ;
     --text-color: #17cff3; 
 }
