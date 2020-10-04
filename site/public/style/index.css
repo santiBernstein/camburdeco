@@ -160,8 +160,12 @@ input:focus {
 }
 
 .footer-section h4{
-    margin: 18px 0;
+    margin-bottom: 18px;
     font-size: 18px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 15px 0px;
+
 }
 .footer-section p{
     margin: 4px 0;
