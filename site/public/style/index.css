@@ -4,9 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Comfortaa', cursive;    
-}
+body {font-family: 'Comfortaa', cursive;}
 
 header {
     width: 100%;     
@@ -18,9 +16,7 @@ a {
     color: black;
 }
 
-input:focus {
-    outline: 0;
-}
+input:focus {outline: 0;}
 
 .d-flex { display: flex;}
 .content-end {justify-content: end;}
@@ -37,9 +33,7 @@ input:focus {
     color: white;
     padding: 5px;
 }
-.lin-vertical {
-    border-right: solid 1px;
-}
+.lin-vertical {border-right: solid 1px;}
 
 .barra-contain .last-item a:last-child{
     color: black;
@@ -52,9 +46,7 @@ input:focus {
             margin: 10px;                               
 }
 
-#logo-header img {
-            height: 100%;
-}
+#logo-header img {height: 100%;}
 
 .menu-contain {     
         padding: 10px;
@@ -68,32 +60,25 @@ input:focus {
     font-size: 18px;
 }
 
-.menu-contain a:hover{
-        color: gold;
-}
+.menu-contain a:hover{color: gold;}
 
 
 /* MAIN */
 
-.products {
-    background-image: url("fondo-bananas.png");
-    
-}
+#fondo-bananas {background-image: url("fondo-bananas.png");}
+
 .banner-contain {
             width: 80%;            
             margin: 15px auto 20px auto;                  
 }
 
-.banner-portada {
-            width: 100%;            
-}
+.banner-portada {width: 100%;}
 
 .product-title {       
         font-size: 20px;
         text-align: center;
         margin-bottom: 5px;
 }
-
                    
 .products img {
     width: 100%;
@@ -108,10 +93,6 @@ input:focus {
 .products .product-card:hover{border: solid yellow;}
 .products .product-card:first-child{margin-left: 0;}
 .products .product-card:last-child{margin-right: 0;}
-
-.products .product-card .product-detail {
-                align-items: flex-end;
-}
 
 .product-tipe{
               text-align: center;
@@ -131,10 +112,31 @@ input:focus {
 .all-products { margin-top: 20px;
                 padding: 5px;               
 }
-.all-products a{  border: solid;
-                                 border-radius: 10px;
-                                 padding: 5px;
+.all-products a{  border: solid 1px;                          
+                  padding: 5px;
 }
 .all-products a:hover{border: solid yellow;}
 
+.title-container{text-align: center;}
+.title-container .title-screen {                
+                margin-top: 50px;               
+                border: 1px solid yellow;
+                padding: 10px 25px;
+                font-size: 14px;                
+                display: inline-block;
+                background-color: white;
+
+}
+
+.insta {margin-top: 20px;}
+.product-insta{ max-width: 25%;
+                margin: 1%;  
+                padding: 5px;}
+.product-insta img:hover{border: solid 1px #00CED1;}                
+
+.w-80 .pay-card {
+                margin: 3%;
+                text-align: center;
+                flex: auto;
+}
 /* MAIN */ 

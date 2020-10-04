@@ -1,0 +1,27 @@
+.title-container p {
+                    margin-top: 30px;               
+                    border: 1px solid yellow;
+                    padding: 10px 25px;
+                    font-size: 20px;                
+                    display: inline-block;
+                    background-color: white;
+}
+
+.tipes {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+nav p {margin: 5px;}
+label {font-size: 18px;}
+
+select {
+        background-color: #40D9FA;
+        text-align-last: center;
+        font-weight: bold;
+}
+select:hover{ cursor: pointer;
+             border: solid 1px;
+}
+
