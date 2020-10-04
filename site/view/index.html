@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <title>Cambur Deco</title>
 </head>
@@ -71,7 +71,7 @@
                                 <p class="product-tipe">Tipo</p>
                                 <p class="product-name">Nombre</p>
                                 <p class="product-price">$xxxx</p>
-                            </div>
+                             </div>
 
                         </article>
                         <article class="product-card">
@@ -143,45 +143,50 @@
 
         
 
-        <footer>
-            <section>
-                <h4>Camburdeco</h4>
-                <nav>
-                    <ul>
-                        <li><a href="/">Inicio</a></li>
-                        <li><a href="/">Quienes somos?</a></li>
-                        <li><a href="/">Productos</a></li>
-                        <li><a href="/">Ofertas</a></li>
-                        <li><a href="/login">Iniciar sesión</a></li>
-                        <li><a href="/register">Registrarse</a></li>                        
-                        <li><a href="/productCart">Carrito de compras</a></li>
-                        <li><a href="/">Contacto</a></li>
-                    </ul>
-                </nav>
-            </section>
-            <section>
-                <h4>Seguinos</h4>
-                <nav>
-                    <ul>
-                        <li><link rel="stylesheet" href="https://www.facebook.com/camburdeco"><i class="fab fa-facebook-f"> Facebook</i></li>
-                        <li><link rel="stylesheet" href="https://www.instagram.com/camburdeco/"><i class="fab fa-instagram"> Instagram</i></li>
-                    </ul>
-                </nav>
-            </section>
-            <section>
-                <h4>Newsletter</h4>
-                <p>Subscribite ahora y recibí nuestras últimas promociones!</p>
-                <input type="email" placeholder="Ingresá tu email" id="email_news" name="email_news"><button><i class="fas fa-paper-plane"></i></button>
-            </section>
-            <section>
-                <h4>Contáctenos</h4>
-                <p><i class="fas fa-phone-alt"></i> (+54) 221-4086143</p>
-                <p><i class="far fa-envelope"></i> camburdeco@hotmail.com</p>
-                <p><i class="far fa-clock"></i> Lunes a Viernes de 9 a 18:30 hs. Sábados de 10 a 14 hs.</p>
-            </section>
-            <div>
-                <h5>Copyright® Camburdeco SAS. Todos los derechos reservados</h5>
-            </div>
+        <footer class="bg-footer m-15">
+            <div class="d-flex w-80 ">
+                <section class=" w-25 footer-section">
+                    <h4>CAMBUR DECO</h4>
+                    <nav>
+                        <a href="/" class="t-bold">Inicio</a>
+                        <a href="/">Quienes somos?</a>
+                        <a href="/">Productos</a>
+                        <a href="/">Ofertas</a>
+                        <a href="/login">Iniciar sesión</a>
+                        <a href="/register">Registrarse</a>                        
+                        <a href="/productCart">Carrito de compras</a>
+                        <a href="/">Contacto</a>
+                    </nav>
+                </section>
+               
+                <section class="w-25 footer-section">
+                    <h4>NEWSLETTER</h4>
+                    <p>Subscribite ahora y recibí nuestras últimas promociones!</p>
+                    <form id="news" name="news" method="POST" class="d-flex">
+                        <input type="email" class="news-i" placeholder="Ingresá tu email" id="email_news" name="email_news">
+                        <button type="submit" class="news-b"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </section>
+                <section class="w-25 footer-section">
+                    <h4>CONTACTO</h4>
+                    <p><i class="fas fa-phone-alt"></i> (+54) 221-4086143</p>
+                    <p><i class="far fa-envelope"></i> camburdeco@hotmail.com</p>
+                    <p><i class="far fa-clock"></i> Lunes a Viernes de 9 a 18:30 hs. Sábados de 10 a 14 hs.</p>
+                </section>
+                <section class=" w-25 footer-section">
+                    <h4>NUESTRAS REDES</h4>
+                    <nav>
+                        <a rel="stylesheet" href="https://www.facebook.com/camburdeco"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a rel="stylesheet" href="https://www.instagram.com/camburdeco/"><i class="fab fa-instagram"></i> Instagram</a>
+                    </nav>
+                </section>
+
+
+        </div>
+        <div id="copyright">
+            <h5>Copyright® Camburdeco SAS. Todos los derechos reservados</h5>
+        </div>
+
         </footer>
 
     </body>
