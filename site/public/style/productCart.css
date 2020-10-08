@@ -1,0 +1,92 @@
+:root {
+    --main-color: #ffdb00;
+    --bkgd-color: #fbfbb0;
+    --bkgd-campo-color: rgb(27, 22, 22); 
+    --shad-color: #cbcbc7 ;
+    --text-color: #17cff3; 
+}
+
+.w-70{
+    width: 70%;
+}
+
+.w-30{
+    width: 30%;
+}
+
+.m-5{
+    width: 95%;
+    margin: 5px auto;
+}
+
+#carro .bar {     
+    padding: 10px;
+    margin: 15px 10px;
+    background-color: gold;
+    border-top: black solid 2px;
+    border-bottom: black solid 2px;              
+}
+
+#carro .boton{
+    width:25%;
+    margin: 10px 0px;
+    border: none;
+    height: 30px;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px var(--shad-color);
+    background-color: gold;
+}
+
+#carro #tabla .producto{
+    padding: 10px;
+    margin: 15px 10px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: rgb(187, 255, 255);
+}
+
+.i_cant{
+    width: 30px;
+    text-align: center;
+    height: 30px;
+}
+
+.tabla-carrito{
+    width: 24%;
+    text-align: center;
+}
+
+#carro #tabla .eliminar{
+    width: 4%;
+    text-align: center;
+}
+
+#carro #tabla .producto .eliminar{
+    background-color: rgb(187, 255, 255);
+    border: none;
+    height: 30px;
+}
+
+.f-g-05{
+    flex-grow: 0.5;
+}
+
+.a-center{
+    align-items: center;
+}
+
+.t-center{
+    text-align: center;
+}
+
+.b-bottom{
+    border-bottom: 2px solid black;
+}
+
+#carro #tabla article .eliminar:hover{
+    font-size: 18px;
+    font-weight: bold;
+    
+    /*color: rgba(220, 20, 103, 0.822);*/
+}
+

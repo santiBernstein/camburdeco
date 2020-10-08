@@ -148,6 +148,7 @@ input:focus {
 
 .t-center{
     text-align: center;
+    
 }
 
 .footer-titles{
@@ -156,24 +157,39 @@ input:focus {
 
 .footer-section{
     text-align: center;
-    padding: 15px;
+    font-size: 90%;
+    margin: 10px;
 }
 
 .footer-section h4{
-    margin-bottom: 18px;
-    font-size: 18px;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
     padding: 15px 0px;
+}
+
+.footer-section .submenu1,
+.footer-section .submenu2,
+.footer-section .submenu3,
+.footer-section .submenu4{
+    display: none;
 
 }
+.footer-section:hover .submenu1,
+.footer-section:hover .submenu2,
+.footer-section:hover .submenu3,
+.footer-section:hover .submenu4{
+    display: block;
+}
+
 .footer-section p{
     margin: 4px 0;
     line-height: 25px;
 }
 .footer-section nav a{
-    display: block;
-    margin: 10px auto;
+    display: inherit ;
+    padding: 5px;
 }
 
 .footer-section nav a:hover{
@@ -182,26 +198,38 @@ input:focus {
    font-weight: bold;
 }
 
-.w-25{
-    width: 25%;
-}
 
 .news-i{
-    flex-grow: 5;
-    margin-top: 10px;
-    height: 30px;
+    flex-grow: 1;
+    padding: 10px;
+    height: auto;
     font-family: 'Comfortaa', cursive; 
     border: none;
-    border-radius: 0px;
-    text-indent: 10px;
+    border-radius: 10px;
+}
+
+.pos-b{
+    position: absolute;
+    right: 0px;
+}
+
+.f-w{
+    flex-wrap: wrap;
+
+}
+.pos-rel{
+    position: relative;
+}
+.pad-t-b-10{
+    padding: 10px 0px;
 }
 .news-b{
-    flex-grow: 1;
-    margin-top: 10px;
-    height: 30px;
+    width: auto;
+    height: auto;
+    padding: 10px;
     border: none;
     background-color: white;
-    border-radius: 0px;
+    border-radius: 10px;
 }
 
 .m-15{margin-top: 15px}
@@ -221,4 +249,41 @@ input:focus {
     /*background-color: rgba(220, 20, 103, 0.822);*/
 }
 
+.menu-footer{
+    flex-direction: column;
+    padding: 10px;
+}
 
+.menu-footer2{
+    flex-direction: column;
+    padding: 10px;
+}
+
+@media (min-width:600px){
+    .menu-footer2{
+        flex-direction: row;
+    }
+    .footer-section{
+        width: 50%;
+
+    }
+}
+
+@media (min-width:1025px){
+    .menu-footer{
+        flex-direction: row;
+    }
+    .menu-footer2{
+        flex-direction: row;
+    }
+    .footer-section{
+        width: 50%;
+    }
+    .footer-section .submenu1,
+    .footer-section .submenu2,
+    .footer-section .submenu3,
+    .footer-section .submenu4{
+        display: block;
+    }
+
+}
