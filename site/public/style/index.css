@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -63,7 +65,7 @@ input:focus {outline: 0;}
 .menu-contain a:hover{color: gold;}
 
 
-/* MAIN */
+
 
 #fondo-bananas {background-image: url("fondo-bananas.png");}
 
@@ -122,12 +124,13 @@ input:focus {outline: 0;}
                 margin-top: 50px;               
                 border: 1px solid yellow;
                 padding: 10px 25px;
-                font-size: 14px;                
+                font-size: 18px;                
                 display: inline-block;
                 background-color: white;
 
 }
-
+.title-container .title-screen i {font-size: 18px;
+    padding: 5px;}
 .insta {margin-top: 20px;}
 .product-insta{ max-width: 25%;
                 margin: 1%;  
@@ -139,4 +142,53 @@ input:focus {outline: 0;}
                 text-align: center;
                 flex: auto;
 }
-/* MAIN */ 
+
+
+
+@media all and (min-width: 600px) and (max-width: 1023px) { 
+
+ 
+.d-flex {flex-wrap: wrap;}
+
+.products .product-card {max-width: 48%;
+                    
+}
+#logo-header{height: 100px;}
+
+.product-insta{ max-width: 48%;
+            }
+
+
+}
+
+@media all and (max-width: 599px) {
+
+    .d-flex { display: flex; flex-wrap: wrap;}
+
+    .products .product-card {max-width: 100%;    
+    }
+    #logo-header{height: 100px;}
+    
+    .product-insta{ max-width: 100%;
+                }
+
+    .menu-contain a {
+                    width: 100%;
+                    text-align: center;
+                }
+    .all-products a{
+        border: none;
+        text-decoration-line: underline;
+    }
+    .title-container .title-screen{
+        margin-top: 30px;
+        padding: 5px 10px;
+        font-size: 15px;
+    }                        
+
+
+}
+
+
+
+

@@ -25,3 +25,30 @@ select:hover{ cursor: pointer;
              border: solid 1px;
 }
 
+@media all and (min-width: 600px) and (max-width: 1023px) {
+
+    .title-container p{margin-top: 0px;}
+
+    .tipes {margin-top: 20px;}
+
+    nav p {width: 100%;
+        text-align: center;
+        margin: 3%;}
+
+}
+
+@media all and (max-width: 599px){
+
+    .title-container p{margin-top: 0px;}
+
+    .tipes {margin-top: 20px;}
+
+    select {font-size: 15px;}
+    label {font-size: 22px;}
+   
+
+    nav p {width: 100%;
+        text-align: center;
+        margin: 3%;}
+
+}
