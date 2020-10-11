@@ -22,6 +22,10 @@ app.get('/register', (req, res) => {
     let file = path.resolve('./site/view/register.html')
     res.sendFile(file);
 });
+app.get('/recupero', (req, res) => {
+    let file = path.resolve('./site/view/recupero.html')
+    res.sendFile(file);
+});
 
 app.get('*', (req, res) => {
     if (req.url.endsWith('.css')) {

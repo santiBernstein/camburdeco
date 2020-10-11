@@ -1,8 +1,8 @@
 :root {
     --main-color: #ffdb00;
-    --bkgd-color: #fbfbb0;
+    --bkgd-color: url(fondo-bananas.png);
     --bkgd-campo-color: #fff; 
-    --shad-color: #cbcbc7 ;
+    --shad-color: #96968d;
     --text-color: #17cff3; 
     --terc-color: #e72379;
 }
@@ -18,7 +18,8 @@
     border: 1px solid var(--main-color);
     margin: 10% 3%;
     padding: 3%;
-    background-color: var(--bkgd-color);
+    background-image: var(--bkgd-color);
+    background-size: contain;
     text-align: center;
 }
 
@@ -27,6 +28,13 @@
     font-size: 3em;
     font-weight: bold;
     color: var(--text-color);
+}
+
+#detalleproducto .produc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 
 #detalleproducto .image {
@@ -57,4 +65,28 @@
     font-size: 3em;
     color: var(--terc-color);
     font-weight: var(--terc-color);
+}
+
+@media (max-width: 600px) {
+    #detalleproducto .image {
+        width: 100%;
+    }
+}
+
+@media (min-width: 600px) {
+    #detalleproducto .image {
+        width: 50%;
+    }
+    #detalleproducto .infoproducto {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #detalleproducto .image {
+        width: 25%;
+    }
+    #detalleproducto .infoproducto {
+        margin-top: 20px;
+    }
 }

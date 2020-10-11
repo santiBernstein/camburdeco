@@ -1,8 +1,8 @@
 :root {
     --main-color: #ffdb00;
-    --bkgd-color: #fbfbb0;
-    --bkgd-campo-color: rgb(27, 22, 22); 
-    --shad-color: #cbcbc7 ;
+    --bkgd-color: url(fondo-bananas.png);
+    --bkgd-campo-color: #fff; 
+    --shad-color: #96968d ;
     --text-color: #17cff3; 
 }
 
@@ -14,10 +14,10 @@
 }
 
 #registro {
-    border: 1px solid var(--main-color);
     margin: 10% 3%;
     padding: 3%;
-    background-color: var(--bkgd-color);
+    background-image: var(--bkgd-color);
+    background-size: contain;
 }
 
 #registro .titulo {
@@ -25,21 +25,69 @@
     font-size: 3em;
     font-weight: bold;
     color: var(--text-color);
+    margin-bottom: 20px;
 }
 
-#registro .ingreso, .boton {
+#registro .registrointerior {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.registrointerior .formulario {
+    border: 1px solid var(--main-color);
+    background-color: white;
+    padding: 5%;
+}
+
+.registrointerior .ingreso, .boton {
     width: 100%;
     margin: 10px 0px;
     border: none;
     height: 30px;
     border-radius: 5%;
     box-shadow: 5px 5px 5px var(--shad-color);
+    padding: 5px;;
 }
 
-#registro .ingreso {
+.registroinyterior .ingreso {
     background-color: var(--bkgd-campo-color);
 }
 
-#registro .boton {
+.registrointerior .boton {
     background-color: var(--main-color);
+}
+
+.registrointerior .vista {
+    width: 50%;
+    border-radius: 5%;
+}
+
+@media (min-width: 600px) {
+    .registrointerior .vista {
+        display: none;
+    }
+    .registrointerior {
+        background-color: red;
+    }
+}
+
+@media (max-width: 600px) {
+    .registrointerior .vista {
+        display: none;
+    }
+    .registrointerior {
+        background-color: black;
+    }
+}
+
+@media (min-width: 1024px) {
+    .registrointerior .vista {
+        width: 25%;
+    }
+    .registrointerior {
+        background-color: chartreuse;
+    }
+    
 }
