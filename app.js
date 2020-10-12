@@ -14,6 +14,10 @@ app.get('/productCart', (req, res) => {
     let file = path.resolve('./site/view/productCart.html')
     res.sendFile(file);
 });
+app.get('/productCart2', (req, res) => {
+    let file = path.resolve('./site/view/productCart2.html')
+    res.sendFile(file);
+});
 app.get('/productDetail', (req, res) => {
     let file = path.resolve('./site/view/productDetail.html')
     res.sendFile(file);
