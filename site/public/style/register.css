@@ -14,7 +14,7 @@
 }
 
 #registro {
-    margin: 10% 3%;
+    margin: 3% 3%;
     padding: 3%;
     background-image: var(--bkgd-color);
     background-size: contain;
@@ -64,30 +64,22 @@
     border-radius: 5%;
 }
 
-@media (min-width: 600px) {
-    .registrointerior .vista {
-        display: none;
-    }
-    .registrointerior {
-        background-color: red;
-    }
-}
-
 @media (max-width: 600px) {
     .registrointerior .vista {
         display: none;
     }
-    .registrointerior {
-        background-color: black;
+}
+
+@media (min-width: 601px) {
+    .registrointerior .vista {
+        display: none;
     }
+
 }
 
 @media (min-width: 1024px) {
     .registrointerior .vista {
         width: 25%;
-    }
-    .registrointerior {
-        background-color: chartreuse;
     }
     
 }

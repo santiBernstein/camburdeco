@@ -15,8 +15,7 @@
 }
 
 #detalleproducto {
-    border: 1px solid var(--main-color);
-    margin: 10% 3%;
+    margin: 3% 3%;
     padding: 3%;
     background-image: var(--bkgd-color);
     background-size: contain;
