@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cambur Deco</title>
-        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link rel="stylesheet" href="productCart.css">
         <link rel="stylesheet" href="index.css">
@@ -48,62 +48,107 @@
 
             </div>
 
-            <div id="carro" class="w-80 products">
+            <div id="carro" class="w-80">
                 <div class="product-title">
                     <p>Carrito de Compras</p>
                 </div>
-                <section class="d-flex">
-                    <div id="tabla" class="w-70">
-                        <div class="b-bottom">
-                            <div class="bar d-flex ">
-                                <p class="tabla-carrito">PRODUCTO</p>
-                                <p class="tabla-carrito">PRECIO</p>
-                                <p class="tabla-carrito">CANTIDAD</p>
-                                <p class="tabla-carrito">SUBTOTAL</p>
-                                <div class="eliminar"></div>
+                <section class="d-flex product-Cart border-t-b">
+                    <div id="tabla">
+                        <div class="bar d-flex">
+                            <div class="espacio-img"></div>
+                                <div class="espacio-tabla">
+                                    <div class="prod-cant">
+                                        <p class="prod">PRODUCTO</p>
+                                        <p class="tabla-carrito">CANTIDAD</p>
+                                    </div>
+                                    <div class="price-elim">
+                                        <p class="tabla-carrito">PRECIO</p>
+                                        <div class="eliminar"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="m-5">
-                                <article class="producto d-flex space-around a-center">
-                                    <p class="tabla-carrito">Maceta Almendra</p>
-                                    <p class="tabla-carrito">$.....</p>
-                                    <p class="tabla-carrito"><input type="text" placeholder="1" class="i_cant"></p>
-                                    <p class="tabla-carrito">$.....</p>
-                                    <button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom>
+                            <div class="articles">
+                                <article class="producto">
+                                    <figure class="cont-img">
+                                        <img src="gala.jpg" alt="gala">
+                                    </figure>
+                                    <div class="cont-detalle">
+                                        <div class="detalle">
+                                            <p class="">Maceta Gala</p>
+                                            <select name="cantidad" id="cantidad">
+                                                <option value="1">1 unidad</option>
+                                                <option value="2">2 unidades</option>
+                                                <option value="3">3 unidades</option>
+                                                <option value="4">4 unidades</option>
+                                                <option value="5">5 unidades</option>
+                                            </select>
+                                        </div>
+                                        <div class="cont-elim-price">
+                                            <div><button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom></div>
+                                            <p class="product-price">$350</p>
+                                        </div>
+                                    </div>
                                 </article>
-                                <article class="producto d-flex space-around a-center">
-                                    <p class="tabla-carrito">Maceta gris</p>
-                                    <p class="tabla-carrito">$.....</p>
-                                    <p class="tabla-carrito"><input type="text" placeholder="1" class="i_cant"></p>
-                                    <p class="tabla-carrito">$.....</p>
-                                    <button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom>
+                                <article class="producto">
+                                    <figure class="cont-img">
+                                        <img src="bono.gif" alt="almendra">
+                                    </figure>
+                                    <div class="cont-detalle">
+                                        <div class="detalle">
+                                            <p class="">Maceta Gris</p>
+                                            <select name="cantidad" id="cantidad">
+                                                <option value="1">1 unidad</option>
+                                                <option value="2">2 unidades</option>
+                                                <option value="3">3 unidades</option>
+                                                <option value="4">4 unidades</option>
+                                                <option value="5">5 unidades</option>
+                                            </select>
+                                        </div>
+                                        <div class="cont-elim-price">
+                                            <div><button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom></div>
+                                            <p class="product-price">$200</p>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="producto">
+                                    <figure class="cont-img">
+                                        <img src="cali.jpg" alt="cali">
+                                    </figure>
+                                    <div class="cont-detalle">
+                                        <div class="detalle">
+                                            <p class="">Cali</p>
+                                            <select name="cantidad" id="cantidad">
+                                                <option value="1">1 unidad</option>
+                                                <option value="2">2 unidades</option>
+                                                <option value="3">3 unidades</option>
+                                                <option value="4">4 unidades</option>
+                                                <option value="5">5 unidades</option>
+                                            </select>
+                                        </div>
+                                        <div class="cont-elim-price">
+                                            <div><button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom></div>
+                                            <p class="product-price">$150</p>
+                                        </div>
+                                    </div>
                                 </article>
                             </div>            
+                            <div class="d-flex space-bet">
+                                <button type="button" class="boton"><i class="fas fa-angle-double-left"></i> Seguir comprando</button>
+                                <button type="button" class="boton">Actualizar carro</button>
+                            </div>
                         </div>
-                        <div class="d-flex space-bet">
-                            <button type="button" class="boton"><i class="fas fa-angle-double-left"></i> Seguir comprando</button>
-                            <button type="button" class="boton">Actualizar carro</button>
+                    <div id="total" >
+                        <p class="bar ">TOTAL DE CARRO</p>
+                        <div class="cont-total-boton">
+                            <div class="cont-total">
+                                <p class="font-total">Subtotal</p>
+                                <p class="product-subtotal">$700</p>
+                            </div>
+                            <button type="button" class="boton-continuar">Continuar</button>
                         </div>
                     </div>
-                    <div class="w-30">
-                        <p class="bar t-center">TOTAL DE CARRO</p>
-                        
-                        <div>
-                            subtotal y total
-                        </div>
-                        <div>
-                            boton continuar
-                        </div>
-                        <div>
-                            cupon con checklist
-                        </div>
-                    </dsiv>
-                </section>
-
-                <section class="d-flex">
-
                 </section>
             </div>
-
         </main>
 
 

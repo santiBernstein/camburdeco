@@ -19,7 +19,13 @@
     margin: 5px auto;
 }
 
-#carro .bar {     
+#carro .product-Cart{
+   background-image: url("fondo-bananas.png");    
+   background-size: contain;
+}
+
+#carro .bar {  
+    display: none;   
     padding: 10px;
     margin: 15px 10px;
     background-color: gold;
@@ -27,66 +33,273 @@
     border-bottom: black solid 2px;              
 }
 
-#carro .boton{
-    width:25%;
-    margin: 10px 0px;
-    border: none;
-    height: 30px;
-    border-radius: 5%;
-    box-shadow: 5px 5px 5px var(--shad-color);
-    background-color: gold;
+#carro .product-title{
+    font-size: 1.8em;
+    padding: 15px 0;
+    font-weight: bold;
 }
 
-#carro #tabla .producto{
-    padding: 10px;
+#carro .product-Cart{
+    flex-direction: column;
+}
+
+.articles .producto{
+    display: flex;
+    align-items: center;
+    padding: 5px;
     margin: 15px 10px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     background-color: rgb(187, 255, 255);
+    height: 90px;
 }
 
-.i_cant{
-    width: 30px;
+.producto .cont-img{
+    text-align: left;
+    height: 100%;
+    padding: 5px;
+}
+
+.cont-img img{
+    height: 100%;
+}
+
+.producto .cont-detalle{
+    display: flex;
+    flex-grow: 1;
+    padding: 5px;
+}
+
+.cont-detalle .detalle{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 8;
+    flex-basis: 0;
+    align-items: flex-start;
+   
+}
+
+.detalle p{
+    font-size: 1em;
+    text-align: left;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 5px 0;
+}
+
+.detalle #cantidad{
+    border: none;
+    border-radius: 5px;
+    font-family: 'Comfortaa', cursive;   
+    font-size: 12px;
+    padding: 5px;
+}
+
+
+.cont-detalle .cont-elim-price{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+.cont-elim-price .eliminar{
     text-align: center;
-    height: 30px;
-}
-
-.tabla-carrito{
-    width: 24%;
-    text-align: center;
-}
-
-#carro #tabla .eliminar{
-    width: 4%;
-    text-align: center;
-}
-
-#carro #tabla .producto .eliminar{
     background-color: rgb(187, 255, 255);
     border: none;
+    font-size: 1em;
+    flex-grow: 1;
+    flex-basis: 0;
     height: 30px;
+    width: 30px;
 }
 
-.f-g-05{
-    flex-grow: 0.5;
+.cont-elim-price .product-price{
+    text-align: right;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 5px 0;
+    font-family: 'Comfortaa', cursive;  
 }
 
-.a-center{
+#carro .boton{
+    width: fit-content;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 5px;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px var(--shad-color);
+    font-family: 'Comfortaa', cursive;   
+    background-color: gold;
+    font-size: 10px;
+}
+
+#total{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    height: 120px;
+}
+
+#total .cont-total-boton{
+    padding: 5px;
+    background-color: rgb(255, 187, 246);
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    height: auto;
+}
+.cont-total-boton .cont-total{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-basis: 0;
     align-items: center;
+    margin: 5px 0;
+    padding: 10px;
+  
 }
 
-.t-center{
+.cont-total .font-total{
+    flex-grow: 1;
+    flex-basis: 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.cont-total .product-subtotal{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cont-total-boton .boton-continuar{
+    flex-grow: 1;
+    flex-basis: 0;
+    border: none;
+    line-height: 40px;
+    border-radius: 8px;
+    background-color: rgba(220, 20, 103);
+    font-family: 'Comfortaa', cursive;   
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.bar .tabla-carrito{
+    flex-grow: 1;
+    flex-basis: 0;
     text-align: center;
 }
 
-.b-bottom{
+.border-t-b{
+    padding: 10px 0;
+    border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
 
 #carro #tabla article .eliminar:hover{
-    font-size: 18px;
+    font-size: 1.2em;
     font-weight: bold;
     
     /*color: rgba(220, 20, 103, 0.822);*/
+}
+/*
+@media(min-width:600px){
+    #carro #tabla .producto{
+        flex-direction: row;
+    }
+}*/
+
+@media (min-width:1025px){
+   #carro .bar{
+       display: flex;
+   }
+
+   .cont-detalle .detalle{
+       flex-direction: row;
+   }
+
+   .cont-detalle .cont-elim-price {
+        flex-direction: row-reverse;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+
+    .producto .cont-detalle{
+        flex-grow: 8;
+        flex-basis: 0;
+    }
+    .cont-elim-price .product-price,
+    .producto .cont-img{
+        flex-grow: 1;
+        flex-basis: 0;
+        text-align: center;
+    }
+    .bar .espacio-img,
+    .cont-detalle .detalle,
+    .detalle #cantidad,
+    .detalle p {
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+ 
+    .bar .espacio-tabla{
+        display: flex;
+        flex-grow: 8;
+        flex-basis: 0;
+    }
+
+    .espacio-tabla .prod-cant,
+    .espacio-tabla .price-elim{
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+
+    .prod-cant .prod{
+        text-align: left;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+    
+    .price-elim .eliminar{
+        width: 30px;
+    }
+    
+    #tabla{
+        flex-grow: 2;
+        flex-basis: 0;
+    }
+
+    #total{
+        flex-grow: 1;
+        flex-basis: 0;
+        height: 100%;
+        margin-top: 0px;
+    }
+
+    #carro .product-Cart{
+        flex-direction: row;
+    }
+
+    #total .bar{
+        justify-content: center;
+        border-top: 2px solid black;
+    }
+
+    #total .cont-total-boton{
+        margin: 0px 10px;
+    }
+
+    .cont-total-boton .cont-total{
+        margin: 55px 0;
+    }
+
+    .cont-total-boton .boton-continuar{
+        line-height: 50px;
+    }
 }
 

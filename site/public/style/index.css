@@ -159,6 +159,8 @@ input:focus {
     text-align: center;
     font-size: 90%;
     margin: 10px;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 .footer-section h4{
@@ -185,16 +187,18 @@ input:focus {
 
 .footer-section p{
     margin: 4px 0;
-    line-height: 25px;
+    line-height: 1.5em;
 }
 .footer-section nav a{
-    display: inherit ;
-    padding: 5px;
+    display: block ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
 }
 
 .footer-section nav a:hover{
    color:  rgba(220, 20, 103, 0.822);
-   font-size: 18px;
+   font-size: 1.2em;
    font-weight: bold;
 }
 
@@ -256,7 +260,8 @@ input:focus {
 
 .menu-footer2{
     flex-direction: column;
-    padding: 10px;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 @media (min-width:600px){
@@ -264,7 +269,8 @@ input:focus {
         flex-direction: row;
     }
     .footer-section{
-        width: 50%;
+    flex-grow: 1;
+    flex-basis: 0;
 
     }
 }
@@ -277,7 +283,8 @@ input:focus {
         flex-direction: row;
     }
     .footer-section{
-        width: 50%;
+        flex-grow: 1;
+        flex-basis: 0;
     }
     .footer-section .submenu1,
     .footer-section .submenu2,
