@@ -10,6 +10,10 @@ app.get('/login', (req, res) => {
     let file = path.resolve('./site/view/login.html')
     res.sendFile(file);
 });
+app.get('/contact', (req, res) => {
+    let file = path.resolve('./site/view/contact.html')
+    res.sendFile(file);
+});
 app.get('/productCart', (req, res) => {
     let file = path.resolve('./site/view/productCart.html')
     res.sendFile(file);
