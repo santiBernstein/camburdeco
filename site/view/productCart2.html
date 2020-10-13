@@ -52,15 +52,30 @@
                     <p>Carrito de Compras</p>
                 </div>
                 <section class="d-flex product-Cart border-t-b">
+
                     <div id="tabla">
                         <p class="bar">FORMA DE ENTREGA</p>
-                            <div class="articles">
-                            </div>            
-                            <div class="d-flex space-bet">
-                                <button type="button" class="boton" onclick="window.location.href='/';"><i class="fas fa-angle-double-left"></i> Seguir comprando</button>
-                                <button type="button" class="boton" onclick="window.location.href='/productCart';">Actualizar carro</button>
+                        <div class="cont-entrega-check">
+                            <div class="entrega-check">
+                                <input type="radio" id="sucursal" name="entrega" value="1">
+                                <label for="sucursal">Retiro en sucursal</label>
+                            </div>
+                            <div class="entrega-check">
+                                <input type="radio" id="taller" name="entrega" value="2">
+                                <label for="taller">Retiro en taller</label>
+                            </div>
+                            <div class="entrega-check">  
+                                <input type="radio" id="envio" name="entrega" value="3">
+                                <label for="envio">Envío a domicilio</label>
                             </div>
                         </div>
+                        <div class="d-flex space-bet">
+                            <button type="button" class="boton" onclick="window.location.href='/';"><i class="fas fa-angle-double-left"></i> Seguir comprando</button>
+                            <button type="button" class="boton" onclick="window.location.href='/productCart';">Actualizar carro</button>
+                        </div>                     
+                    </div>
+                    
+                    
                     <div id="total" >
                         <p class="bar ">TOTAL DE CARRO</p>
                         <div class="cont-total-boton">
