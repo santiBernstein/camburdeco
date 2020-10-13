@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cambur Deco</title>
-        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="register.css">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>Cambur Deco</title>
+</head>
+<body>
         <header>
            
             <nav class="barra-contain d-flex space-bet">
@@ -40,27 +40,36 @@
             </nav>               
                                
         </header>
-        <section id="registro">
-            <div class="titulo">
-                REGISTRARSE
-            </div>
-            <article class="registrointerior">
-                <div class="formulario">
-                    <form action="/" method="POST">
-                        <input class="ingreso" type="text" id="nombre" name="nombre" placeholder="Nombre">
 
-                        <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
+        <main>
 
-                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
-
-                        <input class="ingreso" type="confirmapassword" id="confirmapassword" name="confirmapassword" placeholder="Confirmar Contraseña"></p>
-            
-                        <p><input class="boton" type="submit" value="Crear cuenta"></p>
-                    </form>
+            <section id="registro">
+                <div class="titulo">
+                    CONTACTO
                 </div>
-                <img class="vista" src="bolsas2.jpg" alt="bolsacamburdeco">
-            </article>
-        </section>
+                <article class="registrointerior">
+
+                        <div class="formulario">
+                        <form action="/" method="GET">
+
+                            <p><label for="name">Nombre:</label></p>
+                            <input class="contacto" type="text" id="nombre" name="nombre">
+                            <p><label for="e-mail">E-mail:</label></p>
+                            <input class="contacto" type="email" id="email" name="email">
+                            <p><label for="telefono">Teléfono (opcional):</label></p>
+                            <input class="contacto" type="text" id="telefono" name="telefono">
+
+                            <p><label for="mesage">Mensaje:</label></p>    
+                            <textarea class="contacto" name="mensaje" id="message" cols="30" rows="10"></textarea>
+                
+                            <p><input class="boton" type="submit" value="Enviar"></p>
+                        </form>
+                </div>
+                </article>
+                </section>
+
+        </main>
+
         <footer class="bg-footer m-15">
             <div class="d-flex menu-footer w-80 ">
                 <div class="d-flex menu-footer2">
@@ -105,6 +114,8 @@
             <div id="copyright">
                 <h5>Copyright® Camburdeco SAS. Todos los derechos reservados</h5>
             </div>
-        </footer>        
+        </footer>
+       
+
     </body>
-</html>
+</html>   

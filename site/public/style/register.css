@@ -39,6 +39,7 @@
     border: 1px solid var(--main-color);
     background-color: white;
     padding: 5%;
+    width: 60%;
 }
 
 .registrointerior .ingreso, .boton {
@@ -48,10 +49,10 @@
     height: 30px;
     border-radius: 5%;
     box-shadow: 5px 5px 5px var(--shad-color);
-    padding: 5px;;
+    padding: 5px;
 }
 
-.registroinyterior .ingreso {
+.registrointerior .ingreso {
     background-color: var(--bkgd-campo-color);
 }
 
@@ -60,26 +61,31 @@
 }
 
 .registrointerior .vista {
-    width: 50%;
-    border-radius: 5%;
+    width: 25%;
 }
 
-@media (max-width: 600px) {
+/*pagina contacto*/
+
+.registrointerior .contacto{
+    width: 100%;
+    margin: 10px 0px;
+    border: solid 2px;
+    padding: 5px;
+                        
+}
+.registrointerior label {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+
+@media (max-width: 599px) {
     .registrointerior .vista {
         display: none;
     }
+    #registro .titulo{font-size: 2em;}
+    .registrointerior .formulario{width: 100%;}
 }
 
-@media (min-width: 601px) {
-    .registrointerior .vista {
-        display: none;
-    }
 
-}
 
-@media (min-width: 1024px) {
-    .registrointerior .vista {
-        width: 25%;
-    }
-    
-}
