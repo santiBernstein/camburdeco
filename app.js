@@ -1,58 +1,41 @@
-const express = require('express');
-const app = express();
-var path = require("path")
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-app.get('/', (req, res) => {
-    let file = path.resolve('./site/view/index.html')
-    res.sendFile(file);
-});
-app.get('/login', (req, res) => {
-    let file = path.resolve('./site/view/login.html')
-    res.sendFile(file);
-});
-app.get('/contact', (req, res) => {
-    let file = path.resolve('./site/view/contact.html')
-    res.sendFile(file);
-});
-app.get('/productCart', (req, res) => {
-    let file = path.resolve('./site/view/productCart.html')
-    res.sendFile(file);
-});
-app.get('/productCart2', (req, res) => {
-    let file = path.resolve('./site/view/productCart2.html')
-    res.sendFile(file);
-});
-app.get('/productDetail', (req, res) => {
-    let file = path.resolve('./site/view/productDetail.html')
-    res.sendFile(file);
-});
-app.get('/register', (req, res) => {
-    let file = path.resolve('./site/view/register.html')
-    res.sendFile(file);
-});
-app.get('/quienes-somos', (req, res) => {
-    let file = path.resolve('./site/view/quienes-somos.html')
-    res.sendFile(file);
-});
-app.get('/products', (req, res) => {
-    let file = path.resolve('./site/view/products.html')
-    res.sendFile(file);
-});
-app.get('/recupero', (req, res) => {
-    let file = path.resolve('./site/view/recupero.html')
-    res.sendFile(file);
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-app.get('*', (req, res) => {
-    if (req.url.endsWith('.css')) {
-        let file = path.resolve('./site/public/style' + req.url);
-        return res.sendFile(file); 
-    }
-    let images = ['jpg', 'jpeg', 'gif', 'png', 'svg'];
-    let extencion = req.url.split('.')[1];
-    if (images.includes(extencion)) {
-        let file = path.resolve('./site/public/images' + req.url);
-        return res.sendFile(file)
-    }
-    res.send('File Not Found!!!')
-}).listen(3000, 'localhost', () => console.log('PROYECTO CAMBURDECO :: Server ON!!! running in port 3000'));
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
