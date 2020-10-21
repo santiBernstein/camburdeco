@@ -6,8 +6,8 @@
         <title>Cambur Deco</title>
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <link rel="stylesheet" href="login.css">
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/stylesheets/login.css">
+        <link rel="stylesheet" href="/stylesheets/index.css">
     </head>
     <body>
         <header>
@@ -25,7 +25,7 @@
 
             <div id="logo-header">
 
-                        <img src="logo-chico.png" alt="logo">
+                        <img src="/images/logo-chico.png" alt="logo">
 
             </div>
                                
@@ -33,31 +33,26 @@
             <nav class="menu-contain d-flex w-80">                        
                             
                                 <a href="/">INICIO</a>
-                                <a href="/products">PRODUCTOS</a>
-                                <a href="contact">CONTACTO</a>
-                                <a href="/quienes-somos">QUIÉNES SOMOS</a>                            
+                                <a href="/productDetail">PRODUCTOS</a>
+                                <a href="/contact">CONTACTO</a>
+                                <a href="/quienes-somos">QUIENES SOMOS</a>                            
                         
             </nav>               
                                
         </header>
         <section id="login">
             <div class="titulo">
-                LOGIN
+                RECUPERAR CONTRASEÑA
             </div>
             <article class="logininterior">
                 <div class="formulario">
                     <form action="/" method="POST">
                         <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
-
-                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
             
-                        <p><input class="boton" type="submit" value="Iniciar sesión"></p>
+                        <p><input class="boton" type="submit" value="Recuperar contraseña"></p>
                     </form>
-                    <div class="recupero">
-                        <a href="/recupero">olvide mi contraseña</a>
-                    </div>
                 </div>
-                <img class="vista" src="bolsas2.jpg" alt="bolsacamburdeco">
+                <img class="vista" src="/images/bolsas.jpg" alt="bolsacamburdeco">
             </article>
         </section>
         <footer class="bg-footer m-15">
@@ -104,6 +99,6 @@
             <div id="copyright">
                 <h5>Copyright® Camburdeco SAS. Todos los derechos reservados</h5>
             </div>
-        </footer>    
+        </footer>   
     </body>
 </html>

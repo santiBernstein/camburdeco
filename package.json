@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -12,5 +12,17 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1"
-  }
+  },
+  "description": "Temática y público del sitio: Cambur Deco es un emprendimiento de productos en cemento gestado en La Plata, con envíos a todo el país.\r La marca está orientada a la producción de objetos artesanales para decoración de interior. Si bien principalmente, para el ámbito hogareño, también cuenta con un porcentaje de ventas mayoristas destinadas a la reventa, souvenir de eventos, o decoración de espacios colectivos.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santiBernstein/camburdeco.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/santiBernstein/camburdeco/issues"
+  },
+  "homepage": "https://github.com/santiBernstein/camburdeco#readme"
 }

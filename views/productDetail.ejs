@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="register.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <title>Cambur Deco</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cambur Deco</title>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" href="/stylesheets/productDetail.css">
+        <link rel="stylesheet" href="/stylesheets/index.css">
+        <link rel="stylesheet" href="/stylesheets/products.css">
+    </head>
+    <body>
         <header>
            
             <nav class="barra-contain d-flex space-bet">
@@ -25,7 +26,7 @@
 
             <div id="logo-header">
 
-                        <img src="logo-chico.png" alt="logo">
+                        <img src="/images/logo-chico.png" alt="logo">
 
             </div>
                                
@@ -40,36 +41,43 @@
             </nav>               
                                
         </header>
-
-        <main>
-
-            <section id="registro">
-                <div class="titulo">
-                    CONTACTO
-                </div>
-                <article class="registrointerior">
-
-                        <div class="formulario">
-                        <form action="/" method="GET">
-
-                            <p><label for="name">Nombre:</label></p>
-                            <input class="contacto" type="text" id="nombre" name="nombre">
-                            <p><label for="e-mail">E-mail:</label></p>
-                            <input class="contacto" type="email" id="email" name="email">
-                            <p><label for="telefono">Teléfono (opcional):</label></p>
-                            <input class="contacto" type="text" id="telefono" name="telefono">
-
-                            <p><label for="mesage">Mensaje:</label></p>    
-                            <textarea class="contacto" name="mensaje" id="message" cols="30" rows="10"></textarea>
+        <section id="detalleproducto">
+            <div class="titulo">
+                Detalle del producto
+            </div>
+            <div class="produc">
+                <img class="image" src="/images/almendra1.jpg" alt="imagenproducto">
+                <div class="infoproducto">
+                    <p class="tipoprod">Macetas</p>
+                    <p class="nombreprod">Almendra</p>
+                    <p class="precioprod"> $ 220,00.-</p>
                 
-                            <p><input class="boton" type="submit" value="Enviar"></p>
-                        </form>
-                </div>
-                </article>
-                </section>
+                <nav class="w-80 tipes">
 
-        </main>
-
+                    <p><label for="sort">Estilo:</label></p>
+    
+                    <select name="tipes" id="tipes">
+                        <option value="liso">LISO</option>
+                        <option value="pollock">POLLOCK</option>
+                        <option value="marmolado">MARMOLADO</option>
+                    </select>           
+    
+                    <p><label for="sort">Color:</label></p>
+    
+                    <select name="options" id="options">
+                        <option value="rosa">Rosa</option>
+                        <option value="blanco">Blanco</option>
+                        <option value="gris">Gris</option>
+                        <option value="celeste">Celeste</option>
+                    </select>           
+                    
+                </nav>   
+                <form action="/productCart" method="GET">
+                    <input class="boton" type="submit" value="Agregar al carrito">
+                </form>
+            </div>
+            </div>
+        </section>
         <footer class="bg-footer m-15">
             <div class="d-flex menu-footer w-80 ">
                 <div class="d-flex menu-footer2">
@@ -114,8 +122,6 @@
             <div id="copyright">
                 <h5>Copyright® Camburdeco SAS. Todos los derechos reservados</h5>
             </div>
-        </footer>
-       
-
+        </footer> 
     </body>
-</html>   
+</html>
