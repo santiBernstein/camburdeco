@@ -1,14 +1,14 @@
 module.exports = {
     productos : (req, res) => {
-        res.render('products'); 
+        res.render('products/products'); 
     },
     productCart : (req, res) => {
-        res.render('productCart')
+        res.render('products/productCart')
     },
     productCart2 : (req, res) => {
-        res.render('productCart2')
+        res.render('products/productCart2')
     },
     productDetail : (req, res) => {
-        res.render('productDetail')
+        res.render('products/productDetail')
     },
 }
