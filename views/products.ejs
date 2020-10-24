@@ -1,262 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/index.css">
+    <%- include("partials/head") %>
     <link rel="stylesheet" href="stylesheets/products.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <title>Cambur Deco</title>
 </head>
+
 <body>
-        <header>
-           
-            <nav class="barra-contain d-flex space-bet">
-                        <div>                        
-                            <a class="lin-vertical" href="/register">Crear Cuenta</a>
-                            <a href="/login">Iniciar Sesión</a>
-                        </div>  
-                        <div class="last-item content-end">
-                            <a href="/productCart">Mis Compras<i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                     
-            </nav>
+    <%- include("partials/header") %>
 
-            <div id="logo-header">
+    <main>
 
-                        <img src="/images/logo-chico.png" alt="logo">
+        <div class="banner-contain">
+            <img class="banner-portada" src="/images/banner-bananas.png" alt="baner">
+        </div>
 
+        <div>
+            <div class="title-container">
+                <p>PRODUCTOS</p>
             </div>
-                               
+        </div>
 
-            <nav class="menu-contain d-flex w-80">                        
-                            
-                                <a href="/">INICIO</a>
-                                <a href="/products">PRODUCTOS</a>
-                                <a href="/contact">CONTACTO</a>
-                                <a href="/quienes-somos">QUIÉNES SOMOS</a>                            
-                        
-            </nav>               
-                               
-        </header>
+        <nav class="w-80 d-flex tipes">
 
-        <main>
+            <p><label for="sort">Categoría:</label></p>
 
-             <div class="banner-contain">
-                        <img class="banner-portada" src="/images/banner-bananas.png" alt="baner">
-             </div>                   
-            
-            <div>
-                <div class="title-container">
-                    <p>PRODUCTOS</p>
-                </div>
+            <select name="tipes" id="tipes">
+                <option value="macetas">MACETAS</option>
+                <option value="ceniceros">CENICEROS</option>
+                <option value="luminaria">LUMINARIA</option>
+                <option value="plantas">PLANTAS</option>
+                <option value="velas">VELAS</option>
+            </select>
+
+            <p><label for="sort">Ordenar por:</label></p>
+
+            <select name="options" id="options">
+                <option value="mas-vendidos">Mas Vendidos</option>
+                <option value="menor-mayor">Precio de menor a Mayor</option>
+                <option value="mayor-menor">Precio de Mayor a menor</option>
+                <option value="tamaño-menor">Tamaño de menor a Mayor</option>
+                <option value="tamaño-mayor">Tamaño de Mayor a menor</option>
+            </select>
+
+        </nav>
+
+        <div class="products w-80">
+
+            <div class="d-flex">
+
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/bono.gif" alt="almendra">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/tino.jpg" alt="gala">
+
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/velas.jpg" alt="cali">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/colgante1.jpg" alt="laika">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+
+                </article>
             </div>
+        </div>
 
-            <nav class="w-80 d-flex tipes">
+        <div class="products w-80">
 
-                <p><label for="sort">Categoría:</label></p>
+            <div class="d-flex">
 
-                <select name="tipes" id="tipes">
-                    <option value="macetas">MACETAS</option>
-                    <option value="ceniceros">CENICEROS</option>
-                    <option value="luminaria">LUMINARIA</option>
-                    <option value="plantas">PLANTAS</option>
-                    <option value="velas">VELAS</option>
-                </select>           
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/bono.gif" alt="almendra">
 
-                <p><label for="sort">Ordenar por:</label></p>
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
 
-                <select name="options" id="options">
-                    <option value="mas-vendidos">Mas Vendidos</option>
-                    <option value="menor-mayor">Precio de menor a Mayor</option>
-                    <option value="mayor-menor">Precio de Mayor a menor</option>
-                    <option value="tamaño-menor">Tamaño de menor a Mayor</option>
-                    <option value="tamaño-mayor">Tamaño de Mayor a menor</option>
-                </select>           
-                
-            </nav>   
-            
-            <div class="products w-80">
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/tino.jpg" alt="gala">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
 
-                <div class="d-flex">
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/velas.jpg" alt="cali">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
 
-                        <article class="product-card">
-                                <a href="/productDetail">
-                                <img src="/images/bono.gif" alt="almendra">
-                                <p class="product-tipe">Tipo</p>
-                                <p class="product-name">Nombre</p>
-                                <p class="product-price">$xxxx</p>
-                                </a>
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/colgante1.jpg" alt="laika">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
 
-                        </article>
-                        <article class="product-card">
-                                <a href="/productDetail">
-                                <img src="/images/tino.jpg" alt="gala">
-                                
-                                <p class="product-tipe">Tipo</p>
-                                <p class="product-name">Nombre</p>
-                                <p class="product-price">$xxxx</p>
-                                </a>
-
-                        </article>
-                        <article class="product-card">
-                                <a href="/productDetail">
-                                <img src="/images/velas.jpg" alt="cali">
-                                <p class="product-tipe">Tipo</p>
-                                <p class="product-name">Nombre</p>
-                                <p class="product-price">$xxxx</p>
-                                </a> 
-
-                        </article>
-                        <article class="product-card">
-                                <a href="/productDetail">
-                                <img src="/images/colgante1.jpg" alt="laika">
-                                <p class="product-tipe">Tipo</p>
-                                <p class="product-name">Nombre</p>
-                                <p class="product-price">$xxxx</p>
-                                </a>
-
-
-                        </article>
-                </div>
+                </article>
             </div>
+        </div>
 
-            <div class="products w-80">
+        <div class="products w-80">
 
-                    <div class="d-flex">
-    
-                            <article class="product-card">
-                                <a href="/productDetail">
-                                    <img src="/images/bono.gif" alt="almendra">
-                                    
-                                    <p class="product-tipe">Tipo</p>
-                                    <p class="product-name">Nombre</p>
-                                    <p class="product-price">$xxxx</p>
-                                </a>
-    
-                            </article>
-                            <article class="product-card">
-                                <a href="/productDetail">
-                                    <img src="/images/tino.jpg" alt="gala">
-                                    <p class="product-tipe">Tipo</p>
-                                    <p class="product-name">Nombre</p>
-                                    <p class="product-price">$xxxx</p>
-                                </a>
-    
-                            </article>
-                            <article class="product-card">
-                                <a href="/productDetail">
-                                    <img src="/images/velas.jpg" alt="cali">
-                                    <p class="product-tipe">Tipo</p>
-                                    <p class="product-name">Nombre</p>
-                                    <p class="product-price">$xxxx</p>
-                                </a>
-    
-                            </article>
-                            <article class="product-card">
-                                <a href="/productDetail">
-                                    <img src="/images/colgante1.jpg" alt="laika">
-                                    <p class="product-tipe">Tipo</p>
-                                    <p class="product-name">Nombre</p>
-                                    <p class="product-price">$xxxx</p>
-                                </a>
-    
-                            </article>
-                    </div>
-            </div>
+            <div class="d-flex">
 
-            <div class="products w-80">
+                <article class="product-card">
+                    <a href="/products/productDetail"></a>
+                    <img src="/images/bono.gif" alt="almendra">
+                    <p class="product-tipe">Tipo</p>
+                    <p class="product-name">Nombre</p>
+                    <p class="product-price">$xxxx</p>
+                    </a>
 
-                        <div class="d-flex">
-        
-                                <article class="product-card">
-                                        <a href="/productDetail"></a>
-                                        <img src="/images/bono.gif" alt="almendra">
-                                        <p class="product-tipe">Tipo</p>
-                                        <p class="product-name">Nombre</p>
-                                        <p class="product-price">$xxxx</p>
-                                </a>
-        
-                                </article>
-                                <article class="product-card">
-                                        <a href="/productDetail">
-                                        <img src="/images/tino.jpg" alt="gala">
-                                        <p class="product-tipe">Tipo</p>
-                                        <p class="product-name">Nombre</p>
-                                        <p class="product-price">$xxxx</p>
-                                        </a>
-        
-                                </article>
-                                <article class="product-card">
-                                        <a href="/productDetail">
-                                        <img src="/images/velas.jpg" alt="cali">
-                                        <p class="product-tipe">Tipo</p>
-                                        <p class="product-name">Nombre</p>
-                                        <p class="product-price">$xxxx</p>
-                                        </a>
-        
-                                </article>
-                                <article class="product-card">
-                                        <a href="/productDetail">
-                                        <img src="/images/colgante1.jpg" alt="laika">
-                                        <p class="product-tipe">Tipo</p>
-                                        <p class="product-name">Nombre</p>
-                                        <p class="product-price">$xxxx</p>
-                                        </a>
-                                </article>
-                        </div>   
-                       
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/tino.jpg" alt="gala">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/velas.jpg" alt="cali">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/colgante1.jpg" alt="laika">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+                </article>
             </div>
 
+        </div>
 
-        </main>
 
-        <footer class="bg-footer m-15">
-                <div class="d-flex menu-footer w-80 ">
-                    <div class="d-flex menu-footer2">
-                        <section class="footer-section">
-                            <h4>CAMBUR DECO</h4>
-                            <nav class="submenu1">
-                                <a href="/" class="t-bold">Inicio</a>
-                                <a href="/quienes-somos">Quienes somos?</a>
-                                <a href="/products">Productos</a>                
-                                <a href="/productCart">Carrito de compras</a>
-                            </nav>
-                        </section>
-                        <section class=" footer-section">
-                            <h4>NEWSLETTER</h4>
-                            <div class="submenu2">
-                                <p>Subscribite ahora y recibí nuestras últimas promociones!</p>
-                                <form id="news" name="news" method="POST" class="d-flex pos-rel pad-t-b-10">
-                                    <input type="email" class="news-i" placeholder="Ingresá tu email" id="email_news" name="email_news">
-                                    <button type="submit" class="news-b pos-b"><i class="fas fa-paper-plane"></i></button>
-                                </form>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="d-flex menu-footer2">
-                        <section class="footer-section">
-                            <h4>CONTACTO</h4>
-                            <div class="submenu3">
-                                <p><i class="fas fa-phone-alt"></i> (+54) 221-4086143</p>
-                                <p><i class="far fa-envelope"></i> camburdeco@hotmail.com</p>
-                                <p><i class="far fa-clock"></i> Lunes a Viernes de 9 a 18:30 hs. Sábados de 10 a 14 hs.</p>
-                            </div>
-                        </section>
-                        <section class=" footer-section">
-                            <h4>NUESTRAS REDES</h4>
-                                <nav class="submenu4">
-                                    <a rel="stylesheet" href="https://www.facebook.com/camburdeco"><i class="fab fa-facebook-f"></i> Facebook</a>
-                                    <a rel="stylesheet" href="https://www.instagram.com/camburdeco/"><i class="fab fa-instagram"></i> Instagram</a>
-                                </nav>    
-                        </section>
-                    </div>
-                </div>
-                <div id="copyright">
-                    <h5>Copyright® Camburdeco SAS. Todos los derechos reservados</h5>
-                </div>
-            </footer>
+    </main>
+
+    <%- include("partials/footer") %>
 
 </body>
+
 </html>
