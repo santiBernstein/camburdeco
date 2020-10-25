@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/productCreate.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Cambur Deco</title>
-</head>
-<body>
+
+    <head>
+        <%- include("../partials/head") %>
+        <link rel="stylesheet" href="/stylesheets/productCreate.css">
+    </head>
+    
+<body> 
+
+    <%- include("../partials/header") %>
+
+
         <div>    
         <form action="/products" method="POST">
 
@@ -75,5 +78,7 @@
 
         </form>
         </div>
+
+        <%- include("../partials/footer") %>
 </body>
 </html>
