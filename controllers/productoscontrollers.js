@@ -24,7 +24,7 @@ module.exports = {
 
         content.push ({
             ...req.body,
-            id: content[content.length-1].id+1
+            id: (content[content.length-1].id)+1
         })
 
         content = JSON.stringify(content)
