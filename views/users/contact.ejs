@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/stylesheets/register.css">
+</head>
+
+<body>
+    <header>
+        <%- include("../partials/header") %>
+    </header>
+    <main>
+
+        <section id="registro">
+            <div class="titulo">
+                CONTACTO
+            </div>
+            <article class="registrointerior">
+
+                <div class="formulario">
+                    <form action="/" method="GET">
+
+                        <p><label for="name">Nombre:</label></p>
+                        <input class="contacto" type="text" id="nombre" name="nombre">
+                        <p><label for="e-mail">E-mail:</label></p>
+                        <input class="contacto" type="email" id="email" name="email">
+                        <p><label for="telefono">Teléfono (opcional):</label></p>
+                        <input class="contacto" type="text" id="telefono" name="telefono">
+
+                        <p><label for="mesage">Mensaje:</label></p>
+                        <textarea class="contacto" name="mensaje" id="message" cols="30" rows="10"></textarea>
+
+                        <p><input class="boton" type="submit" value="Enviar"></p>
+                    </form>
+                </div>
+            </article>
+        </section>
+
+    </main>
+    <footer>
+        <%- include("../partials/footer") %>
+    </footer>
+</body>
+
+</html>

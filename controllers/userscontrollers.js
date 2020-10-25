@@ -1,17 +1,17 @@
 module.exports = {
     contacto : (req, res) => {
-        res.render('contact'); 
+        res.render('users/contact'); 
     },
     quienesSomos : (req, res) => {
-        res.render('quienes-somos');
+        res.render('users/quienes-somos');
     },
     registro : (req, res) => {
-        res.render('register'); 
+        res.render('users/register'); 
     },
     logearse : (req, res) => {
-        res.render('login'); 
+        res.render('users/login'); 
     },
     recuperar : (req, res) => {
-        res.render('recupero'); 
+        res.render('users/recupero'); 
     },
 }

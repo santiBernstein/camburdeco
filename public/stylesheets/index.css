@@ -67,7 +67,7 @@ input:focus {outline: 0;}
 
 
 
-#fondo-bananas {background-image: url("fondo-bananas.png");}
+#fondo-bananas {background-image: url("/images/fondo-bananas.png");}
 
 .banner-contain {
             width: 80%;            

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../partials/head") %>
+        <link rel="stylesheet" href="/stylesheets/register.css">
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+        <section id="registro">
+            <div class="titulo">
+                REGISTRARSE
+            </div>
+            <article class="registrointerior">
+                <div class="formulario">
+                    <form action="/" method="POST">
+                        <input class="ingreso" type="text" id="nombre" name="nombre" placeholder="Nombre">
+
+                        <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
+
+                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
+
+                        <input class="ingreso" type="confirmapassword" id="confirmapassword" name="confirmapassword" placeholder="Confirmar Contraseña"></p>
+            
+                        <p><input class="boton" type="submit" value="Crear cuenta"></p>
+                    </form>
+                </div>
+                <img class="vista" src="/images/bolsas2.jpg" alt="bolsacamburdeco">
+            </article>
+        </section>
+        <%- include("../partials/footer") %>      
+    </body>
+</html>

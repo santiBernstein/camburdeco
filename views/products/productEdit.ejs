@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../partials/head") %>
+        <link rel="stylesheet" href="/stylesheets/productCreate.css">
+    </head>
+<body>
+
+    <%- include("../partials/header") %>
+        <div>    
+        <form action="/products" method="PUT">
+
+            <h1>Editar Producto</h1>
+
+            <div>
+            <p><label for="">NOMBRE</label></p>
+            <input type="text" name="name">
+            </div>
+
+            <div>
+            <p><label for="">Categoría</label></p>
+            <select name="category">
+                <option value="elegir">Elegir Categoría</option>
+                <option value="macetas">MACETAS</option>
+                <option value="ceniceros">CENICEROS</option>
+                <option value="luminaria">LUMINARIA</option>
+                <option value="plantas">PLANTAS</option>
+                <option value="velas">VELAS</option>
+            </select>
+            </div> 
+
+            <div>
+            <p><label for="">Precio</label></p>
+            <input type="text" name="price">
+            </div>
+
+            <div>
+                <p><label for="">Stock</label></p>
+                <input type="text" name="stock" value="1">
+            </div>
+
+            <div>
+                <p><label for="">Estilo</label></p>            
+                <input name="style" type="checkbox" value="liso">LISO</input>
+                <input name="style" type="checkbox" value="pollock">POLLOCK</input>
+                <input name="style" type="checkbox" value="marmolado">MARMOLADO</input>
+                <input name="style" type="checkbox" value="bicolor">BICOLOR</input>
+            </div>
+            
+            <div>
+            <p><label for="">Color</label></p>            
+                <input name="color" type="checkbox" value="rosa">Rosa</input>
+                <input name="color" type="checkbox" value="blanco">Blanco</input>
+                <input name="color" type="checkbox" value="gris">Gris</input>
+                <input name="color" type="checkbox" value="celeste">Celeste</input>
+            </div>
+
+            <div>
+            <p><label for="">Descripción</label></p>
+            <textarea name="description" name="description" cols="30" rows="10"></textarea>
+            </div>
+
+            <div>
+            <p><label for="">Foto del Producto</label></p>
+            <input type="file" name="photo">    
+            </div>
+
+            <div>    
+            <p><button class="enviar" type="submit">Cargar Producto</button></p>
+            <p><button class="reset" type="reset">Resetear Página</button></p>
+            </div>
+
+
+
+        </form>
+        </div>
+
+        <%- include("../partials/footer") %>
+</body>
+</html>

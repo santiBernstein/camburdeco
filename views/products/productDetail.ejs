@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/stylesheets/productDetail.css">
+    <link rel="stylesheet" href="/stylesheets/products.css">
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+    <section id="detalleproducto">
+        <div class="titulo">
+            Detalle del producto
+        </div>
+        <div class="produc">
+            <img class="image" src="/images/almendra1.jpg" alt="imagenproducto">
+            <div class="infoproducto">
+                <p class="tipoprod">Macetas</p>
+                <p class="nombreprod">Almendra</p>
+                <p class="precioprod"> $ 220,00.-</p>
+
+                <nav class="w-80 tipes">
+
+                    <p><label for="sort">Estilo:</label></p>
+
+                    <select name="tipes" id="tipes">
+                        <option value="liso">LISO</option>
+                        <option value="pollock">POLLOCK</option>
+                        <option value="marmolado">MARMOLADO</option>
+                    </select>
+
+                    <p><label for="sort">Color:</label></p>
+
+                    <select name="options" id="options">
+                        <option value="rosa">Rosa</option>
+                        <option value="blanco">Blanco</option>
+                        <option value="gris">Gris</option>
+                        <option value="celeste">Celeste</option>
+                    </select>
+
+                </nav>
+                <form action="/productCart" method="GET">
+                    <input class="boton" type="submit" value="Agregar al carrito">
+                </form>
+            </div>
+        </div>
+    </section>
+    <%- include("../partials/footer") %>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../partials/head") %>
+        <link rel="stylesheet" href="/stylesheets/login.css">
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+
+        <section id="login">
+            <div class="titulo">
+                LOGIN
+            </div>
+            <article class="logininterior">
+                <div class="formulario">
+                    <form action="/" method="POST">
+                        <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
+
+                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
+            
+                        <p><input class="boton" type="submit" value="Iniciar sesión"></p>
+                    </form>
+                    <div class="recupero">
+                        <a href="/users/recupero">olvide mi contraseña</a>
+                    </div>
+                </div>
+                <img class="vista" src="/images/bolsas2.jpg" alt="bolsacamburdeco">
+            </article>
+        </section>
+        <%- include("../partials/footer") %>  
+    </body>
+</html>

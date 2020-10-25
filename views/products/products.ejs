@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/stylesheets/products.css">
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+
+    <main>
+
+        <div class="banner-contain">
+            <img class="banner-portada" src="/images/banner-bananas.png" alt="baner">
+        </div>
+
+        <div>
+            <div class="title-container">
+                <p>PRODUCTOS</p>
+            </div>
+        </div>
+
+        <nav class="w-80 d-flex tipes">
+
+            <p><label for="sort">Categoría:</label></p>
+
+            <select name="tipes" id="tipes">
+                <option value="macetas">MACETAS</option>
+                <option value="ceniceros">CENICEROS</option>
+                <option value="luminaria">LUMINARIA</option>
+                <option value="plantas">PLANTAS</option>
+                <option value="velas">VELAS</option>
+            </select>
+
+            <p><label for="sort">Ordenar por:</label></p>
+
+            <select name="options" id="options">
+                <option value="mas-vendidos">Mas Vendidos</option>
+                <option value="menor-mayor">Precio de menor a Mayor</option>
+                <option value="mayor-menor">Precio de Mayor a menor</option>
+                <option value="tamaño-menor">Tamaño de menor a Mayor</option>
+                <option value="tamaño-mayor">Tamaño de Mayor a menor</option>
+            </select>
+
+        </nav>
+
+        <div class="products w-80">
+
+            <div class="d-flex">
+
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/bono.gif" alt="almendra">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/tino.jpg" alt="gala">
+
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/velas.jpg" alt="cali">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/colgante1.jpg" alt="laika">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+
+                </article>
+            </div>
+        </div>
+
+        <div class="products w-80">
+
+            <div class="d-flex">
+
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/bono.gif" alt="almendra">
+
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/tino.jpg" alt="gala">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/velas.jpg" alt="cali">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/colgante1.jpg" alt="laika">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+            </div>
+        </div>
+
+        <div class="products w-80">
+
+            <div class="d-flex">
+
+                <article class="product-card">
+                    <a href="/products/productDetail"></a>
+                    <img src="/images/bono.gif" alt="almendra">
+                    <p class="product-tipe">Tipo</p>
+                    <p class="product-name">Nombre</p>
+                    <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/tino.jpg" alt="gala">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/velas.jpg" alt="cali">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+
+                </article>
+                <article class="product-card">
+                    <a href="/products/productDetail">
+                        <img src="/images/colgante1.jpg" alt="laika">
+                        <p class="product-tipe">Tipo</p>
+                        <p class="product-name">Nombre</p>
+                        <p class="product-price">$xxxx</p>
+                    </a>
+                </article>
+            </div>
+
+        </div>
+
+
+    </main>
+
+    <%- include("../partials/footer") %>
+
+</body>
+
+</html>
