@@ -39,3 +39,24 @@
 
 
 ## Dejar de Hacer
+
+
+# Sprint-3
+
+## Comenzar a hacer
+* Dinamizar el trabajo realizado.
+    
+
+## Hacer más
+* Comunicación.
+* Mejorar el trabajo de manera coordinada.    
+
+## Continuar haciendo
+* Asados de festejo
+
+
+## Hacer menos
+    
+
+
+## Dejar de Hacer
