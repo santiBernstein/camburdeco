@@ -16,7 +16,7 @@ module.exports = {
     productCreate : (req, res) => {
         res.render('products/productCreate')
     },
-    store : (req, res) => {
+    store : (req, res, next) => {
         
         let content = fs.readFileSync('./data/products.json', {encoding: 'utf-8'})
 
@@ -24,7 +24,8 @@ module.exports = {
 
         content.push ({
             ...req.body,
-            id: (content[content.length-1].id)+1
+            id: (content[content.length-1].id)+1,
+            //photo: req.files[0].filename
         })
 
         content = JSON.stringify(content)
@@ -32,6 +33,7 @@ module.exports = {
         fs.writeFileSync('./data/products.json', content)
 
        res.send('bien')
+       
     },
     productEdit : (req, res) => {
         res.render('products/productEdit')
