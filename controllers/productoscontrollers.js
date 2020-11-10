@@ -25,7 +25,7 @@ module.exports = {
         content.push ({
             ...req.body,
             id: (content[content.length-1].id)+1,
-            //photo: req.files[0].filename
+            img: req.files[0].filename
         })
 
         content = JSON.stringify(content)
