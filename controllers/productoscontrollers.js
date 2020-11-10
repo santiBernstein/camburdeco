@@ -4,17 +4,11 @@ module.exports = {
     productos : (req, res) => {
         res.render('products/products'); 
     },
-    productCart : (req, res) => {
-        res.render('products/productCart')
+    detail : (req, res) => {
+        res.render('products/detail')
     },
-    productCart2 : (req, res) => {
-        res.render('products/productCart2')
-    },
-    productDetail : (req, res) => {
-        res.render('products/productDetail')
-    },
-    productCreate : (req, res) => {
-        res.render('products/productCreate')
+    create : (req, res) => {
+        res.render('products/create')
     },
     store : (req, res) => {
         
@@ -33,8 +27,8 @@ module.exports = {
 
        res.send('bien')
     },
-    productEdit : (req, res) => {
-        res.render('products/productEdit')
+    edit : (req, res) => {
+        res.render('products/edit')
     },
     update : (req, res) => {
         //
