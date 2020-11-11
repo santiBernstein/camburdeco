@@ -21,14 +21,14 @@ let upload = multer({storage})
 
 
 router.get('/', productosControllers.productos);
-router.get('/Cart', productosControllers.productCart);
-router.get('/Cart2', productosControllers.productCart2);
-router.get('/Detail', productosControllers.productDetail);
 
-router.get('/Create', productosControllers.productCreate);
-router.post('/',  upload.any(), productosControllers.store);
+router.get('/:id', productosControllers.detail);
 
-router.get('/:id/Edit', productosControllers.productEdit);
+router.get('/Create', productosControllers.create);
+router.post('/', upload.any(), productosControllers.store);
+
+router.get('/:id/Edit', productosControllers.edit);
+
 router.put('/:id', productosControllers.update);
 
 router.delete('/:id', productosControllers.destroy);
