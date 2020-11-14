@@ -17,7 +17,8 @@
             "rosa"
         ],
         "description": "Maceta geometrica compuesta de 70 triangulos",
-        "img": "cali.jpg"
+        "img": "cali.jpg",
+        "top": "yes"
     },
     {
         "id": 2,
@@ -36,7 +37,8 @@
             "rosa"
         ],
         "description": "Maceta de forma hexagonal de 12cm de altura",
-        "img": "bono.gif"
+        "img": "bono.gif",
+        "top": "yes"
     },
     {
         "id": 3,
@@ -56,7 +58,8 @@
             "rosa"
         ],
         "description": "Nuestro modelo mas pequeño para tus sucus o cactus",
-        "img": "gala.jpg"
+        "img": "gala.jpg",
+        "top": "yes"
     },
     {
         "id": 4,
@@ -93,7 +96,8 @@
             "gris"
         ],
         "description": "Flora es ideal para plantas grandes. Su diseño esta en todos los detalles",
-        "img": "flora.jpg"
+        "img": "flora.jpg",
+        "top": "yes"
     },
     {
         "id": 6,
@@ -111,7 +115,8 @@
             "rosa"
         ],
         "description": "Un modelo tradicional, pero que destaca por su calidad",
-        "img": "tino.jpg"
+        "img": "tino.jpg",
+        "top": "no"
     },
     {
         "id": 7,
@@ -130,7 +135,8 @@
             "rosa"
         ],
         "description": "Nuestro modelo colgante",
-        "img": "colgante.jpg"
+        "img": "colgante.jpg",
+        "top": "no"
     },
     {
         "id": 8,
@@ -150,7 +156,8 @@
             "rosa"
         ],
         "description": "Nuestros ceniceros",
-        "img": "cenicero.jpg"
+        "img": "cenicero.jpg",
+        "top": "no"
     },
     {
         "id": 9,
@@ -170,6 +177,7 @@
             "rosa"
         ],
         "description": "Nuestras Velas",
-        "img": "velas.jpg"
+        "img": "velas.jpg",
+        "top": "no"
     }    
 ]

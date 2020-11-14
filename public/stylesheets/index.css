@@ -32,8 +32,10 @@ input:focus {outline: 0;}
 }
 
 .barra-contain a {
-    color: white;
+    font-weight: bold;
     padding: 5px;
+    font-size: 12px;
+    
 }
 .lin-vertical {border-right: solid 1px;}
 
