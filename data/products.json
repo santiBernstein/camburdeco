@@ -1,9 +1,9 @@
 [
     {
         "id": 1,
-        "name": "Cali",
+        "name": "Maceta Cali",
         "category": "macetas",
-        "price": "$400",
+        "price": "400",
         "stock": "1",
         "style": [
             "lisa",
@@ -21,9 +21,9 @@
     },
     {
         "id": 2,
-        "name": "Bono",
+        "name": "Maceta Bono",
         "category": "macetas",
-        "price": "$600",
+        "price": "600",
         "stock": "1",
         "style": [
             "lisa",
@@ -40,9 +40,9 @@
     },
     {
         "id": 3,
-        "name": "Gala Small",
+        "name": "Maceta Gala Small",
         "category": "macetas",
-        "price": "$300",
+        "price": "300",
         "stock": "1",
         "style": [
             "lisa",
@@ -60,9 +60,9 @@
     },
     {
         "id": 4,
-        "name": "Gala",
+        "name": "Maceta Gala",
         "category": "macetas",
-        "price": "$400",
+        "price": "400",
         "stock": "1",
         "style": [
             "lisa",
@@ -80,9 +80,9 @@
     },
     {
         "id": 5,
-        "name": "Flora",
+        "name": "Maceta Flora",
         "category": "macetas",
-        "price": "$1000",
+        "price": "1000",
         "stock": "1",
         "style": [
             "lisa",
@@ -97,9 +97,9 @@
     },
     {
         "id": 6,
-        "name": "Tino",
+        "name": "Maceta Tino",
         "category": "macetas",
-        "price": "$450",
+        "price": "450",
         "stock": "1",
         "style": [
             "lisa",
@@ -115,9 +115,9 @@
     },
     {
         "id": 7,
-        "name": "Gea",
+        "name": "Maceta Gea",
         "category": "macetas",
-        "price": "$600",
+        "price": "600",
         "stock": "1",
         "style": [
             "lisa",
@@ -136,7 +136,7 @@
         "id": 8,
         "name": "Cenicero",
         "category": "ceniceros",
-        "price": "$300",
+        "price": "300",
         "stock": "1",
         "style": [
             "lisa",
@@ -156,7 +156,7 @@
         "id": 9,
         "name": "Velas",
         "category": "velas",
-        "price": "$400",
+        "price": "400",
         "stock": "1",
         "style": [
             "lisa",

@@ -2,7 +2,86 @@ let fs = require('fs');
 
 module.exports = {
     productos : (req, res) => {
-        res.render('products/products'); 
+        let content = JSON.parse(fs.readFileSync('./data/products.json', {encoding: 'utf-8'}))
+        let filtro = {
+            category: 'todos',
+            options: 'mas-vendidos'
+        };
+        let categorias = ['todos','macetas','ceniceros','luminaria','plantas','velas']
+        
+        if(req.query.category != categorias[0] && req.query.category != undefined){
+            content = content.filter(function(product){
+                return product.category == req.query.category
+            })
+            filtro.category=req.query.category;
+        }
+        let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
+        switch (req.query.options){
+            case opciones[0]:
+                content = content.sort(function(a,b){
+                    if(a.ventas > b.ventas){
+                        return 1;
+                    }
+                    if(a.ventas < b.ventas){
+                        return -1;
+                    }
+                    return 0;
+                } );
+                filtro.options=req.query.options;
+                break;
+            case opciones[1]:
+                content = content.sort(function(a,b){
+                    if(Number(a.price) > Number(b.price)){
+                        return 1;
+                    }
+                    if(Number(a.price) < Number(b.price)){
+                        return -1;
+                    }
+                    return 0;
+                } );
+                filtro.options=req.query.options
+                break;
+            case opciones[2]:
+                content = content.sort(function(a,b){
+                    if(Number(a.price) < Number(b.price)){
+                        return 1;
+                    }
+                    if(Number(a.price) > Number(b.price)){
+                        return -1;
+                    }
+                    return 0;
+                } );
+                filtro.options=req.query.options
+                break;
+            case opciones[3]:
+                content = content.sort(function(a,b){
+                    if(a.size < b.size){
+                        return 1;
+                    }
+                    if(a.size > b.size){
+                        return -1;
+                    }
+                    return 0;
+                } );
+                filtro.options=req.query.options
+                break;
+            case opciones[4]:
+                content = content.sort(function(a,b){
+                    if(a.size > b.size){
+                        return 1;
+                    }
+                    if(a.size < b.size){
+                        return -1;
+                    }
+                    return 0;
+                } );
+                filtro.options=req.query.options
+                break;
+            default:
+                filtro.options="mas-vendidos"
+                break;
+            }
+        res.render('products/products', {content,filtro,categorias,opciones}); 
     },
     detail : (req, res) => {
         res.render('products/detail')

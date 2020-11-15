@@ -1,0 +1,9 @@
+<article class="product-card">
+    <a href="/products/<%= product.id %>">
+        <div class="d-flex picture">
+            <img src="/images/<%= product.img %>" alt="<%= product.category %> <%= product.name %>">
+        </div>
+        <p class="product-name"> <%= product.name %></p>
+        <p class="product-price">$<%= product.price %></p>
+    </a>
+</article>
