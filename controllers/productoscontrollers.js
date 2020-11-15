@@ -1,8 +1,9 @@
-let fs = require('fs');
-
+const fs = require('fs');
+const path = require('path')
+const productJsonFilePath = path.join(__dirname,"../data/products.json")
 module.exports = {
     productos : (req, res) => {
-        let content = JSON.parse(fs.readFileSync('./data/products.json', {encoding: 'utf-8'}))
+        let content = JSON.parse(fs.readFileSync(productJsonFilePath, {encoding: 'utf-8'}))
         let filtro = {
             category: 'todos',
             options: 'mas-vendidos'
@@ -115,6 +116,17 @@ module.exports = {
         //
     },
     destroy : (req,res) => {
-        //
+        const content = JSON.parse(fs.readFileSync(productJsonFilePath, 'utf-8'));
+		const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
+        console.log(imagePath)
+        fs.unlink(imagePath, function (err) {
+			if (err) throw err;
+			console.log('File deleted!');
+		})
+		content.splice((Number(req.params.id)-1),1)
+		let i=1;
+		content.forEach(product=>product.id = i++)
+		fs.writeFileSync(productJsonFilePath,JSON.stringify(content))
+		res.redirect('/')
     }
 }
