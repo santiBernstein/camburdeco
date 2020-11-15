@@ -37,9 +37,13 @@
        
         <div class="products w-80">
             <div class="d-flex flex-wrap">
-                <% content.forEach(product => { %> 
-                    <%- include("../partials/product", {product}) %>
-                <% }); %> 
+                <% if(content.length != 0) {%> 
+                    <% content.forEach(product => { %> 
+                        <%- include("../partials/product", {product}) %>
+                    <% }); %> 
+                <% }else{ %> 
+                    <p class="no-product"> PRÓXIMAMENTE </p>
+                <% } %> 
             </div>
         </div>
      </main>

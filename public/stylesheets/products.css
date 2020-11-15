@@ -15,6 +15,15 @@
     height: 300px;
 }
 
+.no-product{
+    font-size: 2em;
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    margin: 80px 0px;
+    color: rgb(229, 36, 122);
+}
+
 .products img{
     border-radius: 15px;
     object-fit: cover;
@@ -129,6 +138,9 @@ label {font-size: 18px;}
     .filter-nav-div select{
         font-size: 0.8em;
     }
+    .no-product{
+        font-size: 1.8em;
+    }
 }
 
 @media all and (max-width: 599px){
@@ -165,6 +177,9 @@ label {font-size: 18px;}
     }
     .filter-nav-div select{
         font-size: 0.8em;
+    }
+    .no-product{
+        font-size: 1.5em;
     }
 
 }
