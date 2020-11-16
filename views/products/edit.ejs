@@ -2,67 +2,144 @@
 <html lang="en">
     <head>
         <%- include("../partials/head") %>
-        <link rel="stylesheet" href="/stylesheets/productCreate.css">
+        <link rel="stylesheet" href="/stylesheets/create.css">
     </head>
 <body>
-
-    <%- include("../partials/header") %>
+    <%- include("../partials/header", { user: 'admin', id: ids } ) %>
         <div>    
-        <form action="/products" method="PUT">
-
+            
+        <form action="/products/<%= content.id %>?_method=PUT" method="post" enctype="multipart/form-data">
             <h1>Editar Producto</h1>
-
             <div>
-            <p><label for="">NOMBRE</label></p>
-            <input type="text" name="name">
+                <p><label for="">NOMBRE</label></p>
+                <input class="ingreso" type="text" name="name" value="<%= content.name %>">
             </div>
-
             <div>
-            <p><label for="">Categoría</label></p>
-            <select name="category">
-                <option value="elegir">Elegir Categoría</option>
-                <option value="macetas">MACETAS</option>
-                <option value="ceniceros">CENICEROS</option>
-                <option value="luminaria">LUMINARIA</option>
-                <option value="plantas">PLANTAS</option>
-                <option value="velas">VELAS</option>
-            </select>
+               <p><label for="">Categoría</label></p>
+                <select class="ingreso" name="category">
+                    <option value="elegir">Elegir Categoría</option>
+                    <option value="macetas" <%= content.category == "macetas" ? 'selected' : '' %>>MACETAS</option>
+                    <option value="ceniceros" <%= content.category == "ceniceros" ? 'selected' : '' %>>CENICEROS</option>
+                    <option value="luminaria" <%= content.category == "luminaria" ? 'selected' : '' %>>LUMINARIA</option>
+                    <option value="plantas" <%= content.category == "plantas" ? 'selected' : '' %>>PLANTAS</option>
+                    <option value="velas" <%= content.category == "velas" ? 'selected' : '' %>>VELAS</option>
+                </select>
             </div> 
-
             <div>
-            <p><label for="">Precio</label></p>
-            <input type="text" name="price">
+                <p><label for="">Precio</label></p>
+                <input class="ingreso" type="text" name="price" value="<%= content.price %>">
             </div>
-
             <div>
                 <p><label for="">Stock</label></p>
-                <input type="text" name="stock" value="1">
+                <input class="ingreso" type="text" name="stock" value="<%= content.stock %>">
             </div>
-
             <div>
-                <p><label for="">Estilo</label></p>            
-                <input name="style" type="checkbox" value="liso">LISO</input>
-                <input name="style" type="checkbox" value="pollock">POLLOCK</input>
-                <input name="style" type="checkbox" value="marmolado">MARMOLADO</input>
-                <input name="style" type="checkbox" value="bicolor">BICOLOR</input>
+                <p><label for="">Estilo</label></p> 
+                <% let checko = true %>
+                <% for (i=0; i<content.style.length; i++) { %>  
+                    <% if(content.style[i] == "lisa") {%>          
+                        <input name="style" type="checkbox" value="lisa" checked>LISO</input>
+                        <% i = content.style.length; %>
+                        <% checko = false; %>
+                    <% }; %>
+                <% }; %>
+                <% if (checko) { %>
+                    <input name="style" type="checkbox" value="lisa" LISO</input>
+                <% } %>
+                <% checko = true %>
+                <% for (i=0; i<content.style.length; i++) { %>  
+                    <% if(content.style[i] == "pollock") {%>          
+                        <input name="style" type="checkbox" value="pollock" checked>POLLOCK</input>
+                        <% i = content.style.length; %>
+                        <% checko = false; %>
+                    <% }; %>
+                <% }; %>
+                <% if (checko) { %>
+                    <input name="style" type="checkbox" value="pollock">POLLOCK</input>
+                <% } %>
+                <% checko = true %>
+                <% for (i=0; i<content.style.length; i++) { %>  
+                    <% if(content.style[i] == "marmolado") {%>          
+                        <input name="style" type="checkbox" value="marmolado" checked>MARMOLADO</input>
+                        <% i = content.style.length; %>
+                        <% checko = false; %>
+                    <% } %>
+                <% }; %>
+                <% if (checko) { %>
+                    <input name="style" type="checkbox" value="marmolado">MARMOLADO</input>
+                <% } %>
+                <% checko = true %>
+                <% for (i=0; i<content.style.length; i++) { %>  
+                    <% if(content.style[i] == "bicolor") {%>          
+                        <input name="style" type="checkbox" value="bicolor" checked>BICOLOR</input>
+                        <% i = content.style.length; %>
+                        <% checko = false; %>
+                    <% }; %>
+                <% }; %>
+                <% if (checko) { %>
+                    <input name="style" type="checkbox" value="bicolor">BICOLOR</input>
+                <% } %>
+                
             </div>
             
             <div>
-            <p><label for="">Color</label></p>            
+            <p><label for="">Color</label></p> 
+            <% checko = true %>
+            <% for (i=0; i<content.color.length; i++) { %>  
+                <% if(content.color[i] == "rosa") {%>          
+                    <input name="color" type="checkbox" value="rosa" checked>Rosa</input>
+                    <% i = content.color.length; %>
+                    <% checko = false; %>
+                <% }; %>
+            <% }; %>
+            <% if (checko) { %>
                 <input name="color" type="checkbox" value="rosa">Rosa</input>
+            <% } %>
+            <% checko = true %>
+            <% for (i=0; i<content.color.length; i++) { %>  
+                <% if(content.color[i] == "blanco") {%>          
+                    <input name="color" type="checkbox" value="blanco" checked>Blanco</input>
+                    <% i = content.color.length; %>
+                    <% checko = false; %>
+                <% }; %>
+            <% }; %>
+            <% if (checko) { %>
                 <input name="color" type="checkbox" value="blanco">Blanco</input>
+            <% } %>
+            <% checko = true %>
+            <% for (i=0; i<content.color.length; i++) { %>  
+                <% if(content.color[i] == "gris") {%>          
+                    <input name="color" type="checkbox" value="gris" checked>Gris</input>
+                    <% i = content.color.length; %>
+                    <% checko = false; %>
+                <% } %>
+            <% }; %>
+            <% if (checko) { %>
                 <input name="color" type="checkbox" value="gris">Gris</input>
+            <% } %>
+            <% checko = true %>
+            <% for (i=0; i<content.color.length; i++) { %>  
+                <% if(content.color[i] == "celeste") {%>          
+                    <input name="color" type="checkbox" value="celeste" checked>Celeste</input>
+                    <% i = content.color.length; %>
+                    <% checko = false; %>
+                <% }; %>
+            <% }; %>
+            <% if (checko) { %>
                 <input name="color" type="checkbox" value="celeste">Celeste</input>
+            <% } %>            
             </div>
 
             <div>
             <p><label for="">Descripción</label></p>
-            <textarea name="description" name="description" cols="30" rows="10"></textarea>
+            <% console.log('5', content.description) %>
+            <textarea class="ingreso" name="description" cols="30" rows="10" value="<%= content.description %>"></textarea>
             </div>
 
             <div>
-            <p><label for="">Foto del Producto</label></p>
-            <input type="file" name="photo">    
+            <p><label for="">Imagen del Producto</label></p>
+            <div><img class="image" src="/images/<% content.img %>" alt="imagenproducto"></div>
+            <input class="ingreso" type="file" name="photo">    
             </div>
 
             <div>    

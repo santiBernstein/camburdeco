@@ -7,7 +7,7 @@
 
 <body>
 
-    <%- include("partials/header") %>
+    <%- include("partials/header", {user: 'admin', id: -1} ) %>
 
     <main>
 
@@ -30,7 +30,7 @@
                 <div class="d-flex">
 
                     <article class="product-card">
-                        <a href="/products/productDetail">
+                        <a href="/products/1">
                             <img src="/images/almendra1.jpg" alt="almendra">
                             <p class="product-tipe">Maceta</p>
                             <p class="product-name">Almendra</p>
@@ -38,7 +38,7 @@
                         </a>
                     </article>
                     <article class="product-card">
-                        <a href="/products/productDetail">
+                        <a href="/products/2">
                             <img src="/images/gala.jpg" alt="gala">
                             <p class="product-tipe">Tipo</p>
                             <p class="product-name">Nombre</p>

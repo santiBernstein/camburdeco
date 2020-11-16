@@ -2,7 +2,18 @@
     <nav class="barra-contain d-flex space-bet">
         <div>
             <a class="lin-vertical" href="/users/register">Crear Cuenta</a>
-            <a href="/users/login">Iniciar Sesión</a>
+            <% if (user == 'admin') {%>
+                <a class="lin-vertical" href="/users/login">Iniciar Sesión</a>
+                <% if (id > -1) { %>
+                    <a class="lin-vertical" href="/products/create">Agregar Productos</a>
+                    <a class="lin-vertical" href="/products/edit/<%- id %>">Modificar Productos</a>
+                    <a href="/products/destroy">Eliminar Productos</a>
+                <% } else { %>
+                    <a href="/products/create">Agregar Productos</a>
+                <% } %>
+            <% } else { %>
+                <a href="/users/login">Iniciar Sesión</a>
+            <% } %>
         </div>
         <div class="last-item content-end">
             <a href="/carrito">Mis Compras<i class="fas fa-shopping-cart"></i></a>
