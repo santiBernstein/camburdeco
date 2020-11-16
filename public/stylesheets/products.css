@@ -1,54 +1,186 @@
-.title-container p {
-                    margin-top: 30px;               
-                    border: 1px solid yellow;
-                    padding: 10px 25px;
-                    font-size: 20px;                
-                    display: inline-block;
-                    background-color: white;
+.title-container p {              
+    padding: 10px 25px;
+    font-size: 1.8em;
+    font-weight: bold;                
 }
 
-.tipes {
-    margin-top: 50px;
-    margin-bottom: 20px;
+.flex-wrap{
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.picture{
+    overflow: hidden;
+    height: 300px;
+    display: flex;
+}
+
+.no-product{
+    font-size: 2em;
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    margin: 80px 0px;
+    color: rgb(229, 36, 122);
+}
+
+.products img{
+    object-fit: cover;
+    margin: 0%;
+    flex-grow: 1;
+}
+
+.products .product-name{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 15px;
+}
+.products .product-price{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.products .product-tipe {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.products .product-card{
+    height: fit-content;
+    max-width: 23%;
+    margin: 1% 0%;
+    border: none;
+    border-radius: none;
+    padding: 0px;
+    background-color: gold;
+    box-shadow: 0px 0px 6px black;
+   
+}
+.products .product-card:hover{
+    border: none;
+    border-color: none;
+    background-color: rgb(255, 231, 95);
+    
+}
+.filter-nav-div{
+    display: inline;
+    padding: 0px 15px;
+}
+.filter {
+    border-top: black 2px solid;
+    padding-top: 15px;
     justify-content: center;
 }
 
 nav p {margin: 5px;}
 label {font-size: 18px;}
+    
+.filter-nav-div select {
+    margin: 15px;
+    background-color: rgb(38, 180, 182);
+    box-shadow: 0px 0px 4px black;
+    text-align-last: center;
+    font-weight: bold;
+    height: 30px;
+    padding: 6px;
+    font-family: 'Comfortaa', cursive;
+    border: none;
+}
 
-select {
-        background-color: #40D9FA;
-        text-align-last: center;
-        font-weight: bold;
+.filter-nav-div select:hover{ 
+    cursor: pointer;
+    background-color: rgb(98, 219, 221);
 }
-select:hover{ cursor: pointer;
-             border: solid 1px;
+
+.boton-filtro{
+    margin: 15px;
+    border: none;
+    height: 30px;
+    font-family: 'Comfortaa', cursive;  
+    background-color: rgb(229, 36, 122); 
+    font-weight: bold;
+    padding: 6px;
+    box-shadow: 0px 0px 4px black;
 }
+.boton-filtro:hover{
+    cursor: pointer;
+    background-color:rgb(238, 87, 155);
+}
+
 
 @media all and (min-width: 600px) and (max-width: 1023px) {
 
     .title-container p{margin-top: 0px;}
 
-    .tipes {margin-top: 20px;}
+    .filter {margin-top: 20px;}
+
+    .products .product-card{
+        max-width: 48%;
+    }
 
     nav p {width: 100%;
         text-align: center;
         margin: 3%;}
-
+    
+    .filter-nav-div{
+        text-align: center;
+        margin: 10px 0px;
+        padding: 0px;
+    }
+    
+    .filter-nav-div label{
+        font-size: 0.8em
+    }
+    .filter-nav-div select{
+        font-size: 0.8em;
+    }
+    .no-product{
+        font-size: 1.8em;
+    }
 }
 
 @media all and (max-width: 599px){
 
-    .title-container p{margin-top: 0px;}
+    .title-container p{
+        font-size: 1.5em;
+        margin-top: 0px;
+    }
 
-    .tipes {margin-top: 20px;}
 
     select {font-size: 15px;}
     label {font-size: 22px;}
    
-
+    .flex-wrap{
+        flex-direction: column;
+    }
+    .products .product-card{
+        margin: 10px 0px;
+        max-width: 100%;
+    }
     nav p {width: 100%;
         text-align: center;
         margin: 3%;}
+
+    .filter-nav-div{
+        text-align: center;
+        margin: 10px 0px;
+        display: block;
+        padding: 0px;
+    }
+    
+    .filter-nav-div label{
+        font-size: 0.8em
+    }
+    .filter-nav-div select{
+        font-size: 0.8em;
+    }
+    .no-product{
+        font-size: 1.5em;
+    }
 
 }

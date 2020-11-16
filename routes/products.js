@@ -3,13 +3,33 @@ var router = express.Router();
 var multer = require('multer');
 const productosControllers = require('../controllers/productoscontrollers');
 
+
+//middleware para subir fotos
+let multer = require('multer');
+let path = require('path');
+
+let storage = multer.diskStorage({
+		destination : function(req,file,cb){
+			cb(null, 'public/images')
+		},
+		filename : function(req,file,cb){
+			cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+		 }
+})
+
+let upload = multer({storage})
+
+
+
 router.get('/', productosControllers.productos);
+
+router.get('/Create', productosControllers.create);
+router.post('/', upload.any(), productosControllers.store);
+
 router.get('/:id', productosControllers.detail);
 
-router.get('/create', productosControllers.create);
-router.post('/', productosControllers.store);
+router.get('/:id/Edit', productosControllers.edit);
 
-router.get('/edit/:id', productosControllers.edit);
 router.put('/:id', productosControllers.update);
 
 router.delete('/:id', productosControllers.destroy);
