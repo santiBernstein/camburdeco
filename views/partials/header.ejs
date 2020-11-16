@@ -6,7 +6,7 @@
                 <a class="lin-vertical" href="/users/login">Iniciar Sesión</a>
                 <% if (id > -1) { %>
                     <a class="lin-vertical" href="/products/create">Agregar Productos</a>
-                    <a class="lin-vertical" href="/products/edit/<%- id %>">Modificar Productos</a>
+                    <a class="lin-vertical" href="/products/<%- id %>/edit">Modificar Productos</a>
                     <a href="/products/destroy">Eliminar Productos</a>
                 <% } else { %>
                     <a href="/products/create">Agregar Productos</a>

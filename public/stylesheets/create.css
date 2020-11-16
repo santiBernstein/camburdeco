@@ -79,3 +79,10 @@ input {margin: 2%;}
         box-shadow: 5px 5px 5px var(--shad-color);
         padding: 5px;
     }
+.image-edit {
+    height: 200px;
+}
+
+.img-edit {
+    height: 100%;
+}
