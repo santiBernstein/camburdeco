@@ -28,18 +28,11 @@
                 </div>
 
                 
-                <div class="d-flex">
+                <div class="d-flex space-bet">
                     <% productsData.forEach(function(product) { %> 
                         <% if (product.top == "yes"){ %> 
                     
-                    <article class="product-card">
-                        <a href="/products/<%= product.id %>">
-                            <img src="/images/<%= product.img %>" alt="almendra">
-                            <p class="product-tipe"><%= product.category %></p>
-                            <p class="product-name"><%= product.name  %></p>
-                            <p class="product-price"><%= product.price  %></p>
-                        </a>
-                    </article>
+                            <%- include("./partials/product", {product}) %>
                     
                     <% } %> 
                 <% }); %> 
@@ -52,18 +45,10 @@
             <div class="products w-80">
 
                 
-                <div class="d-flex">
+                <div class="d-flex space-bet">
                     <% productsData.forEach(function(product) { %> 
                         <% if (product.top == "no"){ %> 
-                    <article class="product-card">
-                        <a href="/products/<%= product.id %>">
-                            <img src="/images/<%= product.img %>" alt="almendra">
-                            <p class="product-tipe"><%= product.category %></p>
-                            <p class="product-name"><%= product.name  %></p>
-                            <p class="product-price"><%= product.price  %></p>
-                        </a>
-
-                    </article>
+                            <%- include("./partials/product", {product}) %>
                     
                     <% } %> 
                     <% }); %> 

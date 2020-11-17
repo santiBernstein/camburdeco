@@ -6,18 +6,13 @@
         "price": "400",
         "stock": "1",
         "style": [
-            "lisa",
-            "marmolado",
-            "pollock"
+            "pollock",
+            "lisa"
         ],
         "color": [
-            "blanco",
-            "gris",
-            "celeste",
             "rosa"
         ],
-        "description": "Maceta geometrica compuesta de 70 triangulos",
-        "img": "cali.jpg",
+        "img": "photo-1605575282313.jpg",
         "top": "yes"
     },
     {

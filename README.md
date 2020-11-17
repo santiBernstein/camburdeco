@@ -22,6 +22,7 @@ Cómo referencia para el desarrollo del Ecommerce se toman en cuenta las siguien
 - [Sprint 1](https://trello.com/b/WsJYydy1/sprint1)
 - [Sprint 2](https://trello.com/b/HssNWv8W/sprint2)
 - [Sprint 3](https://trello.com/b/rFn1sVjY/sprint-3)
+- [Sprint 4](https://trello.com/b/ui5maR9U/sprint4)
 
 ## Integrantes del grupo:
 

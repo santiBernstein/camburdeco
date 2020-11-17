@@ -137,20 +137,22 @@ module.exports = {
     },
     update : (req, res) => {
         let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-		let ids = Number(req.params.id) - 1;
-		content[ids].name = req.body.name;
+        let ids = Number(req.params.id) - 1;
+        console.log(content[ids].style.length);
+
+        content[ids].name = req.body.name;
 		content[ids].category = req.body.category;
 		content[ids].price = req.body.price;
 		content[ids].stock = req.body.stock; 
-        content[ids].style = req.body.style;
-        content[ids].color = req.body.color; 
+        content[ids].style.splice(0,content[ids].style.length-1,req.body.style);
+        content[ids].color.splice(0,content[ids].style.length-1,req.body.color); 
         content[ids].description = req.body.desciption;
         content[ids].img = req.files[0].filename;
 		fs.writeFileSync(productFilePath, JSON.stringify(content))
 		res.redirect('/')
     },
     destroy : (req,res) => {
-        const content = JSON.parse(fs.readFileSync(productJsonFilePath, 'utf-8'));
+        const content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
 		const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
         console.log(imagePath)
         fs.unlink(imagePath, function (err) {
@@ -160,7 +162,7 @@ module.exports = {
 		content.splice((Number(req.params.id)-1),1)
 		let i=1;
 		content.forEach(product=>product.id = i++)
-		fs.writeFileSync(productJsonFilePath,JSON.stringify(content))
+		fs.writeFileSync(productFilePath,JSON.stringify(content))
 		res.redirect('/')
     }
 }

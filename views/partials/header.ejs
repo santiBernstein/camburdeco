@@ -6,8 +6,11 @@
                 <a class="lin-vertical" href="/users/login">Iniciar Sesión</a>
                 <% if (id > -1) { %>
                     <a class="lin-vertical" href="/products/create">Agregar Productos</a>
-                    <a class="lin-vertical" href="/products/<%- id %>/edit">Modificar Productos</a>
-                    <a href="/products/destroy">Eliminar Productos</a>
+                    <a class="lin-vertical" href="/products/<%= id + 1 %>/edit">Modificar Productos</a>
+                    <form action="/products/<%= id + 1 %>?_method=DELETE" method="POST" class="form-inline">
+                        <button class="button-delete" type="submit">Eliminar Productos</button>
+                    </form>
+
                 <% } else { %>
                     <a href="/products/create">Agregar Productos</a>
                 <% } %>
