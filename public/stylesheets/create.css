@@ -1,0 +1,88 @@
+:root {
+        --main-color: #ffdb00;
+        --bkgd-color: url(fondo-bananas.png);
+        --bkgd-campo-color: #fff; 
+        --shad-color: #96968d ;
+        --text-color: #17cff3; 
+        --terc-color: #e72379;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       
+    }
+
+body {background-image: url("/images/fondo-bananas.png");}
+
+form {
+        text-align: center;
+        width: 80%;
+        margin: 5% auto;
+        border: solid 3px yellow;
+        padding: 3%;
+}
+
+label {
+        font-size: 20px;
+        font-weight: bold;
+}
+
+p {margin: 2%;}
+
+input {margin: 2%;}
+
+.enviar{
+        width: fit-content(30%);
+        flex-grow: 1;
+        flex-basis: 0;
+        margin: 5px;
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px var(--shad-color);
+        font-family: 'Comfortaa', cursive;   
+        background-color: gold;
+        font-size: 10px;
+    }
+    
+.enviar:hover{
+        font-size: 75%;
+        background-color: rgb(255, 225, 55);
+    } 
+
+.reset{
+        width: fit-content(30%);
+        flex-grow: 1;
+        flex-basis: 0;
+        margin: 5px;
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px var(--shad-color);
+        font-family: 'Comfortaa', cursive;   
+        background-color: #e72379;
+        font-size: 10px;
+    }
+    
+.reset:hover{
+        font-size: 75%;
+        background-color: #bb3b73;
+    }
+.ingreso {
+        width: 25%;
+        margin: 10px 0px;
+        border: none;
+        height: 30px;
+        border-radius: 5%;
+        box-shadow: 5px 5px 5px var(--shad-color);
+        padding: 5px;
+    }
+.image-edit {
+    height: 200px;
+}
+
+.img-edit {
+    height: 100%;
+}

@@ -64,12 +64,24 @@
     color: var(--terc-color);
     font-weight: var(--terc-color);
 }
-.boton {
-    background-color: var(--main-color);
+
+.boton{
+    width: fit-content;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 5px;
     border: none;
-    border-radius: 5%;
-    width: 80%;
-    height: 20px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px var(--shad-color);
+    font-family: 'Comfortaa', cursive;   
+    background-color: gold;
+    font-size: 10px;
+}
+
+.boton:hover{
+    font-size: 75%;
+    background-color: rgb(255, 225, 55);
 }
 
 @media (max-width: 599px) {

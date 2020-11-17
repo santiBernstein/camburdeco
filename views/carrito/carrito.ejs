@@ -7,9 +7,12 @@
 </head>
 
 <body>
-    <%- include("../partials/header") %>
+    <%- include("../partials/header", {user: 'admin', id: -1}) %>
 
     <main>
+        <!-- <div class="banner-contain">
+            <img class="banner-portada" src="/images/banner-bananas.png" alt="baner">
+        </div> -->
         <figure class="banner-contain">
             <div class="banner-carrito"></div>
         </figure>
@@ -17,7 +20,7 @@
 
         <div id="carro" class="w-80">
             <div class="product-title">
-                <p>Carrito de Compras</p>
+                <p>CARRITO DE COMPRAS</p>
             </div>
             <section class="d-flex product-Cart border-t-b">
                 <div id="tabla">

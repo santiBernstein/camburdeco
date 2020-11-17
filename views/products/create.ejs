@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <%- include("../partials/head") %>
-        <link rel="stylesheet" href="/stylesheets/productCreate.css">
-    </head>
-    
+        <link rel="stylesheet" href="/stylesheets/create.css">
+    </head> 
 <body> 
-
-    <%- include("../partials/header") %>
-
-
+    <%- include("../partials/header", {user: 'admin', id: -1}) %>
         <div>    
         <form action="/products" method="POST" enctype="multipart/form-data">
 
             <h1>Crear Producto Nuevo</h1>
-
             <div>
-            <p><label for="">NOMBRE</label></p>
-            <input type="text" name="name">
+                <p><label for="">NOMBRE</label></p>
+                <input type="text" name="name">
             </div>
-
             <div>
             <p><label for="">Categoría</label></p>
             <select name="category">
@@ -32,17 +25,14 @@
                 <option value="velas">VELAS</option>
             </select>
             </div> 
-
             <div>
             <p><label for="">Precio</label></p>
             <input type="number" name="price">
             </div>
-
             <div>
                 <p><label for="">Stock</label></p>
                 <input type="text" name="stock" value="1">
             </div>
-
             <div>
                 <p><label for="">Estilo</label></p>            
                 <input name="style" type="checkbox" value="liso">LISO</input>
@@ -50,7 +40,6 @@
                 <input name="style" type="checkbox" value="marmolado">MARMOLADO</input>
                 <input name="style" type="checkbox" value="bicolor">BICOLOR</input>
             </div>
-            
             <div>
             <p><label for="">Color</label></p>            
                 <input name="color" type="checkbox" value="rosa">Rosa</input>

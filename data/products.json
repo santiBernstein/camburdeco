@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Cali",
         "category": "macetas",
-        "price": "$400",
+        "price": "400",
         "stock": "1",
         "style": [
             "lisa",
@@ -24,7 +24,7 @@
         "id": 2,
         "name": "Bono",
         "category": "macetas",
-        "price": "$600",
+        "price": "600",
         "stock": "1",
         "style": [
             "lisa",
@@ -44,7 +44,7 @@
         "id": 3,
         "name": "Gala Small",
         "category": "macetas",
-        "price": "$300",
+        "price": "300",
         "stock": "1",
         "style": [
             "lisa",
@@ -65,7 +65,7 @@
         "id": 4,
         "name": "Gala",
         "category": "macetas",
-        "price": "$400",
+        "price": "400",
         "stock": "1",
         "style": [
             "lisa",
@@ -85,7 +85,7 @@
         "id": 5,
         "name": "Flora",
         "category": "macetas",
-        "price": "$1000",
+        "price": "1000",
         "stock": "1",
         "style": [
             "lisa",
@@ -103,7 +103,7 @@
         "id": 6,
         "name": "Tino",
         "category": "macetas",
-        "price": "$450",
+        "price": "450",
         "stock": "1",
         "style": [
             "lisa",
@@ -122,7 +122,7 @@
         "id": 7,
         "name": "Gea",
         "category": "macetas",
-        "price": "$600",
+        "price": "600",
         "stock": "1",
         "style": [
             "lisa",
@@ -142,7 +142,7 @@
         "id": 8,
         "name": "Cenicero",
         "category": "ceniceros",
-        "price": "$300",
+        "price": "300",
         "stock": "1",
         "style": [
             "lisa",
@@ -163,7 +163,7 @@
         "id": 9,
         "name": "Velas",
         "category": "velas",
-        "price": "$400",
+        "price": "400",
         "stock": "1",
         "style": [
             "lisa",
@@ -179,5 +179,5 @@
         "description": "Nuestras Velas",
         "img": "velas.jpg",
         "top": "no"
-    }    
+    }
 ]

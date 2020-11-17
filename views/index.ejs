@@ -7,7 +7,7 @@
 
 <body>
 
-    <%- include("partials/header") %>
+    <%- include("partials/header", {user: 'admin', id: -1} ) %>
 
     <main>
 
@@ -40,30 +40,7 @@
                             <p class="product-price"><%= product.price  %></p>
                         </a>
                     </article>
-                    <!-- <article class="product-card">
-                        <a href="/products/productDetail">
-                            <img src="/images/gala.jpg" alt="gala">
-                            <p class="product-tipe">Tipo</p>
-                            <p class="product-name">Nombre</p>
-                            <p class="product-price">$xxxx</p>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="/products/productDetail">
-                            <img src="/images/cali.jpg" alt="cali">
-                            <p class="product-tipe">Tipo</p>
-                            <p class="product-name">Nombre</p>
-                            <p class="product-price">$xxxx</p>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="/products/productDetail"></a>
-                        <img src="/images/laika.jpg" alt="laika">
-                        <p class="product-tipe">Tipo</p>
-                        <p class="product-name">Nombre</p>
-                        <p class="product-price">$xxxx</p>
-                        </a>
-                    </article> -->
+                    
                     <% } %> 
                 <% }); %> 
                     
@@ -87,31 +64,7 @@
                         </a>
 
                     </article>
-                    <!-- <article class="product-card">
-                        <a href="/products/productDetail">
-                            <img src="/images/tino.jpg" alt="gala">
-                            <p class="product-tipe">Tipo</p>
-                            <p class="product-name">Nombre</p>
-                            <p class="product-price">$xxxx</p>
-                        </a>
-
-                    </article>
-                    <article class="product-card">
-                        <a href="/products/productDetail">
-                            <img src="/images/velas.jpg" alt="cali">
-                            <p class="product-tipe">Tipo</p>
-                            <p class="product-name">Nombre</p>
-                            <p class="product-price">$xxxx</p>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="/products/productDetail">
-                            <img src="/images/colgante1.jpg" alt="laika">
-                            <p class="product-tipe">Tipo</p>
-                            <p class="product-name">Nombre</p>
-                            <p class="product-price">$xxxx</p>
-                        </a>
-                    </article> -->
+                    
                     <% } %> 
                     <% }); %> 
                 </div>
