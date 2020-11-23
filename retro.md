@@ -60,3 +60,26 @@
 
 
 ## Dejar de Hacer
+
+# Sprint-4
+
+## Comenzar a hacer
+* Dinamizar el trabajo realizado.
+    
+
+## Hacer más
+* Comunicación. Especificar o detalalr más los problemas que surgen.
+* Mejorar el trabajo de manera coordinada. 
+* Realizar mas cantidad reuniones   
+* Revisar más las actualizaciones del grupo en GIT
+
+## Continuar haciendo
+* Asados de festejo
+
+
+## Hacer menos
+
+
+## Dejar de Hacer
+* En último momento la integración
+
