@@ -1,5 +1,6 @@
 const fs = require('fs'); 
 let bcryptjs = require('bcryptjs');
+var userData = require('../data/user');
 
 
 module.exports = {
@@ -10,8 +11,33 @@ module.exports = {
         res.render('users/quienes-somos');
     },
     registro : (req, res) => {
-        res.render('users/register'); 
+        res.render('users/register', { linkToLogin: false}); 
     },
+    processLogin: (req, res) => {
+
+		let user = userData.findByEmail(req.body.email)
+
+		if(!user){
+
+			return res.send('Email incorrecto')
+		}
+		else if(bcryptjs.compareSync(req.body.password, user.password)){
+
+			req.session.user = user.email
+			if(req.body.recordame){
+				res.cookie('recordame', user.email, {maxAge: 120 * 1000})
+			}
+			return res.redirect('/products')
+		}
+			else { return res.send('Password Incorrrecto')}
+
+		
+	},
+	logout: (req, res) => {
+		req.session.destroy()
+		res.cookie('recordame', null, {maxAge: 0})
+	    res.redirect('/login')
+	},
     store : (req, res) => {
 		let content = fs.readFileSync('./data/users.json', {encoding: 'utf-8'})
 
