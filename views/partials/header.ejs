@@ -1,23 +1,21 @@
 <header>
     <nav class="barra-contain d-flex space-bet">
         <div>
+           				
             <a class="lin-vertical" href="/users/register">Crear Cuenta</a>
-            <% if (user == 'admin') {%>
+            
                 <a class="lin-vertical" href="/users/login">Iniciar Sesión</a>
-                <% if (id > -1) { %>
+              
+               
                     <a class="lin-vertical" href="/products/create">Agregar Productos</a>
-                    <a class="lin-vertical" href="/products/<%= id + 1 %>/edit">Modificar Productos</a>
-                    <form action="/products/<%= id + 1 %>?_method=DELETE" method="POST" class="form-inline">
+                    <a class="lin-vertical" href="/products/edit">Modificar Productos</a>
+                    <form action="/products/?_method=DELETE" method="POST" class="form-inline">
                         <button class="button-delete" type="submit">Eliminar Productos</button>
                     </form>
-
-                <% } else { %>
-                    <a href="/products/create">Agregar Productos</a>
-                <% } %>
-            <% } else { %>
-                <a href="/users/login">Iniciar Sesión</a>
-            <% } %>
+                
+                  
         </div>
+       
         <div class="last-item content-end">
             <a href="/carrito">Mis Compras<i class="fas fa-shopping-cart"></i></a>
         </div>
