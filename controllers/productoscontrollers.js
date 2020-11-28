@@ -152,7 +152,7 @@ module.exports = {
 		res.redirect('/')
     },
     destroy : (req,res) => {
-        const content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
+        let content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
 		const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
         console.log(imagePath)
         fs.unlink(imagePath, function (err) {
