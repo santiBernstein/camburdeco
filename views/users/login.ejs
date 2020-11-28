@@ -13,10 +13,17 @@
             </div>
             <article class="logininterior">
                 <div class="formulario">
-                    <form action="users/login" method="POST">
-                        <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
+                   
+                    <form action="/users/login" method="POST">
+                        <input class="ingreso" type="email" value="<%= data.email %> " name="email" placeholder="e-mail">
+                        <% if (errors.email != undefined){  %> 
+                        <p><%= errors.email.msg  %> </p>
+                        <% } %> 
 
-                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
+                        <input class="ingreso" type="password" name="password" placeholder="Contraseña"></p>
+                        <% if (errors.password != undefined){  %> 
+                        <p><%= errors.password.msg  %> </p>
+                        <% } %>
 
                         <p><input type="checkbox" name="recordame">Recordarme</p>
             

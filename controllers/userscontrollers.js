@@ -1,6 +1,7 @@
 const fs = require('fs'); 
 let bcryptjs = require('bcryptjs');
 var userData = require('../data/user');
+const {validationResult} = require('express-validator');
 
 
 module.exports = {
@@ -11,15 +12,21 @@ module.exports = {
         res.render('users/quienes-somos');
     },
     registro : (req, res) => {
-        res.render('users/register', { linkToLogin: false}); 
+        res.render('users/register'); 
     },
     processLogin: (req, res) => {
-
+        let errors = validationResult(req)
+       
 		let user = userData.findByEmail(req.body.email)
 
 		if(!user){
 
-			return res.send('Email incorrecto')
+			return res.render('users/login', { 
+				
+				errors : errors.mapped(),
+				data : req.body
+				
+				})
 		}
 		else if(bcryptjs.compareSync(req.body.password, user.password)){
 
@@ -29,9 +36,13 @@ module.exports = {
 			}
 			return res.redirect('/products')
 		}
-			else { return res.send('Password Incorrrecto')}
-
-		
+			else { return res.render('users/login', { 
+				
+				errors : errors.mapped(),
+				data : req.body
+				
+                })
+            }			
 	},
 	logout: (req, res) => {
 		req.session.destroy()
@@ -60,7 +71,7 @@ module.exports = {
 		
 	},
     logearse : (req, res) => {
-        res.render('users/login'); 
+        res.render('users/login',{ data : {}, errors: {} }); 
     },
     recuperar : (req, res) => {
         res.render('users/recupero'); 
