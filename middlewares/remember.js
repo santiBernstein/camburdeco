@@ -1,4 +1,4 @@
-var userData = require('../data/user')
+var userData = require('../repositories/userRepository')
 
 module.exports = function(req,res,next){
 

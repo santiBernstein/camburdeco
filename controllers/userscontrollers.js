@@ -1,6 +1,8 @@
 const fs = require('fs'); 
+const path = require('path')
 let bcryptjs = require('bcryptjs');
-var userData = require('../data/user');
+var userData = require('../repositories/userRepository');
+const userJsonFilePath = path.join(__dirname, '../data/users.json');
 const {validationResult} = require('express-validator');
 
 
@@ -12,7 +14,7 @@ module.exports = {
         res.render('users/quienes-somos');
     },
     registro : (req, res) => {
-        res.render('users/register'); 
+        res.render('users/register',{ data : {}, errors: {} }); 
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
@@ -50,25 +52,17 @@ module.exports = {
 	    res.redirect('/login')
 	},
     store : (req, res) => {
-		let content = fs.readFileSync('./data/users.json', {encoding: 'utf-8'})
+        let errors = validationResult(req)
+        console.log(errors.errors)
+        if(errors.errors.length){
+            return res.render('users/register', { 
+				errors : errors.mapped(),
+				data : req.body
+            })
+        }
+        userData.create(req);
+        res.redirect('users/login')
 
-        content = JSON.parse(content)
-
-        content.push ({
-
-				id: content.length,
-				name: req.body.name,
-				email : req.body.email,
-                password : bcryptjs.hashSync(req.body.password),
-                confirmPassword : bcryptjs.hashSync(req.body.password)
-        })
-
-        content = JSON.stringify(content)
-
-        fs.writeFileSync('./data/users.json', content)
-
-       res.send('bien')
-		
 	},
     logearse : (req, res) => {
         res.render('users/login',{ data : {}, errors: {} }); 

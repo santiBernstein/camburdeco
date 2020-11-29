@@ -13,14 +13,35 @@
             <article class="registrointerior">
                 <div class="formulario">
                     <form action="/users" method="POST">
-                        <input class="ingreso" type="text" id="nombre" name="name" placeholder="Nombre">
+                        <% if (errors.name != undefined){  %> 
+                            <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre">
+                            <p class="errors"><%= errors.name.msg  %> </p>
+                        <% }else{ %> 
+                            <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.name %>" >
+                        <% } %> 
+                        
+                        <% if (errors.email != undefined){  %> 
+                            <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
+                            <p class="errors"><%= errors.email.msg  %> </p>
+                        <% } else{ %>
+                            <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail" value="<%= data.email %>">
+                        <% } %> 
 
-                        <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
+                      
+                        <% if (errors.password != undefined){  %> 
+                            <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña" ></p>
+                            <p class="errors"><%= errors.password.msg  %> </p>
+                        <% }else{ %>
+                            <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña" value="<%= data.password %>"></p>
+                        <% } %>
 
-                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
-
-                        <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña"></p>
-            
+                        
+                        <% if (errors.confirmPassword != undefined){  %> 
+                            <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña" ></p>
+                            <p class="errors"><%= errors.confirmPassword.msg  %> </p>
+                        <% }else{ %>
+                            <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña" value="<%= data.confirmPassword %>"></p>
+                        <% } %> 
                         <p><button class="boton" type="submit" value="Crear cuenta">Registrarme</p>
                     </form>
                 </div>

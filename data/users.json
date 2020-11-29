@@ -92,7 +92,15 @@
         "name": "Guss",
         "email": "gfairbridge0@earthlink.net",
         "password": "OKPpzJ",
-        "confirmPassword": "d8uXAs" ,
+        "confirmPassword": "d8uXAs",
+        "tipoUsuario": "Normal"
+    },
+    {
+        "id": 13,
+        "name": "Kevin Hernán Scalesi",
+        "email": "kevin_scalesi@yahoo.com.ar",
+        "password": "$2a$10$WEITuHqbCviDQO/k3gRrvO7wIz7H.BFxB6/Nh6kC/qjb5Swq44Nq.",
+        "confirmPassword": "$2a$10$WEITuHqbCviDQO/k3gRrvO7wIz7H.BFxB6/Nh6kC/qjb5Swq44Nq.",
         "tipoUsuario": "Normal"
     }
 ]
