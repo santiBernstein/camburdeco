@@ -9,12 +9,21 @@ function create (req){
         content.push ({
                 id: (this.lastest().id)+1,
                 name: req.body.name,
+                apellido: "",
+                dni: "",
                 email : req.body.email,
+                domicilio: "",
+                localidad: "",
+                pais: "",
                 password : bcryptjs.hashSync(req.body.password,salt),
                 confirmPassword : bcryptjs.hashSync(req.body.password,salt),
+                metodo_pago:"",
+                nroTarjeta: "",
+                avatar: req.files[0].filename,
                 tipoUsuario: "Normal"
         })
         fs.writeFileSync(userJsonFilePath,JSON.stringify(content))
+        return (this.lastest().id)
 }
 
 function findByName(name){

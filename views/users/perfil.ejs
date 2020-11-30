@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../partials/head") %>
+        <link rel="stylesheet" href="/stylesheets/register.css">
+    </head>
+    <body>
+        <%- include("../partials/header", {user: 'admin', id: -1}) %>
+        <section id="registro">
+            <div class="titulo">
+                PERFIL DEL USUARIO
+            </div>
+            <article class="registrointerior">
+                <div class="formulario">
+                    <form action="<%= data.id %>/edit" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <p><img class="imagenes" src="../../images/users/<%= data.avatar %>" alt="avatar"></p>
+                            <label for="imagen" class="form-label">Cargar imagen</label>
+                            <input type="file" multiple="multiple" id="avatar" name="avatar" value="<%= data.avatar %>">
+                        </div>
+                        <label for="imagen" class="form-label">Datos de identidad</label>
+                        <input class="ingreso" type="text" id="nombre" name="name" placeholder="Nombre" value="<%= data.name %>">
+                        <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.apellido %>">
+                        <input class="ingreso" type="text" id="dni" name="dni" placeholder="D.N.I." value="<%= data.dni %>">
+                        <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail" value="<%= data.email %>">
+                        <label for="imagen" class="form-label">Datos de envío</label>
+                        <input class="ingreso" type="text" id="domicilio" name="domicilio" placeholder="Domicilio completo" value="<%= data.domicilio %>">
+                        <input class="ingreso" type="text" id="localidad" name="localidad" placeholder="Ciudad" value="<%= data.localidad %>">
+                        <input class="ingreso" type="text" id="pais" name="pais" placeholder="Pais" value="<%= data.pais %>">
+                        <label for="imagen" class="form-label">Datos de pago</label>
+                        <input class="ingreso" type="text" id="medoto_pago" name="metodo_pago" placeholder="Método de pago" value="<%= data.metodo_pago %>">
+                        <input class="ingreso" type="text" id="nroTarjeta" name="nrotarjeta" placeholder="Nro. tarjeta de crédito" value="<%= data.nroTarjeta %>">
+                        <label for="imagen" class="form-label">Password</label>
+                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña" value="<%= data.password %>"></p>
+                        <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña"></p>
+            
+                        <p><button class="boton" type="submit" value="Crear cuenta">Continuar</p>
+                    </form>
+                    
+                </div>
+            </article>
+        </section>
+        <%- include("../partials/footer") %>      
+    </body>
+</html>

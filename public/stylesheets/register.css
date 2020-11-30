@@ -19,6 +19,27 @@
     padding: 5px;
 }
 
+.custom-upload{
+    background-color: #dc567e;
+    color: var(--titulo-seccion-color);
+    width: fit-content;
+    height: fit-content;
+  }
+  .custom-upload:hover{
+    box-shadow: 1px 1px 5px black;
+    cursor: pointer;
+  }
+.form-input{
+  display: block;
+  border-radius: 8px;
+  border: solid 1px var(--gray);
+}
+
+.avatar{
+    width: 350px;
+    display: none;
+}
+
 #registro {
     margin: 3% 3%;
     padding: 3%;
@@ -70,6 +91,9 @@
     width: 25%;
 }
 
+.registrointerior .imagenes {
+    width: 50%;
+}
 /*pagina contacto*/
 
 .registrointerior .contacto{
@@ -81,7 +105,8 @@
 }
 .registrointerior label {
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 14px;
+    padding: 5px;
 }
 
 

@@ -14,7 +14,7 @@ module.exports = {
         res.render('users/quienes-somos');
     },
     registro : (req, res) => {
-        res.render('users/register',{ data : {}, errors: {} }); 
+        res.render('users/register',{ data : {}, errors: {}, avatar: true }); 
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
@@ -53,17 +53,44 @@ module.exports = {
 	},
     store : (req, res) => {
         let errors = validationResult(req)
-        console.log(errors.errors)
+        let avatar = true;
+        if(req.files.size == null){
+         avatar = false;
+        }
         if(errors.errors.length){
             return res.render('users/register', { 
 				errors : errors.mapped(),
-				data : req.body
+                data : req.body,
+                avatar: avatar
             })
         }
-        userData.create(req);
-        res.redirect('users/login')
-
+        let ids = userData.create(req);
+        res.redirect('/users/perfil/'+ids)
 	},
+    perfil : (req,res) => {
+        let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+        let ids = content.length - 1
+        res.render('users/perfil', { data : content[ids] })
+    },
+    edit : (req, res) => {
+        let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+        let ids = Number(req.params.id) - 1;
+
+        content[ids].name = req.body.name;
+        content[ids].apellido = req.body.apellido;
+        content[ids].dni = req.body.dni;
+        content[ids].email = req.body.email;
+        content[ids].domicilio = req.body.domicilio;
+        content[ids].localidad = req.body.localidad;
+        content[ids].pais = req.body.pais;
+		content[ids].password = req.body.password;
+        content[ids].metodo_pago = req.body.metodo_pago;
+        content[ids].nroTarjeta = req.body.nroTarjeta;
+        content[ids].avatar = req.files[0].filename;
+		fs.writeFileSync(userJsonFilePath, JSON.stringify(content))
+		res.redirect('/')
+    },
+
     logearse : (req, res) => {
         res.render('users/login',{ data : {}, errors: {} }); 
     },

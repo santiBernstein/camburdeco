@@ -12,7 +12,7 @@
             </div>
             <article class="registrointerior">
                 <div class="formulario">
-                    <form action="/users" method="POST">
+                    <form action="/users" method="POST" enctype="multipart/form-data">
                         <% if (errors.name != undefined){  %> 
                             <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre">
                             <p class="errors"><%= errors.name.msg  %> </p>
@@ -27,7 +27,6 @@
                             <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail" value="<%= data.email %>">
                         <% } %> 
 
-                      
                         <% if (errors.password != undefined){  %> 
                             <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña" ></p>
                             <p class="errors"><%= errors.password.msg  %> </p>
@@ -35,13 +34,21 @@
                             <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña" value="<%= data.password %>"></p>
                         <% } %>
 
-                        
                         <% if (errors.confirmPassword != undefined){  %> 
                             <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña" ></p>
                             <p class="errors"><%= errors.confirmPassword.msg  %> </p>
                         <% }else{ %>
                             <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña" value="<%= data.confirmPassword %>"></p>
                         <% } %> 
+                        <div>
+                		    <label for="avatar" class="custom-upload form-input">
+							    Foto de perfil
+						    </label>
+                            <input type="file" class= "avatar"  id="avatar" name="avatar" accept=".jpg">
+                        </div>
+                        <% if (!avatar){  %> 
+                            <p class="errors">Debe seleccionar una imagen </p>
+                        <% } %>
                         <p><button class="boton" type="submit" value="Crear cuenta">Registrarme</p>
                     </form>
                 </div>
