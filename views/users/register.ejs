@@ -13,14 +13,19 @@
             <article class="registrointerior">
                 <div class="formulario">
                     <form action="/users" method="POST">
-                        <input class="ingreso" type="text" id="nombre" name="name" placeholder="Nombre">
-
+                        <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre">
+                        <% if (errors.name != undefined){  %> 
+                            <p><%= errors.name.msg  %> </p>
+                        <% } %> 
                         <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail">
-
+                        <% if (errors.email != undefined){  %> 
+                            <p><%= errors.email.msg  %> </p>
+                        <% } %>
                         <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña">
-
                         <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña">
-            
+                        <% if (errors.passsword != undefined){  %> 
+                            <p><%= errors.password.msg  %> </p>
+                        <% } %>
                         <p><button class="boton" type="submit" value="Crear cuenta">Registrarme</p>
                     </form>
                 </div>

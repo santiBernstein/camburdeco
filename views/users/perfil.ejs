@@ -19,10 +19,19 @@
                             <input type="file" multiple="multiple" id="abatar" name="abatar" value="<%= data.abatar %>">
                         </div>
                         <label for="imagen" class="form-label">Datos de identidad</label>
-                        <input class="ingreso" type="text" id="nombre" name="name" placeholder="Nombre" value="<%= data.name %>">
+                        <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.name %>">
+                        <% if (errors.name != undefined){  %> 
+                            <p><%= errors.name.msg  %> </p>
+                        <% } %> 
                         <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.apellido %>">
+                        <% if (errors.apellido != undefined){  %> 
+                            <p><%= errors.apellido.msg  %> </p>
+                        <% } %> 
                         <input class="ingreso" type="text" id="dni" name="dni" placeholder="D.N.I." value="<%= data.dni %>">
                         <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail" value="<%= data.email %>">
+                        <% if (errors.email != undefined){  %> 
+                            <p><%= errors.email.msg  %> </p>
+                        <% } %> 
                         <label for="imagen" class="form-label">Datos de envío</label>
                         <input class="ingreso" type="text" id="domicilio" name="domicilio" placeholder="Domicilio completo" value="<%= data.domicilio %>">
                         <input class="ingreso" type="text" id="localidad" name="localidad" placeholder="Ciudad" value="<%= data.localidad %>">
