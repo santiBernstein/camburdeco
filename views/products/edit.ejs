@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/stylesheets/create.css">
     </head>
 <body>
-    <%- include("../partials/header", { user: 'admin', id: ids } ) %>
+    <%- include("../partials/header") %>
         <div>    
             
         <form action="/products/<%= content.id %>?_method=PUT" method="post" enctype="multipart/form-data">

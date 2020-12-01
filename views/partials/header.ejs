@@ -1,13 +1,21 @@
 <header>
     <nav class="barra-contain d-flex space-bet">
         <div>
+
+            <% if(locals.user){  %>
+                   <a class="lin-vertical">Hola <%= locals.user %>!</a>
+                <form class="form-inline" action="/users/logout" method="POST">
+                    <button class="button-delete">Cerrar Sesión</button>
+                </form>						
+                <% } else { %>
            				
             <a class="lin-vertical" href="/users/register">Crear Cuenta</a>
             
-                <a class="lin-vertical" href="/users/login">Iniciar Sesión</a>
-              
+                <a href="/users/login">Iniciar Sesión</a>
+
+                <% } %>                
                
-                    <a class="lin-vertical" href="/products/create">Agregar Productos</a>
+                    <a class="lin-vertical lin-vertical-izquierda" href="/products/create">Agregar Productos</a>
                     <a class="lin-vertical" href="/products/edit">Modificar Productos</a>
                     <form action="/products/?_method=DELETE" method="POST" class="form-inline">
                         <button class="button-delete" type="submit">Eliminar Productos</button>

@@ -32,8 +32,8 @@ module.exports = {
 				})
 		}
 		else if(bcryptjs.compareSync(req.body.password, user.password)){
-
-			req.session.user = user.email
+            
+			req.session.user = user.name
 			if(req.body.recordame){
 				res.cookie('recordame', user.email, {maxAge: 120 * 1000})
 			}
@@ -50,7 +50,7 @@ module.exports = {
 	logout: (req, res) => {
 		req.session.destroy()
 		res.cookie('recordame', null, {maxAge: 0})
-	    res.redirect('/login')
+	    res.redirect('/')
 	},
     store : (req, res) => {
         let errors = validationResult(req)
@@ -98,7 +98,7 @@ module.exports = {
     },
 
     logearse : (req, res) => {
-        res.render('users/login',{ data : {}, errors: {} }); 
+        res.render('users/login',{ data : { }, errors: { } }); 
     },
     recuperar : (req, res) => {
         res.render('users/recupero'); 

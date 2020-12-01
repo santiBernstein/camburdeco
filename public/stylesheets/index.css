@@ -102,6 +102,7 @@ input:focus {outline: 0;}
     
 }
 .lin-vertical {border-right: solid 1px;}
+.lin-vertical-izquierda {border-left: solid 2px;}
 
 .barra-contain .last-item a:last-child{
     color: black;
