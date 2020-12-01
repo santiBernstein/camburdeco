@@ -20,11 +20,11 @@
                 <p class="nombreprod"><%= content[ids].name %></p>
                 <p class="precioprod"><%= content[ids].price %>.-</p>
 
-                <nav class="w-80 tipes">
+                <nav class="w-80 tipes" d-flex filter>
 
                     <p><label for="sort">Estilo:</label></p>
 
-                    <select name="tipes" id="tipes">
+                    <select class="filter-nav-div" name="tipes" id="tipes">
                         <% content[ids].style.forEach(function(value) { %>
                             <option value="<% value %>"><%= value %></option>                            
                         <% }); %>                            

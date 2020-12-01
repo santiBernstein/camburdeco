@@ -182,7 +182,7 @@
     {
         "id": 13,
         "name": "Ramon",
-        "email": "dontramon@net.com",
+        "email": "donramon@net.com",
         "password": "$2a$10$AfcXK6e/KjiIqaO4rFbdKe79sl0OVm52BV398ycCBhu9rsy26fNv.",
         "tipoUsuario": "Normal",
         "apellido": "Monchito",
