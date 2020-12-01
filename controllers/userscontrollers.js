@@ -58,7 +58,7 @@ module.exports = {
         if(req.files[0] == null){
          avatar = false;
         }
-        if(errors.errors.length){
+        if(errors.errors.length || !avatar){
             return res.render('users/register', { 
 				errors : errors.mapped(),
                 data : req.body,
@@ -70,7 +70,7 @@ module.exports = {
     },   
     perfil : (req,res) => {
         let errors = validationResult(req)
-        let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
+        let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
         let ids = content.length - 1
         res.render('users/perfil', { errors : errors.mapped(), data : content[ids] })
     },
@@ -89,7 +89,9 @@ module.exports = {
     		content[ids].password = req.body.password;
             content[ids].metodo_pago = req.body.metodo_pago;
             content[ids].nroTarjeta = req.body.nroTarjeta;
-            content[ids].abatar = req.files[0].filename;
+            if(req.files[0] != null){
+                content[ids].abatar = req.files[0].filename;
+            }            
             fs.writeFileSync(userJsonFilePath, JSON.stringify(content))
             res.redirect('/');
         } else {

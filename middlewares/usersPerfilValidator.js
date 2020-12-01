@@ -9,14 +9,12 @@ module.exports = [
         .withMessage('Debe completar el campo Apellido'),
     check('email')
         .notEmpty()
-        .withMessage('Debe completar el campo Email'),
-    check('email')
+        .withMessage('Debe completar el campo Email')
         .isEmail()
         .withMessage('Debe ingresar un Email válido'),
     check('password')
         .notEmpty()
-        .withMessage('Debe ingresar una password'),
-    check('password')
+        .withMessage('Debe ingresar una password')
         .isLength({min:8})
         .withMessage('Debe ingresar una contraseña mayor a 8 caracteres'),
 ]
