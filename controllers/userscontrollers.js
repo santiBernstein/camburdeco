@@ -33,7 +33,8 @@ module.exports = {
 		}
 		else if(bcryptjs.compareSync(req.body.password, user.password)){
             
-			req.session.user = user.name
+            req.session.user = user.name
+            req.session.tipoUsuario = user.tipoUsuario
 			if(req.body.recordame){
 				res.cookie('recordame', user.email, {maxAge: 120 * 1000})
 			}
