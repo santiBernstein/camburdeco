@@ -22,21 +22,13 @@
 
                 <nav class="w-80 tipes" d-flex filter>
 
-                    <p><label for="sort">Estilo:</label></p>
+                    <div class="filter-nav-div" >
+                        <p><%- include("../partials/selector", {SELECTOR: dataEstilo, SELECCION: "", NAME: "estilo", LABEL: "Estilo"}) %></p>
+                    </div>
 
-                    <select class="filter-nav-div" name="tipes" id="tipes">
-                        <% content[ids].style.forEach(function(value) { %>
-                            <option value="<% value %>"><%= value %></option>                            
-                        <% }); %>                            
-                    </select>
-
-                    <p><label for="sort">Color:</label></p>
-
-                    <select name="options" id="options">
-                        <% content[ids].color.forEach(function(value) { %>
-                        <option value="<% value %>"><%= value %></option>
-                       <% }); %> 
-                    </select>
+                    <div class="filter-nav-div" >
+                        <p><%- include("../partials/selector", {SELECTOR: dataColor, SELECCION: "", NAME: "color", LABEL: "Color"}) %></p>
+                    </div>
 
                 </nav>
                 <form action="/carrito" method="GET">

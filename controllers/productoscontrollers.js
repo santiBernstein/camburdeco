@@ -88,7 +88,9 @@ module.exports = {
     detail : (req, res) => {
         let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
         let ids = Number(req.params.id) - 1;
-        res.render('products/detail', { content, ids });
+        let dataEstilo = content[ids].style
+        let dataColor = content[ids].color
+        res.render('products/detail', { content, dataEstilo, dataColor, ids });
     },
     create : (req, res) => {
         res.render('products/create')
