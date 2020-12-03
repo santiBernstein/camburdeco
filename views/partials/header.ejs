@@ -11,8 +11,8 @@
                     <a class="lin-vertical lin-vertical-izquierda" href="/products/create">Agregar Productos</a>
                     
                     <% if (data == 1) { %>
-                        <a class="lin-vertical" href="/products/edit">Modificar Productos</a>
-                        <form action="/products/?_method=DELETE" method="POST" class="form-inline">
+                        <a class="lin-vertical" href="/products/<%= ids %>/edit">Modificar Productos</a>
+                        <form action="/products/<%= ids %>?_method=DELETE" method="POST" class="form-inline">
                             <button class="button-delete" type="submit">Eliminar Productos</button>
                         </form>
                     <% } %>
@@ -23,10 +23,7 @@
                 <a href="/users/login">Iniciar Sesión</a>
 
             <% } %>                
-               
-                    
                 
-                  
         </div>
        
         <div class="last-item content-end">
