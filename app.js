@@ -29,12 +29,12 @@ app.use(session(
   resave: false,
   saveUninitialized: true }
 ));
+app.use(remember)
 app.use(function(req,res,next){
   if(req.session.user != undefined){
     res.locals.user = req.session.user   
   }  next()
 })
-app.use(remember)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
