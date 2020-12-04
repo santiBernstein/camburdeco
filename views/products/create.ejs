@@ -11,8 +11,12 @@
 
             <h1>Crear Producto Nuevo</h1>
             <div>
+                <% if (errors.name != undefined){  %> 
                 <p><label for="">NOMBRE</label></p>
                 <input class="ingresar" type="text" name="name">
+                <input type="text" name="name">
+                <p class="errors"><%= errors.name.msg  %> </p>
+                <% } %> 
             </div>
             <div>
             <p><label for="">Categoría</label></p>

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path')
 const productFilePath = path.join(__dirname,"../data/products.json")
+const {validationResult} = require('express-validator');
 
 module.exports = {
     productos : (req, res) => {
@@ -93,18 +94,31 @@ module.exports = {
         res.render('products/detail', { content, dataEstilo, dataColor, ids });
     },
     create : (req, res) => {
-        res.render('products/create')
+        res.render('products/create',{ data : {}, errors: {}, avatar: true })
     },
     store : (req, res, next) => {
-        
+        let errors = validationResult(req)
+        let avatar = true;
+
+        if(req.files[0] == null){
+            avatar = false;
+           }
+        if(errors.errors.length || !avatar){
+            return res.render('products/create', { 
+				errors : errors.mapped(),
+                data : req.body,
+                avatar: avatar
+            })
+        }
+
         let content =JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
 
         let style = [];
         if(Array.isArray(req.body.style)) {
-            console.log('1', req.body.style)
+           
             style = req.body.style;            
         } else {
-            console.log('2', req.body.style)
+            
             style.push(req.body.style)
         }
         let color = [];
