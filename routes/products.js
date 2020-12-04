@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const productosControllers = require('../controllers/productoscontrollers');
+const productsValidator = require('../middlewares/productsValidator');
 
 
 //middleware para subir fotos
@@ -23,7 +24,7 @@ let upload = multer({storage})
 router.get('/', productosControllers.productos);
 
 router.get('/create', productosControllers.create);
-router.post('/', upload.any(), productosControllers.store);
+router.post('/', upload.any(), productsValidator, productosControllers.store);
 
 router.get('/:id', productosControllers.detail);
 
