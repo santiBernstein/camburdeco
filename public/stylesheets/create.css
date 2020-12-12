@@ -31,10 +31,20 @@ label {
 
 p {margin: 2%;}
 
-input {margin: 2%;}
+.ingresar {
+    margin: 2%;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 10px;
+    height: 5;
+    padding: 10px;
+} 
 
+.ingresar:hover{
+    border-color: #bb3b73;
+}
 .enviar{
-        width: fit-content(30%);
+        width: 60%;
         flex-grow: 1;
         flex-basis: 0;
         margin: 5px;
@@ -53,7 +63,7 @@ input {margin: 2%;}
     } 
 
 .reset{
-        width: fit-content(30%);
+        width: 60%;
         flex-grow: 1;
         flex-basis: 0;
         margin: 5px;
@@ -85,4 +95,16 @@ input {margin: 2%;}
 
 .img-edit {
     height: 100%;
+}
+
+@media (min-width:600px){
+    .ingresar {
+        width: 90%;
+    }
+}
+
+@media (min-width:1024px){
+    .ingresar {
+        width: 60%;
+    }
 }

@@ -13,13 +13,14 @@
             <div>
                 <% if (errors.name != undefined){  %> 
                 <p><label for="">NOMBRE</label></p>
+                <input class="ingresar" type="text" name="name">
                 <input type="text" name="name">
                 <p class="errors"><%= errors.name.msg  %> </p>
                 <% } %> 
             </div>
             <div>
             <p><label for="">Categoría</label></p>
-            <select name="category">
+            <select class="ingresar" name="category">
                 <option value="elegir">Elegir Categoría</option>
                 <option value="macetas">MACETAS</option>
                 <option value="ceniceros">CENICEROS</option>
@@ -30,11 +31,11 @@
             </div> 
             <div>
             <p><label for="">Precio</label></p>
-            <input type="number" name="price">
+            <input class="ingresar" type="number" name="price">
             </div>
             <div>
                 <p><label for="">Stock</label></p>
-                <input type="text" name="stock" value="1">
+                <input class="ingresar" type="text" name="stock">
             </div>
             <div>
                 <p><label for="">Estilo</label></p>            
