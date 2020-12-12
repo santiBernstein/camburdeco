@@ -5,7 +5,7 @@ let path = require('path');
 const usersControllers = require('../controllers/userscontrollers');
 const usersValidator = require('../middlewares/usersValidator');
 const registerValidation = require('../middlewares/registerValidator');
-const userPerfilValidator = requier('..middleware/userPerfilValidator')
+const usersPerfilValidator = require('../middlewares/usersPerfilValidator')
 
 
 let storage = multer.diskStorage({
