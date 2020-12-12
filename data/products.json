@@ -1,1 +1,178 @@
-[{"id":1,"name":"Cali","category":"macetas","price":"400","stock":"1","style":["pollock","lisa"],"color":["rosa"],"img":"photo-1605575282313.jpg","top":"yes"},{"id":2,"name":"Bono","category":"macetas","price":"600","stock":"1","style":["lisa","pollock"],"color":["blanco","gris","celeste","rosa"],"description":"Maceta de forma hexagonal de 12cm de altura","img":"bono.gif","top":"yes"},{"id":3,"name":"Gala Small","category":"macetas","price":"300","stock":"1","style":["lisa","marmolado","pollock"],"color":["blanco","gris","celeste","rosa"],"description":"Nuestro modelo mas pequeño para tus sucus o cactus","img":"gala.jpg","top":"yes"},{"id":4,"name":"Gala","category":"macetas","price":"400","stock":"1","style":["lisa","marmolado","pollock"],"color":["blanco","gris","celeste","rosa"],"description":"Nuestra versión Gala de 9cm","img":"gala.jpg"},{"id":5,"name":"Flora","category":"macetas","price":"1000","stock":"1","style":["lisa","pollock"],"color":["blanco","gris"],"description":"Flora es ideal para plantas grandes. Su diseño esta en todos los detalles","img":"flora.jpg","top":"yes"},{"id":6,"name":"Tino","category":"macetas","price":"450","stock":"1","style":["lisa","pollock"],"color":["blanco","gris","rosa"],"description":"Un modelo tradicional, pero que destaca por su calidad","img":"tino.jpg","top":"no"},{"id":7,"name":"Gea","category":"macetas","price":"600","stock":"1","style":["lisa","pollock"],"color":["blanco","gris","celeste","rosa"],"description":"Nuestro modelo colgante","img":"colgante.jpg","top":"no"},{"id":8,"name":"Cenicero","category":"ceniceros","price":"300","stock":"1","style":["lisa","marmolado","pollock"],"color":["blanco","gris","celeste","rosa"],"description":"Nuestros ceniceros","img":"cenicero.jpg","top":"no"},{"id":9,"name":"Velas","category":"velas","price":"400","stock":"1","style":["lisa","marmolado","pollock"],"color":["blanco","gris","celeste","rosa"],"description":"Nuestras Velas","img":"velas.jpg","top":"no"},{"name":"","category":"elegir","price":"","stock":"1","description":"","color":[null],"style":[null],"id":10,"img":"img-1607027401398.jpg"},{"name":"","category":"elegir","price":"","stock":"1","description":"","color":[null],"style":[null],"id":11,"img":"img-1607028179598.jpg"}]
+[
+    {
+        "id": 1,
+        "name": "Cali",
+        "category": "macetas",
+        "price": "400",
+        "stock": "1",
+        "style": [
+            "pollock",
+            "lisa"
+        ],
+        "color": [
+            "rosa"
+        ],
+        "img": "photo-1605575282313.jpg",
+        "top": "yes"
+    },
+    {
+        "id": 2,
+        "name": "Bono",
+        "category": "macetas",
+        "price": "600",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris",
+            "celeste",
+            "rosa"
+        ],
+        "description": "Maceta de forma hexagonal de 12cm de altura",
+        "img": "bono.gif",
+        "top": "yes"
+    },
+    {
+        "id": 3,
+        "name": "Gala Small",
+        "category": "macetas",
+        "price": "300",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "marmolado",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris",
+            "celeste",
+            "rosa"
+        ],
+        "description": "Nuestro modelo mas pequeño para tus sucus o cactus",
+        "img": "gala.jpg",
+        "top": "yes"
+    },
+    {
+        "id": 4,
+        "name": "Gala",
+        "category": "macetas",
+        "price": "400",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "marmolado",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris",
+            "celeste",
+            "rosa"
+        ],
+        "description": "Nuestra versión Gala de 9cm",
+        "img": "gala.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Flora",
+        "category": "macetas",
+        "price": "1000",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris"
+        ],
+        "description": "Flora es ideal para plantas grandes. Su diseño esta en todos los detalles",
+        "img": "flora.jpg",
+        "top": "yes"
+    },
+    {
+        "id": 6,
+        "name": "Tino",
+        "category": "macetas",
+        "price": "450",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris",
+            "rosa"
+        ],
+        "description": "Un modelo tradicional, pero que destaca por su calidad",
+        "img": "tino.jpg",
+        "top": "no"
+    },
+    {
+        "id": 7,
+        "name": "Gea",
+        "category": "macetas",
+        "price": "600",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris",
+            "celeste",
+            "rosa"
+        ],
+        "description": "Nuestro modelo colgante",
+        "img": "colgante.jpg",
+        "top": "no"
+    },
+    {
+        "id": 8,
+        "name": "Cenicero",
+        "category": "ceniceros",
+        "price": "300",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "marmolado",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris",
+            "celeste",
+            "rosa"
+        ],
+        "description": "Nuestros ceniceros",
+        "img": "cenicero.jpg",
+        "top": "no"
+    },
+    {
+        "id": 9,
+        "name": "Velas",
+        "category": "velas",
+        "price": "400",
+        "stock": "1",
+        "style": [
+            "lisa",
+            "marmolado",
+            "pollock"
+        ],
+        "color": [
+            "blanco",
+            "gris",
+            "celeste",
+            "rosa"
+        ],
+        "description": "Nuestras Velas",
+        "img": "velas.jpg",
+        "top": "no"
+    }
+]

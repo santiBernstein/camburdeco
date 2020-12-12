@@ -43,6 +43,8 @@ p {margin: 2%;}
 .ingresar:hover{
     border-color: #bb3b73;
 }
+
+
 .enviar{
         width: 60%;
         flex-grow: 1;
