@@ -16,7 +16,9 @@
     "http-errors": "~1.6.3",
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
   },
   "description": "Temática y público del sitio: Cambur Deco es un emprendimiento de productos en cemento gestado en La Plata, con envíos a todo el país.\r La marca está orientada a la producción de objetos artesanales para decoración de interior. Si bien principalmente, para el ámbito hogareño, también cuenta con un porcentaje de ventas mayoristas destinadas a la reventa, souvenir de eventos, o decoración de espacios colectivos.",
   "main": "app.js",
