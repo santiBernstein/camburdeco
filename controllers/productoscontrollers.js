@@ -1,11 +1,15 @@
 const fs = require('fs');
 const path = require('path')
-const productFilePath = path.join(__dirname,"../data/products.json")
+//const productFilePath = path.join(__dirname,"../data/products.json")
+const db = require('../database/models');
 const {validationResult} = require('express-validator');
 
 module.exports = {
     productos : (req, res) => {
-        let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
+        
+        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
+        
+       
         let filtro = {
             category: 'todos',
             options: 'mas-vendidos'
@@ -84,101 +88,128 @@ module.exports = {
                 filtro.options="mas-vendidos"
                 break;
             }
-        res.render('products/products', {content,filtro,categorias,opciones}); 
+
+            db.Products.findAll()
+            .then(function(products){
+                res.render('products/products', {content,filtro,categorias,opciones, products}); 
+            })
+       
     },
     detail : (req, res) => {
-        let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        let ids = Number(req.params.id) - 1;
-        let dataEstilo = content[ids].style
-        let dataColor = content[ids].color
-        res.render('products/detail', { content, dataEstilo, dataColor, ids });
+        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
+        // let ids = Number(req.params.id) - 1;
+        // let dataEstilo = content[ids].style
+        // let dataColor = content[ids].color
+
+        db.Products.findByPk(req.params.id, {
+            include: [{association:"?"}]
+        })
+        .then(function(product){
+            res.render('products/detail', { content, dataEstilo, dataColor, ids, product });
+        })
+        
     },
     create : (req, res) => {
-        res.render('products/create',{ data : {}, errors: {}, avatar: true })
+        db.Products.findAll()
+        .then(function(products){
+            res.render('products/create',{ categories : categories, colors : colors, styles : styles, products })
+
+        })
+        
     },
     store : (req, res, next) => {
-        let errors = validationResult(req)
-        let avatar = true;
+        // let errors = validationResult(req)
+        // let avatar = true;
 
-        if(req.files[0] == null){
-            avatar = false;
-           }
-        if(errors.errors.length || !avatar){
-            return res.render('products/create', { 
-				errors : errors.mapped(),
-                data : req.body,
-                avatar: avatar
-            })
-        }
+        // if(req.files[0] == null){
+        //     avatar = false;
+        //    }
+        // if(errors.errors.length || !avatar){
+        //     return res.render('products/create', { 
+		// 		errors : errors.mapped(),
+        //         data : req.body,
+        //         avatar: avatar
+        //     })
+        // }
 
-        let content =JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
+        db.Products.create({
 
-        let style = [];
-        if(Array.isArray(req.body.style)) {
-           
-            style = req.body.style;            
-        } else {
-            
-            style.push(req.body.style)
-        }
-        let color = [];
-        if(Array.isArray(req.body.color)) {
-            
-            color = req.body.color;            
-        } else {
-            
-            color.push(req.body.color)
-        }
-        
-        content.push ({
-            ...req.body,
-            color: color,
-            style : style,
-            id: (content[content.length-1].id)+1,
-            img: req.files[0].filename
+            name: req.body.name,
+            description: req.body.description,
+            category: req.body.category,
+            style: req.body.style,
+            color: req.body.color,
+            stock: req.body.stock,
+            price: req.body.price,
+            img: req.files[0].filename,
+            top: req.body.top 
         })
-
-        content = JSON.stringify(content)
-
-        fs.writeFileSync(productFilePath, content)
-
+       
        res.redirect('/')
        
     },
     edit : (req, res) => {
-        let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        let ids = Number(req.params.id);
-        content = content[req.params.id];
-        res.render('products/edit', { content, ids } )
+        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
+        // let ids = Number(req.params.id);
+        // content = content[req.params.id];
+        
+        let pedidoProduct = db.Products.findByPk(req.params.id)
+
+        let pedidoCategory = db.Categories.findAll()
+
+        Promise.all([pedidoProduct, pedidoCategory])
+        .then(function([product, category]){
+            res.render('products/edit', { content, ids, product, category } )
+        })
+       
     },
     update : (req, res) => {
-        let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        let ids = Number(req.params.id) - 1;
-        console.log(content[ids].style.length);
+        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
+        // let ids = Number(req.params.id) - 1;
+        
 
-        content[ids].name = req.body.name;
-		content[ids].category = req.body.category;
-		content[ids].price = req.body.price;
-		content[ids].stock = req.body.stock; 
-        content[ids].style.splice(0,content[ids].style.length-1,req.body.style);
-        content[ids].color.splice(0,content[ids].style.length-1,req.body.color); 
-        content[ids].description = req.body.desciption;
-        content[ids].img = req.files[0].filename;
-		fs.writeFileSync(productFilePath, JSON.stringify(content))
+        // content[ids].name = req.body.name;
+		// content[ids].category = req.body.category;
+		// content[ids].price = req.body.price;
+		// content[ids].stock = req.body.stock; 
+        // content[ids].style.splice(0,content[ids].style.length-1,req.body.style);
+        // content[ids].color.splice(0,content[ids].style.length-1,req.body.color); 
+        // content[ids].description = req.body.desciption;
+        // content[ids].img = req.files[0].filename;
+        
+        db.Products.update({
+            name: req.body.name,
+            description: req.body.description,
+            category: req.body.category,
+            style: req.body.style,
+            color: req.body.color,
+            stock: req.body.stock,
+            price: req.body.price,
+            img: req.files[0].filename,
+            top: req.body.top 
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
 		res.redirect('/')
     },
     destroy : (req,res) => {
-        let content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
-		const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
-        console.log(imagePath)
-        fs.unlink(imagePath, function (err) {
-			if (err) throw err;
-			console.log('File deleted!');
-		})
-		content.splice((Number(req.params.id)-1),1)
-		let i=1;
-		content.forEach(product=>product.id = i++)
-		fs.writeFileSync(productFilePath,JSON.stringify(content))
+        //let content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
+		// const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
+        // console.log(imagePath)
+        // fs.unlink(imagePath, function (err) {
+		// 	if (err) throw err;
+		// 	console.log('File deleted!');
+		// })
+		// content.splice((Number(req.params.id)-1),1)
+		// let i=1;
+		// content.forEach(product=>product.id = i++)
+        // fs.writeFileSync(productFilePath,JSON.stringify(content))
+        
+        db.Products.destroy({
+            where: { id: req.params.id }
+        })
 		res.redirect('/')
     }
 }
