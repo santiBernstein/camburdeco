@@ -110,9 +110,11 @@ module.exports = {
         
     },
     create : (req, res) => {
-        db.Products.findAll()
-        .then(function(products){
-            res.render('products/create',{ categories : categories, colors : colors, styles : styles, products })
+        db.Product.findAll({
+            include: [{association:"Style"}, {association:"Color"}, {association:"Category"}]
+        })
+        .then(function(product){
+            res.render('products/create',{product})
 
         })
         
@@ -210,6 +212,7 @@ module.exports = {
         db.Products.destroy({
             where: { id: req.params.id }
         })
+        .then()
 		res.redirect('/')
     }
 }
