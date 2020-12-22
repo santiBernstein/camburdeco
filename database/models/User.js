@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "Users";
+    let alias = "User";
     let cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING
         },
-        tipos_usuarios: {
+        tipo_usuario: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         }
@@ -28,21 +28,21 @@ module.exports = (sequelize, DataTypes) => {
     User.associate = (models) => {
         User.belongsTo(models.Tipos_Usuarios, {
             as: "tiposUsuarios",
-            foreignKey: "tipos_usuarios"
+            foreignKey: "tipo_usuario_id"
 
         })
     };
     User.associate = (models) => {
         User.belongsTo(models.Profiles, {
             as: "profiles",
-            foreignKey: "users_id"
+            foreignKey: "user_id"
 
         })
     };
     User.associate = (models) => {
         User.hasMany(models.Carrito, {
             as: "carritos",
-            foreignKey: "users_id"
+            foreignKey: "user_id"
 
         })
     };

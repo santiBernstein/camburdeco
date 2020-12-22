@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "Profiles";
+    let alias = "Profile";
     let cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -40,14 +40,22 @@ module.exports = (sequelize, DataTypes) => {
     Profile.associate = (models) => {
         Profile.belongsTo(models.Users, {
             as: "users",
+<<<<<<< HEAD
             foreignKey: "users_id"
+=======
+            foreignKey: "user_id"
+>>>>>>> 5e5d52969f888b4621344bb4a2319500c2a43c16
 
         })
     };
     Profile.associate = (models) => {
         Profile.belongsTo(models.Payments, {
             as: "payments",
+<<<<<<< HEAD
             foreignKey: "profiles_id"
+=======
+            foreignKey: "profile_id"
+>>>>>>> 5e5d52969f888b4621344bb4a2319500c2a43c16
 
         })
     }
