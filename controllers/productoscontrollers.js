@@ -89,8 +89,15 @@ module.exports = {
                 break;
             }
 
-            db.Products.findAll()
+            db.Products.findAll({
+                order : [ 
+                    ["name", "ASC"],
+                    [ ]
+
+                ]
+            })
             .then(function(products){
+
                 res.render('products/products', {content,filtro,categorias,opciones, products}); 
             })
        
@@ -102,10 +109,10 @@ module.exports = {
         // let dataColor = content[ids].color
 
         db.Products.findByPk(req.params.id, {
-            include: [{association:"?"}]
+            include: [{association:"Style"}, {association:"Color"}, {association:"Category"}]
         })
         .then(function(product){
-            res.render('products/detail', { content, dataEstilo, dataColor, ids, product });
+            res.render('products/detail', { product });
         })
         
     },
@@ -120,19 +127,19 @@ module.exports = {
         
     },
     store : (req, res, next) => {
-        // let errors = validationResult(req)
-        // let avatar = true;
+         let errors = validationResult(req)
+         let avatar = true;
 
-        // if(req.files[0] == null){
-        //     avatar = false;
-        //    }
-        // if(errors.errors.length || !avatar){
-        //     return res.render('products/create', { 
-		// 		errors : errors.mapped(),
-        //         data : req.body,
-        //         avatar: avatar
-        //     })
-        // }
+         if(req.files[0] == null){
+             avatar = false;
+            }
+         if(errors.errors.length || !avatar){
+             return res.render('products/create', { 
+		 		errors : errors.mapped(),
+                 data : req.body,
+                 avatar: avatar
+             })
+         }
 
         db.Products.create({
 
@@ -159,9 +166,13 @@ module.exports = {
 
         let pedidoCategory = db.Categories.findAll()
 
-        Promise.all([pedidoProduct, pedidoCategory])
-        .then(function([product, category]){
-            res.render('products/edit', { content, ids, product, category } )
+        let pedidoStyle = db.Product_Style.findAll()
+
+        let pedidoColor = db.Product_Color.findAll()
+
+        Promise.all([pedidoProduct, pedidoCategory, pedidoStyle, pedidoColor])
+        .then(function([product, category, style, color]){
+            res.render('products/edit', { product, category, style, color } )
         })
        
     },
@@ -198,15 +209,15 @@ module.exports = {
     },
     destroy : (req,res) => {
         //let content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
-		// const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
-        // console.log(imagePath)
-        // fs.unlink(imagePath, function (err) {
-		// 	if (err) throw err;
-		// 	console.log('File deleted!');
-		// })
-		// content.splice((Number(req.params.id)-1),1)
-		// let i=1;
-		// content.forEach(product=>product.id = i++)
+		//  const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
+        //  console.log(imagePath)
+        //  fs.unlink(imagePath, function (err) {
+		//  	if (err) throw err;
+		//  	console.log('File deleted!');
+		//  })
+		 //content.splice((Number(req.params.id)-1),1)
+		 //let i=1;
+		 //content.forEach(product=>product.id = i++)
         // fs.writeFileSync(productFilePath,JSON.stringify(content))
         
         db.Products.destroy({

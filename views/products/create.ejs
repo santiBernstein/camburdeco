@@ -55,11 +55,13 @@
             </div>
             <div>
             <p><label for="">Color</label></p>     
-            <% for (let i = 0; i < style.length; i++) { %>        
-                <input name="color" type="checkbox" value="<% style[i].name = "rosa" %>">Rosa</input>
+            <% for (let i = 0; i < product.color.length; i++) { %>    
+                <input name="style" type="checkbox" value="<% product.color[i].name %>"><%= product.color[i].name %></input>
+
+                <!-- <input name="color" type="checkbox" value="<% style[i].name = "rosa" %>">Rosa</input>
                 <input name="color" type="checkbox" value="<% style[i].name = "blanco" %>">Blanco</input>
                 <input name="color" type="checkbox" value="<% style[i].name = "gris" %>">Gris</input>
-                <input name="color" type="checkbox" value="<% style[i].name = "celeste" %>">Celeste</input>
+                <input name="color" type="checkbox" value="<% style[i].name = "celeste" %>">Celeste</input> -->
                 <% } %> 
             </div>
 
