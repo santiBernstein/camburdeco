@@ -1,16 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "Products_Styles";
+    let alias = "Product_Style";
     let cols = {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoincrement: true, 
         },
-        products_id: {
+        product_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         },
-        styles_id: {
+        style_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         }
@@ -23,15 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     Product_Style.associate = (models) => {
         Product_Style.hasMany(models.Product, {
             as: "product",
-            foreignKey: "products_id"
-
+            foreignKey: "product_id"
         })
-    };
-    Product_Style.associate = (models) => {
         Product_Style.hasMany(models.Style, {
             as: "style",
-            foreignKey: "styles_id"
-
+            foreignKey: "style_id"
         })
     }
     return Product_Style;

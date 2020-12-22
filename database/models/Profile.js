@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         info_id: {
             type: DataTypes.INTEGER,
         },
-        users_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         }
@@ -38,14 +38,12 @@ module.exports = (sequelize, DataTypes) => {
     };
     let Profile = sequelize.define(alias, cols, config);
     Profile.associate = (models) => {
-        Profile.belongsTo(models.Users, {
+        Profile.belongsTo(models.User, {
             as: "users",
             foreignKey: "user_id"
 
         })
-    };
-    Profile.associate = (models) => {
-        Profile.belongsTo(models.Payments, {
+        Profile.belongsTo(models.Payment, {
             as: "payments",
             foreignKey: "profile_id"
 

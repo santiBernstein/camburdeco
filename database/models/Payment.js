@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "Payments";
+    let alias = "Payment";
     let cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -12,10 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         number: {
             type: DataTypes.INTEGER
         },
-        info_id: {
-            type: DataTypes.INTEGER
-        },
-        profiles_id: {
+        profile_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         }
@@ -26,9 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     };
     let Payment = sequelize.define(alias, cols, config);
     Payment.associate = (models) => {
-        Payment.belongsTo(models.Profiles, {
+        Payment.belongsTo(models.Profile, {
             as: "profiles",
-            foreignKey: "profiles_id"
+            foreignKey: "profile_id"
 
         })
     }

@@ -26,20 +26,16 @@ module.exports = (sequelize, DataTypes) => {
     };
     let User = sequelize.define(alias, cols, config);
     User.associate = (models) => {
-        User.belongsTo(models.Tipos_Usuarios, {
+        User.belongsTo(models.Tipo_Usuario, {
             as: "tiposUsuarios",
             foreignKey: "tipo_usuario_id"
 
         })
-    };
-    User.associate = (models) => {
-        User.belongsTo(models.Profiles, {
+        User.belongsTo(models.Profile, {
             as: "profiles",
             foreignKey: "user_id"
 
         })
-    };
-    User.associate = (models) => {
         User.hasMany(models.Carrito, {
             as: "carritos",
             foreignKey: "user_id"

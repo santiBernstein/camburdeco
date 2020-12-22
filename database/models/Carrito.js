@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "Carritos";
+    let alias = "Carrito";
     let cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         forma_pago: {
             type: DataTypes.STRING
         },
-        users_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         }
@@ -23,16 +23,13 @@ module.exports = (sequelize, DataTypes) => {
     };
     let Carrito = sequelize.define(alias, cols, config);
     Carrito.associate = (models) => {
-        Carrito.belongsTo(models.Users, {
+        Carrito.belongsTo(models.User, {
             as: "users",
-            foreignKey: "users_id"
-
+            foreignKey: "user_id"
         })
-    };
-    Carrito.associate = (models) => {
         Carrito.belongsTo(models.Product_Carrito, {
             as: "product_carrito",
-            foreignKey: "carritos_id"
+            foreignKey: "carrito_id"
 
         })
     }

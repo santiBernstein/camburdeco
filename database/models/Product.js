@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "Products";
+    let alias = "Product";
     let cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         top: {
             type: DataTypes.INTEGER
         },
-        categories_id: {
+        category_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         }
@@ -37,28 +37,22 @@ module.exports = (sequelize, DataTypes) => {
     Product.associate = (models) => {
         Product.belongsTo(models.Product_Carrito, {
             as: "product_carrito",
-            foreignKey: "products_id"
+            foreignKey: "product_id"
 
         })
-    };
-    Product.associate = (models) => {
         Product.belongsTo(models.Category, {
             as: "category",
-            foreignKey: "categories_id"
+            foreignKey: "category_id"
 
         })
-    };
-    Product.associate = (models) => {
         Product.belongsTo(models.Product_Style, {
             as: "product_style",
-            foreignKey: "products_id"
+            foreignKey: "product_id"
 
         })
-    };
-    Product.associate = (models) => {
         Product.belongsTo(models.Product_Color, {
             as: "product_color",
-            foreignKey: "products_id"
+            foreignKey: "product_id"
 
         })
     }
