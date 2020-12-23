@@ -16,19 +16,19 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     let config = {
-        tableName : 'products_styles',
+        tableName : 'product_style',
         timestamps: false
     };
     let Product_Style = sequelize.define(alias, cols, config);
-    Product_Style.associate = (models) => {
-        Product_Style.hasMany(models.Product, {
-            as: "product",
-            foreignKey: "product_id"
-        })
-        Product_Style.hasMany(models.Style, {
-            as: "style",
-            foreignKey: "style_id"
-        })
-    }
+    // Product_Style.associate = (models) => {
+    //       Product_Style.hasMany(models.Product, {
+    //           as: "product",
+    //           foreignKey: "product_id"
+    //       })
+    //     Product_Style.hasMany(models.Style, {
+    //         as: "style",
+    //         foreignKey: "style_id"
+    //     })
+    //}
     return Product_Style;
 }

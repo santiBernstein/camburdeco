@@ -7,7 +7,7 @@ const {validationResult} = require('express-validator');
 module.exports = {
     productos : (req, res) => {
         
-        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
+         //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
         
        
         let filtro = {
@@ -23,82 +23,86 @@ module.exports = {
             filtro.category=req.query.category;
         }
         let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
-        switch (req.query.options){
-            case opciones[0]:
-                content = content.sort(function(a,b){
-                    if(a.ventas > b.ventas){
-                        return 1;
-                    }
-                    if(a.ventas < b.ventas){
-                        return -1;
-                    }
-                    return 0;
-                } );
-                filtro.options=req.query.options;
-                break;
-            case opciones[1]:
-                content = content.sort(function(a,b){
-                    if(Number(a.price) > Number(b.price)){
-                        return 1;
-                    }
-                    if(Number(a.price) < Number(b.price)){
-                        return -1;
-                    }
-                    return 0;
-                } );
-                filtro.options=req.query.options
-                break;
-            case opciones[2]:
-                content = content.sort(function(a,b){
-                    if(Number(a.price) < Number(b.price)){
-                        return 1;
-                    }
-                    if(Number(a.price) > Number(b.price)){
-                        return -1;
-                    }
-                    return 0;
-                } );
-                filtro.options=req.query.options
-                break;
-            case opciones[3]:
-                content = content.sort(function(a,b){
-                    if(a.size < b.size){
-                        return 1;
-                    }
-                    if(a.size > b.size){
-                        return -1;
-                    }
-                    return 0;
-                } );
-                filtro.options=req.query.options
-                break;
-            case opciones[4]:
-                content = content.sort(function(a,b){
-                    if(a.size > b.size){
-                        return 1;
-                    }
-                    if(a.size < b.size){
-                        return -1;
-                    }
-                    return 0;
-                } );
-                filtro.options=req.query.options
-                break;
-            default:
-                filtro.options="mas-vendidos"
-                break;
-            }
+        // switch (req.query.options){
+        //     case opciones[0]:
+        //         content = content.sort(function(a,b){
+        //             if(a.ventas > b.ventas){
+        //                 return 1;
+        //             }
+        //             if(a.ventas < b.ventas){
+        //                 return -1;
+        //             }
+        //             return 0;
+        //         } );
+        //         filtro.options=req.query.options;
+        //         break;
+        //     case opciones[1]:
+        //         content = content.sort(function(a,b){
+        //             if(Number(a.price) > Number(b.price)){
+        //                 return 1;
+        //             }
+        //             if(Number(a.price) < Number(b.price)){
+        //                 return -1;
+        //             }
+        //             return 0;
+        //         } );
+        //         filtro.options=req.query.options
+        //         break;
+        //     case opciones[2]:
+        //         content = content.sort(function(a,b){
+        //             if(Number(a.price) < Number(b.price)){
+        //                 return 1;
+        //             }
+        //             if(Number(a.price) > Number(b.price)){
+        //                 return -1;
+        //             }
+        //             return 0;
+        //         } );
+        //         filtro.options=req.query.options
+        //         break;
+        //     case opciones[3]:
+        //         content = content.sort(function(a,b){
+        //             if(a.size < b.size){
+        //                 return 1;
+        //             }
+        //             if(a.size > b.size){
+        //                 return -1;
+        //             }
+        //             return 0;
+        //         } );
+        //         filtro.options=req.query.options
+        //         break;
+        //     case opciones[4]:
+        //         content = content.sort(function(a,b){
+        //             if(a.size > b.size){
+        //                 return 1;
+        //             }
+        //             if(a.size < b.size){
+        //                 return -1;
+        //             }
+        //             return 0;
+        //         } );
+        //         filtro.options=req.query.options
+        //         break;
+        //     default:
+        //         filtro.options="mas-vendidos"
+        //         break;
+        //     }
 
-            db.Products.findAll({
-                order : [ 
-                    ["name", "ASC"],
-                    [ ]
+            db.Product.findAll({
+                // order : [ 
+                //     ["name", "ASC"],
+                //     [ ]
 
-                ]
+                // ]
             })
             .then(function(products){
 
-                res.render('products/products', {content,filtro,categorias,opciones, products}); 
+                res.render('products/products', {filtro,categorias,opciones, products}); 
+            })
+            .catch(function(error){
+                console.log(error)
+                return error
             })
        
     },
@@ -108,7 +112,7 @@ module.exports = {
         // let dataEstilo = content[ids].style
         // let dataColor = content[ids].color
 
-        db.Products.findByPk(req.params.id, {
+        db.Product.findByPk(req.params.id, {
             include: [{association:"Style"}, {association:"Color"}, {association:"Category"}]
         })
         .then(function(product){

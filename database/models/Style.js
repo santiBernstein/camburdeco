@@ -16,9 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     };
     let Style = sequelize.define(alias, cols, config);
     Style.associate = (models) => {
-        Style.hasMany(models.Product_Style, {
-            as: "product_style",
-            foreignKey: "style_id"
+        Style.belongsToMany(models.Product, {
+            as: "product",
+            foreignKey: "style_id",
+            through: "product_style"
 
         })
     }

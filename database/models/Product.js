@@ -35,26 +35,29 @@ module.exports = (sequelize, DataTypes) => {
     };
     let Product = sequelize.define(alias, cols, config);
     Product.associate = (models) => {
-        Product.belongsTo(models.Product_Carrito, {
-            as: "product_carrito",
-            foreignKey: "product_id"
+          Product.belongsToMany(models.Product_Carrito, {
+              as: "carrito",
+              foreignKey: "product_id",
+              through: "product_carrito"
 
-        })
+          })
         Product.belongsTo(models.Category, {
             as: "category",
             foreignKey: "category_id"
 
         })
-        Product.belongsTo(models.Product_Style, {
-            as: "product_style",
-            foreignKey: "product_id"
+         Product.belongsToMany(models.Style, {
+             as: "style",
+             foreignKey: "product_id",
+             through: "product_style"
 
-        })
-        Product.belongsTo(models.Product_Color, {
-            as: "product_color",
-            foreignKey: "product_id"
+         })
+         Product.belongsToMany(models.Product_Color, {
+             as: "color",
+             foreignKey: "product_id",
+             through: "product_color"
 
-        })
+         })
     }
     return Product;
 }

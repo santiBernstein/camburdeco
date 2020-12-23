@@ -16,21 +16,21 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     let config = {
-        tableName : 'products_carritos',
+        tableName : 'product_carrito',
         timestamps: false
     };
     let Product_carrito = sequelize.define(alias, cols, config);
-    Product_carrito.associate = (models) => {
-        Product_carrito.hasMany(models.Carrito, {
-            as: "carrito",
-            foreignKey: "carrito_id"
+    // Product_carrito.associate = (models) => {
+    //     Product_carrito.hasMany(models.Carrito, {
+    //         as: "carrito",
+    //         foreignKey: "carrito_id"
 
-        })
-        Product_carrito.hasMany(models.Product, {
-            as: "product",
-            foreignKey: "products_id"
+    //     })
+    //     //  Product_carrito.hasMany(models.Product, {
+    //     //       as: "product",
+    //     //       foreignKey: "product_id"
 
-        })
-    }
+    //     //  })
+    // }
     return Product_carrito;
 }
