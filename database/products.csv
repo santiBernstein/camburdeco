@@ -1,0 +1,10 @@
+id,name,description,stock,price,img,top,category_id
+1,Cali,"Alta maceta",5,400.00,photo-1605575282313.jpg,1,1
+2,Bono,"Maceta de forma hexagonal de 12cm de altura",8,600.00,bono.gif,1,1
+3,"Gala Small","Nuestro modelo mas pequeño para tus sucus o cactus",12,300.00,gala.jpg,1,1
+4,Gala,"Nuestra versión Gala de 9cm",6,400.00,gala.jpg,1,1
+5,Flora,"Flora es ideal para plantas grandes. Su diseño esta en todos los detalles",15,1000.00,flora.jpg,0,1
+6,Tino,"Un modelo tradicional, pero que destaca por su calidad",4,450.00,tino.jpg,1,1
+7,Gea,"Nuestro modelo colgante",7,600.00,colgante.jpg,1,1
+8,Cenicero,"Nuestros Cenicero",11,300.00,cenicero.jpg,0,2
+9,Vela,"Nuestras Velas",10,400.00,velas.jpg,0,3

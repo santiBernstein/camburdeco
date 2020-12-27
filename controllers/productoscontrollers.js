@@ -8,8 +8,14 @@ module.exports = {
     productos : (req, res) => {
         
          //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
-        
-       
+         db.Product.findAll()
+         .then((productsData) => {
+             return productsData
+         })
+         .catch((error) => {
+             console.log(error);
+             return error;
+         })   
         let filtro = {
             category: 'todos',
             options: 'mas-vendidos'
@@ -17,12 +23,15 @@ module.exports = {
         let categorias = ['todos','macetas','ceniceros','luminaria','plantas','velas']
         
         if(req.query.category != categorias[0] && req.query.category != undefined){
-            content = content.filter(function(product){
+            productsData = productsData.filter(function(product){
                 return product.category == req.query.category
             })
             filtro.category=req.query.category;
         }
         let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
+
+        res.render('products/products', {filtro,categorias,opciones,productsData}); 
+
         // switch (req.query.options){
         //     case opciones[0]:
         //         content = content.sort(function(a,b){
@@ -88,22 +97,6 @@ module.exports = {
         //         filtro.options="mas-vendidos"
         //         break;
         //     }
-
-            db.Product.findAll({
-                // order : [ 
-                //     ["name", "ASC"],
-                //     [ ]
-
-                // ]
-            })
-            .then(function(products){
-
-                res.render('products/products', {filtro,categorias,opciones, products}); 
-            })
-            .catch(function(error){
-                console.log(error)
-                return error
-            })
        
     },
     detail : (req, res) => {
@@ -113,16 +106,15 @@ module.exports = {
         // let dataColor = content[ids].color
 
         db.Product.findByPk(req.params.id, {
-            include: [{association:"Style"}, {association:"Color"}, {association:"Category"}]
+            include: [{association:"style"}, {association:"color"}, {association:"category"}]
         })
-        .then(function(product){
-            res.render('products/detail', { product });
+        .then((productsData) =>{
+            res.render('products/detail', { productsData });
         })
-        
     },
     create : (req, res) => {
         db.Product.findAll({
-            include: [{association:"Style"}, {association:"Color"}, {association:"Category"}]
+            include: [{association:"style"}, {association:"color"}, {association:"category"}]
         })
         .then(function(product){
             res.render('products/create',{product})

@@ -30,7 +30,7 @@
                 
                 <div class="d-flex space-bet">
                     <% productsData.forEach(function(product) { %> 
-                        <% if (product.top == "yes"){ %> 
+                        <% if (product.top == "1"){ %> 
                     
                             <%- include("./partials/product", {product}) %>
                     
@@ -47,7 +47,7 @@
                 
                 <div class="d-flex space-bet">
                     <% productsData.forEach(function(product) { %> 
-                        <% if (product.top == "no"){ %> 
+                        <% if (product.top == "0"){ %> 
                             <%- include("./partials/product", {product}) %>
                     
                     <% } %> 
