@@ -8,28 +8,28 @@
 </head>
 
 <body>
-    <%- include("../partials/header", {data : 1, ids} ) %>
+    <%- include("../partials/header", {data : 1, ids : 1} ) %>
     <section id="detalleproducto">
         <div class="titulo">
             Detalle del producto
         </div>
         <div class="produc">
-            <img class="image" src="/images/<%= content[ids].img %>" alt="imagenproducto">
+            <img class="image" src="/images/<%= productsData.img %>" alt="imagenproducto">
             <div class="infoproducto">
-                <p class="tipoprod"><%= content[ids].category %></p>
-                <p class="nombreprod"><%= content[ids].name %></p>
-                <p class="precioprod">$ <%= content[ids].price %>.-</p>
+                <p class="tipoprod"><%= productsData.category %></p>
+                <p class="nombreprod"><%= productsData.name %></p>
+                <p class="precioprod">$ <%= productsData.price %>.-</p>
 
                 <nav class="w-80 tipes" d-flex filter>
 
                     <div class="filter-nav-div" >
-                        <p><%- include("../partials/selector", {SELECTOR: dataEstilo, SELECCION: "", NAME: "estilo", LABEL: "Estilo"}) %></p>
+                        <p><%- //include("../partials/selector", {SELECTOR: dataEstilo, SELECCION: "", NAME: "estilo", LABEL: "Estilo"}) %></p>
                     </div>
 
                     <div class="filter-nav-div" >
-                        <p><%- include("../partials/selector", {SELECTOR: dataColor, SELECCION: "", NAME: "color", LABEL: "Color"}) %></p>
+                        <p><%- //include("../partials/selector", {SELECTOR: dataColor, SELECCION: "", NAME: "color", LABEL: "Color"}) %></p>
                     </div>
-
+            
                 </nav>
                 <form action="/carrito" method="GET">
                     <input class="boton" type="submit" value="Agregar al carrito">

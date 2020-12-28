@@ -10,27 +10,27 @@ module.exports = {
          //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
          db.Product.findAll()
          .then((productsData) => {
-             return productsData
+            let filtro = {
+                category: 'todos',
+                options: 'mas-vendidos'
+            };
+            let categorias = ['todos','macetas','ceniceros','luminaria','plantas','velas']
+            
+            if(req.query.category != categorias[0] && req.query.category != undefined){
+                productsData = productsData.filter(function(product){
+                    return product.category == req.query.category
+                })
+                filtro.category=req.query.category;
+            }
+            let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
+    
+            res.render('products/products', {filtro,categorias,opciones,productsData}); 
          })
          .catch((error) => {
              console.log(error);
              return error;
          })   
-        let filtro = {
-            category: 'todos',
-            options: 'mas-vendidos'
-        };
-        let categorias = ['todos','macetas','ceniceros','luminaria','plantas','velas']
         
-        if(req.query.category != categorias[0] && req.query.category != undefined){
-            productsData = productsData.filter(function(product){
-                return product.category == req.query.category
-            })
-            filtro.category=req.query.category;
-        }
-        let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
-
-        res.render('products/products', {filtro,categorias,opciones,productsData}); 
 
         // switch (req.query.options){
         //     case opciones[0]:
@@ -106,7 +106,7 @@ module.exports = {
         // let dataColor = content[ids].color
 
         db.Product.findByPk(req.params.id, {
-            include: [{association:"style"}, {association:"color"}, {association:"category"}]
+            //include: [{association:"style"}, {association:"color"}, {association:"category"}]
         })
         .then((productsData) =>{
             res.render('products/detail', { productsData });
