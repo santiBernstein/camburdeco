@@ -47,6 +47,7 @@
     padding: 10px;
     border: 2px solid var(--main-color);
     background-color: var(--bkgd-campo-color);
+    width: 40%;
 }
 
 #detalleproducto .tipoprod {
@@ -87,6 +88,9 @@
 @media (max-width: 599px) {
     #detalleproducto .image {
         width: 100%;
+    }
+    #detalleproducto .infoproducto {
+        width: 30%;
     }
 }
 

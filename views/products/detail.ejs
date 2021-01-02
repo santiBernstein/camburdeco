@@ -16,18 +16,19 @@
         <div class="produc">
             <img class="image" src="/images/<%= productsData.img %>" alt="imagenproducto">
             <div class="infoproducto">
-                <p class="tipoprod"><%= productsData.category %></p>
+                <p class="tipoprod"><%= productsData.category.name %></p>
                 <p class="nombreprod"><%= productsData.name %></p>
                 <p class="precioprod">$ <%= productsData.price %>.-</p>
+                <p class="description"> <%= productsData.description %></p>
 
                 <nav class="w-80 tipes" d-flex filter>
 
                     <div class="filter-nav-div" >
-                        <p><%- //include("../partials/selector", {SELECTOR: dataEstilo, SELECCION: "", NAME: "estilo", LABEL: "Estilo"}) %></p>
+                        <p><%- include("../partials/selector", {SELECTOR: dataEstilo, SELECCION: "", NAME: "estilo", LABEL: "Estilo"}) %></p>
                     </div>
 
                     <div class="filter-nav-div" >
-                        <p><%- //include("../partials/selector", {SELECTOR: dataColor, SELECCION: "", NAME: "color", LABEL: "Color"}) %></p>
+                        <p><%- include("../partials/selector", {SELECTOR: dataColor, SELECCION: "", NAME: "color", LABEL: "Color"}) %></p>
                     </div>
             
                 </nav>

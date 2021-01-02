@@ -4,7 +4,10 @@ module.exports = {
     "password": "root",
     "database": "camburdeco_db",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "define": {
+      "timestamps": false
+    }
   },
   "test": {
     "username": "root",

@@ -52,11 +52,12 @@ module.exports = (sequelize, DataTypes) => {
              through: "product_style"
 
          })
-         Product.belongsToMany(models.Product_Color, {
-             as: "color",
+         Product.belongsToMany(models.Color, {
+             as: "colores",
+             through: "Product_Color",
              foreignKey: "product_id",
-             through: "product_color"
-
+             otherKey: "color_id",
+             timeStamp: "false"
          })
     }
     return Product;

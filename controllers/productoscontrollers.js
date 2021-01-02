@@ -101,15 +101,34 @@ module.exports = {
     },
     detail : (req, res) => {
         //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        // let ids = Number(req.params.id) - 1;
+        let ids = Number(req.params.id);
         // let dataEstilo = content[ids].style
-        // let dataColor = content[ids].color
+        
 
-        db.Product.findByPk(req.params.id, {
+        db.Product.findByPk(ids, {
             //include: [{association:"style"}, {association:"color"}, {association:"category"}]
+            include: [{association:"category"}, {association:"style"}, {association:"colores"}]
         })
         .then((productsData) =>{
-            res.render('products/detail', { productsData });
+            let dataEstilo = [];
+            let final = productsData.dataValues.style.length;
+            for (i=0; i<final; i++) {
+                dataEstilo = dataEstilo + productsData.style[i].name;
+                if (i<final-1) {
+                    dataEstilo = dataEstilo + ","
+                }
+            };
+            dataEstilo = dataEstilo.split(',');
+            let dataColor = [];
+            final = productsData.dataValues.colores.length;
+            for (i=0; i<final; i++) {
+                dataColor = dataColor + productsData.colores[i].name;
+                if (i<final-1) {
+                    dataColor = dataColor + ","
+                }
+            }
+            dataColor = dataColor.split(',');
+            res.render('products/detail', { productsData, dataEstilo, dataColor });
         })
     },
     create : (req, res) => {
