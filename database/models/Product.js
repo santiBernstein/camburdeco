@@ -38,8 +38,9 @@ module.exports = (sequelize, DataTypes) => {
           Product.belongsToMany(models.Product_Carrito, {
               as: "carrito",
               foreignKey: "product_id",
-              through: "product_carrito"
-
+              through: "product_carrito",
+              otherKey: "carrito_id",
+              timestamps: false
           })
         Product.belongsTo(models.Category, {
             as: "category",
@@ -49,15 +50,16 @@ module.exports = (sequelize, DataTypes) => {
          Product.belongsToMany(models.Style, {
              as: "style",
              foreignKey: "product_id",
-             through: "product_style"
-
+             through: "product_style",
+             otherKey: "style_id",
+             timestamps: false
          })
          Product.belongsToMany(models.Color, {
              as: "colores",
              through: "Product_Color",
              foreignKey: "product_id",
              otherKey: "color_id",
-             timeStamp: "false"
+             timestamps: false
          })
     }
     return Product;

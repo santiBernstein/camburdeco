@@ -9,10 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         product_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
+            references: {model: "Product", key: "id"}
         },
         style_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
+            references: {model: "Style", key: "id"}
         }
     };
     let config = {
@@ -20,15 +22,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     };
     let Product_Style = sequelize.define(alias, cols, config);
-    // Product_Style.associate = (models) => {
-    //       Product_Style.hasMany(models.Product, {
-    //           as: "product",
-    //           foreignKey: "product_id"
-    //       })
-    //     Product_Style.hasMany(models.Style, {
-    //         as: "style",
-    //         foreignKey: "style_id"
-    //     })
-    //}
     return Product_Style;
 }

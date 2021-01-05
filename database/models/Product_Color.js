@@ -9,10 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         product_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
+            references: {model: "Product", key: "id"}
         },
         color_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
+            references: {model: "Color", key: "id"}
         }
     };
     let config = {
