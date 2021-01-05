@@ -1,6 +1,6 @@
 <label for=<%= NAME %>><%= LABEL %>:</label>
 <select name=<%= NAME %> id=<%= NAME %>>
 <% for(let i=0 ; i < SELECTOR.length; i++){ %> 
-    <option value=<%= SELECTOR[i] %> <% if(SELECCION ==  SELECTOR[i]){ %> selected <% } %> > <%= SELECTOR[i].toUpperCase() %>  </option> 
+    <option value=<%= SELECTOR[i].id %> <% if(SELECCION ==  SELECTOR[i].name){ %> selected <% } %> > <%= SELECTOR[i].name %>  </option> 
 <% } %> 
 </select>

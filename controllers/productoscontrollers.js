@@ -6,97 +6,60 @@ const {validationResult} = require('express-validator');
 
 module.exports = {
     productos : (req, res) => {
-        
-         //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
-         db.Product.findAll()
-         .then((productsData) => {
+        let opciones = [{
+            id: 0,
+            name:'MAS VENDIDOS',
+            op: ['top','DESC']
+        },
+        {
+            id: 1,
+            name:'MENOR PRECIO',
+            op: ['price','ASC']
+        },
+        {
+            id: 2,
+            name:'MAYOR PRECIO',
+            op: ['price','DESC']
+        }
+        ]
+
+        let categoryIndex = 0;
+        if(req.query.category != undefined){
+            categoryIndex = req.query.category
+        }
+        let optionsIndex = opciones[0]
+        if(req.query.options != undefined){
+            optionsIndex = opciones[req.query.options]
+        }
+        let pedidoCategory = db.Category.findAll()
+        let pedidoProduct = [];
+        if(categoryIndex == 0){
+            pedidoProduct = db.Product.findAll({
+                order: [optionsIndex.op]
+            })
+        }else{
+            pedidoProduct = db.Product.findAll({
+                where: {
+                    category_id : categoryIndex
+                },
+                order: [
+                    optionsIndex.op
+                ]
+            })
+        }
+        Promise.all([pedidoCategory,pedidoProduct])
+         .then(([categorias,productsData]) => {
+            categorias.unshift({id: 0, name: 'TODOS'})
             let filtro = {
-                category: 'todos',
-                options: 'mas-vendidos'
+                category: categorias[categoryIndex].name,
+                options: optionsIndex.name
             };
-            let categorias = ['todos','macetas','ceniceros','luminaria','plantas','velas']
-            
-            if(req.query.category != categorias[0] && req.query.category != undefined){
-                productsData = productsData.filter(function(product){
-                    return product.category == req.query.category
-                })
-                filtro.category=req.query.category;
-            }
-            let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
-    
             res.render('products/products', {filtro,categorias,opciones,productsData}); 
          })
          .catch((error) => {
              console.log(error);
              return error;
          })   
-        
-
-        // switch (req.query.options){
-        //     case opciones[0]:
-        //         content = content.sort(function(a,b){
-        //             if(a.ventas > b.ventas){
-        //                 return 1;
-        //             }
-        //             if(a.ventas < b.ventas){
-        //                 return -1;
-        //             }
-        //             return 0;
-        //         } );
-        //         filtro.options=req.query.options;
-        //         break;
-        //     case opciones[1]:
-        //         content = content.sort(function(a,b){
-        //             if(Number(a.price) > Number(b.price)){
-        //                 return 1;
-        //             }
-        //             if(Number(a.price) < Number(b.price)){
-        //                 return -1;
-        //             }
-        //             return 0;
-        //         } );
-        //         filtro.options=req.query.options
-        //         break;
-        //     case opciones[2]:
-        //         content = content.sort(function(a,b){
-        //             if(Number(a.price) < Number(b.price)){
-        //                 return 1;
-        //             }
-        //             if(Number(a.price) > Number(b.price)){
-        //                 return -1;
-        //             }
-        //             return 0;
-        //         } );
-        //         filtro.options=req.query.options
-        //         break;
-        //     case opciones[3]:
-        //         content = content.sort(function(a,b){
-        //             if(a.size < b.size){
-        //                 return 1;
-        //             }
-        //             if(a.size > b.size){
-        //                 return -1;
-        //             }
-        //             return 0;
-        //         } );
-        //         filtro.options=req.query.options
-        //         break;
-        //     case opciones[4]:
-        //         content = content.sort(function(a,b){
-        //             if(a.size > b.size){
-        //                 return 1;
-        //             }
-        //             if(a.size < b.size){
-        //                 return -1;
-        //             }
-        //             return 0;
-        //         } );
-        //         filtro.options=req.query.options
-        //         break;
-        //     default:
-        //         filtro.options="mas-vendidos"
-        //         break;
-        //     }
        
     },
     detail : (req, res) => {
@@ -133,7 +96,7 @@ module.exports = {
     },
     create : (req, res) => {
         db.Product.findAll({
-            include: [{association:"style"}, {association:"color"}, {association:"category"}]
+            include: [{association:"style"}, {association:"colores"}, {association:"category"}]
         })
         .then(function(product){
             res.render('products/create',{product})
