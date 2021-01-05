@@ -1,35 +1,30 @@
 const fs = require('fs');
 const path = require('path')
-//const productFilePath = path.join(__dirname,"../data/products.json")
 const db = require('../database/models');
 const {validationResult} = require('express-validator');
 
 module.exports = {
     productos : (req, res) => {
-        
-         //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}))
-         db.Product.findAll()
-         .then((productsData) => {
-            let filtro = {
-                category: 'todos',
-                options: 'mas-vendidos'
-            };
-            let categorias = ['todos','macetas','ceniceros','luminaria','plantas','velas']
-            
-            if(req.query.category != categorias[0] && req.query.category != undefined){
-                productsData = productsData.filter(function(product){
+        db.Product.findAll()
+            .then((productsData) => {
+                let filtro = {
+                    category: 'todos',
+                    options: 'mas-vendidos'
+                };
+                let categorias = ['todos','macetas','ceniceros','luminaria','plantas','velas']       
+                if(req.query.category != categorias[0] && req.query.category != undefined){
+                    productsData = productsData.filter(function(product){
                     return product.category == req.query.category
                 })
                 filtro.category=req.query.category;
             }
-            let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
-    
-            res.render('products/products', {filtro,categorias,opciones,productsData}); 
-         })
-         .catch((error) => {
-             console.log(error);
-             return error;
-         })   
+                let opciones = ['mas-vendidos','menor-precio','mayor-precio','menor-tamaño','mayor-tamaño']
+                res.render('products/products', {filtro,categorias,opciones,productsData}); 
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            })   
         
 
         // switch (req.query.options){
@@ -100,13 +95,9 @@ module.exports = {
        
     },
     detail : (req, res) => {
-        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        let ids = Number(req.params.id);
-        // let dataEstilo = content[ids].style
-        
+        let ids = Number(req.params.id);        
 
         db.Product.findByPk(ids, {
-            //include: [{association:"style"}, {association:"color"}, {association:"category"}]
             include: [{association:"category"}, {association:"style"}, {association:"colores"}]
         })
         .then((productsData) =>{

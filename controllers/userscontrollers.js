@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path')
 let bcryptjs = require('bcryptjs');
 var userData = require('../repositories/userRepository');
-const userJsonFilePath = path.join(__dirname, '../data/users.json');
+//const userJsonFilePath = path.join(__dirname, '../data/users.json');
 const {validationResult} = require('express-validator');
 const { log } = require('console');
 
@@ -31,7 +31,7 @@ module.exports = {
 				
 				})
 		}
-		else if(bcryptjs.compareSync(req.body.password, user.password)){
+		else if(bcryptjs.compareSync(req.body.password, password)){
             
             req.session.user = user.name
             req.session.tipoUsuario = user.tipoUsuario
@@ -71,14 +71,14 @@ module.exports = {
     },   
     perfil : (req,res) => {
         let errors = validationResult(req)
-        let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+        //let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
         let ids = content.length - 1
         res.render('users/perfil', { errors : errors.mapped(), data : content[ids] })
     },
     edit : (req, res) => {
         let errors = validationResult(req)
         if (!errors.msg) {
-            let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+            //let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
             let ids = Number(req.params.id) - 1;
             content[ids].name = req.body.name;
             content[ids].apellido = req.body.apellido;

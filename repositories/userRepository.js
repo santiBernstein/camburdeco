@@ -1,10 +1,11 @@
 let fs = require('fs')
 let path = require('path')
-const userJsonFilePath = path.join(__dirname, '../data/users.json');
+//const userJsonFilePath = path.join(__dirname, '../data/users.json');
+const db = require('../database/models');
 let bcryptjs = require('bcryptjs');
 
 function create (req){
-        let content =JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}))
+        //let content =JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}))
         let salt = bcryptjs.genSaltSync(10);
         content.push ({
                 id: (this.lastest().id)+1,
@@ -26,30 +27,57 @@ function create (req){
 }
 
 function findByName(name){
-        let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
-        return users.find(function(user){
-                return name == user.name;
-        })        
+        //let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+        db.User.findOne({
+                where: {
+                        name: user.name
+                }
+        })
+        .then((usersData) => {
+                return users.find(function(user){
+                        return name == user.name;
+                })                
+            })
+        .catch((error) => {
+                console.log(error);
+                return error;
+            })          
 }
 
 function findById (id){
-        let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+        //let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
         return users.find(function(user){
 
                 return user.id == id
 
         })  }
 
-function findByEmail (email){
-        let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
-        return users.find(function(user){
+function findByEmail (imeil){
+        //let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+        db.User.findOne({
+                where: {
+                        email: imeil
+                }
+        })
+        .then((userData) => {
+                console.log('1.', email);
+                console.log('2.', User.email);
+                console.log('3.', imeil);
+                console.log('4.', userData);
+                return users.find(function(user){
+                        return email == user.email;
+                })                
+            })
+        .catch((error) => {
+                console.log('validation pass not ok')
+                console.log(error);
+                return error;
+            })
 
-            return user.email == email
-
-    })  }
+}
 
 function lastest (){
-        let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
+        //let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
         return users.reverse()[0]    
                    
         }
