@@ -28,13 +28,9 @@
                 </div>
 
                 
-                <div class="d-flex space-bet">
-                    <% productsData.forEach(function(product) { %> 
-                        <% if (product.top == "1"){ %> 
-                    
+                <div class="d-flex space-bet f-w">
+                <% productsData.forEach(function(product) { %>   
                             <%- include("./partials/product", {product}) %>
-                    
-                    <% } %> 
                 <% }); %> 
                     
                 </div>
