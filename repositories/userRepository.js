@@ -3,6 +3,7 @@ let path = require('path')
 //const userJsonFilePath = path.join(__dirname, '../data/users.json');
 const db = require('../database/models');
 let bcryptjs = require('bcryptjs');
+const User = require('../database/models/User');
 
 function create (req){
         //let content =JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}))
@@ -60,13 +61,12 @@ function findByEmail (imeil){
                 }
         })
         .then((userData) => {
-                console.log('1.', email);
-                console.log('2.', User.email);
+                console.log('validation pass ok')
+                //console.log('1.', email);
+                console.log('2.', userData);
                 console.log('3.', imeil);
-                console.log('4.', userData);
-                return users.find(function(user){
-                        return email == user.email;
-                })                
+                console.log('4.', userData.email);
+                return (userData.email, userData.password)            
             })
         .catch((error) => {
                 console.log('validation pass not ok')

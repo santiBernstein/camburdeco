@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path')
 let bcryptjs = require('bcryptjs');
 var userData = require('../repositories/userRepository');
-//const userJsonFilePath = path.join(__dirname, '../data/users.json');
 const {validationResult} = require('express-validator');
 const { log } = require('console');
+const db = require('../database/models');
 
 
 module.exports = {
@@ -19,34 +19,39 @@ module.exports = {
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
-       
-		let user = userData.findByEmail(req.body.email)
-
-		if(!user){
-
-			return res.render('users/login', { 
-				
-				errors : errors.mapped(),
-				data : req.body
-				
-				})
-		}
-		else if(bcryptjs.compareSync(req.body.password, password)){
-            
-            req.session.user = user.name
-            req.session.tipoUsuario = user.tipoUsuario
-			if(req.body.recordame){
-				res.cookie('recordame', user.email, {maxAge: 120 * 1000})
-			}
-			return res.redirect('/products')
-		}
-			else { return res.render('users/login', { 
-				
-				errors : errors.mapped(),
-				data : req.body
-				
+        db.User.findOne({
+            include: [{association:"tiposUsuarios"}],
+            where: {
+                email: req.body.email
+            }
+        })
+        .then((userData) => {
+            if(!userData.email){
+                return res.render('users/login', { 
+                    errors : errors.mapped(),
+                    data : req.body
                 })
-            }			
+            }
+            else if(bcryptjs.compareSync(req.body.password, userData.password)){
+                req.session.user = userData.user_name
+                req.session.tipoUsuario = userData.tiposUsuarios.tipo
+                console.log(req.session)
+                    if(req.body.recordame){
+                        res.cookie('recordame', userData.email, {maxAge: 120 * 1000})
+                    }
+                    return res.redirect('/')
+                }
+                else { return res.render('users/login', {
+                    errors : errors.mapped(),
+                    data : req.body
+                })
+            }	           
+        })
+        .catch((error) => {
+            console.log('validation pass not ok')
+            console.log(error);
+            return error;
+        })		
 	},
 	logout: (req, res) => {
 		req.session.destroy()
