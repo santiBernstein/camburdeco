@@ -15,7 +15,11 @@ module.exports = (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING
         },
-        tipo_usuario: {
+        tipo_usuario_id: {
+            type: DataTypes.INTEGER,
+            foreignKey: true,
+        },
+        profile_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
         }
@@ -33,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         })
         User.belongsTo(models.Profile, {
             as: "profiles",
-            foreignKey: "user_id"
+            foreignKey: "profile_id"
 
         })
         User.hasMany(models.Carrito, {

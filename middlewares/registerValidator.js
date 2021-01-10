@@ -4,6 +4,7 @@ const {check,body} = require('express-validator');
 module.exports = [
     check('name').isLength({min:8}).withMessage('El nombre debe contener al menos 8 caracteres'),
     body('name').custom(function(value){
+        console.log('validando pass ok')
         if(userData.findByName(value) != undefined){
             return false;
         };
