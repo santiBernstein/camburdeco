@@ -17,16 +17,10 @@
             <div>
             <p><label for="">Categoría</label></p>
             <select class="ingresar" name="category">
-                <% for (let i = 0; i < product.category.length; i++) { %> 
-                    <option value="<%= product.category[i].id %>">
-                            <%= product.category[i].name %> 
+                <% for (let i = 0; i < categories.length; i++) { %> 
+                    <option value="<%= categories[i].id %>">
+                            <%= categories[i].name %> 
                     </option>
-                <!-- <option value="elegir">Elegir Categoría</option>
-                <option value="macetas">MACETAS</option>
-                <option value="ceniceros">CENICEROS</option>
-                <option value="luminaria">LUMINARIA</option>
-                <option value="plantas">PLANTAS</option>
-                <option value="velas">VELAS</option> -->
                 <% } %> 
             </select>
             </div> 
@@ -39,30 +33,19 @@
                 <input class="ingresar" type="text" name="stock" placeholder="Stock">
             </div>
             <div>
-                <p><label for="">Estilo</label></p>  
-                <% for (let i = 0; i < product.style.length; i++) { %>
-                    
-                    <input name="style" type="checkbox" value="<% product.style[i].name %>"><%= product.style[i].name %></input>
-
-                <!-- <input name="style" type="checkbox" value="<% product.style[i].name = "liso" %>">LISO</input>
-                <input name="style" type="checkbox" value="<% product.style[i].name = "pollock" %>">POLLOCK</input>
-                <input name="style" type="checkbox" value="<% product.style[i].name = "marmolado" %>">MARMOLADO</input>
-                <input name="style" type="checkbox" value="<% product.style[i].name = "bicolor" %>">BICOLOR</input> -->
-                <% } %> 
-
-               
-                
+                <p><label for="">Estilo</label></p> 
+                <% for (let i = 0; i < style.length; i++) { %> 
+                    <input type="checkbox" name="style" value="<%= style[i].id %>">
+                    <%= style[i].name %> 
+                    <% } %>                 
             </div>
             <div>
-            <p><label for="">Color</label></p>     
-            <% for (let i = 0; i < product.color.length; i++) { %>    
-                <input name="style" type="checkbox" value="<% product.color[i].name %>"><%= product.color[i].name %></input>
-
-                <!-- <input name="color" type="checkbox" value="<% style[i].name = "rosa" %>">Rosa</input>
-                <input name="color" type="checkbox" value="<% style[i].name = "blanco" %>">Blanco</input>
-                <input name="color" type="checkbox" value="<% style[i].name = "gris" %>">Gris</input>
-                <input name="color" type="checkbox" value="<% style[i].name = "celeste" %>">Celeste</input> -->
-                <% } %> 
+            <p><label for="">Color</label></p> 
+            <% for (let i = 0; i < color.length; i++) { %> 
+                <input type="checkbox" name="color" value="<%= color[i].id %>">
+                <%= color[i].name %> 
+                <% } %>                
+            
             </div>
 
             <div>

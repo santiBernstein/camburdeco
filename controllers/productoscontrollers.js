@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path')
 const db = require('../database/models');
 const {validationResult} = require('express-validator');
+const { CLIENT_RENEG_LIMIT } = require('tls');
 
 module.exports = {
     productos : (req, res) => {
@@ -73,14 +74,19 @@ module.exports = {
         })
     },
     create : (req, res) => {
-        db.Product.findAll({
-            include: [{association:"style"}, {association:"colores"}, {association:"category"}]
-        })
-        .then(function(product){
-            res.render('products/create',{product})
+        let categoriesPromise = db.Category.findAll();
+        let colorsPromise = db.Color.findAll();
+        let stylePromise = db.Style.findAll();
 
-        })
-        
+        Promise
+            .all([categoriesPromise,colorsPromise,stylePromise])
+            .then((result) => {
+                let categories = result[0],                
+                    color = result[1],             
+                    style = result[2];
+
+                res.render('products/create',{categories,color,style});
+            });
     },
     store : (req, res, next) => {
          let errors = validationResult(req)
