@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path')
 const db = require('../database/models');
 const {validationResult} = require('express-validator');
-const { CLIENT_RENEG_LIMIT } = require('tls');
+// const { CLIENT_RENEG_LIMIT } = require('tls');
 
 module.exports = {
     productos : (req, res) => {
@@ -80,15 +80,18 @@ module.exports = {
 
         Promise
             .all([categoriesPromise,colorsPromise,stylePromise])
-            .then((result) => {
-                let categories = result[0],                
-                    color = result[1],             
-                    style = result[2];
+            .then(([categories, color, style] ) => {
+                //console.log(categories, color, style)
+                //  categories = result[0],                
+                //     color = result[1],             
+                //     style = result[2];
 
                 res.render('products/create',{categories,color,style});
             });
     },
     store : (req, res, next) => {
+
+        
          let errors = validationResult(req)
          let avatar = true;
 
@@ -96,25 +99,38 @@ module.exports = {
              avatar = false;
             }
          if(errors.errors.length || !avatar){
+             
              return res.render('products/create', { 
 		 		errors : errors.mapped(),
                  data : req.body,
                  avatar: avatar
              })
          }
-
-        db.Products.create({
+         
+        db.Product.create({
 
             name: req.body.name,
             description: req.body.description,
-            category: req.body.category,
-            style: req.body.style,
-            color: req.body.color,
+            category_id: req.body.category,
+            // style: req.body.style,
+            // color: req.body.color,
             stock: req.body.stock,
             price: req.body.price,
             img: req.files[0].filename,
-            top: req.body.top 
+            top: 0 
         })
+        .catch((error) => {
+            console.log(error);
+            return error;
+        })   
+
+        
+        // for 
+        // db.Product_Style.create({
+
+        // })
+        // for
+        // db.
        
        res.redirect('/')
        
@@ -124,9 +140,9 @@ module.exports = {
         // let ids = Number(req.params.id);
         // content = content[req.params.id];
         
-        let pedidoProduct = db.Products.findByPk(req.params.id)
+        let pedidoProduct = db.Product.findByPk(req.params.id)
 
-        let pedidoCategory = db.Categories.findAll()
+        let pedidoCategory = db.Category.findAll()
 
         let pedidoStyle = db.Product_Style.findAll()
 

@@ -7,7 +7,7 @@
 <body> 
     <%- include("../partials/header", {data : 0}) %>
         <div>    
-        <form action="/products" method="POST" enctype="multipart/form-data">
+        <form id="create" action="/products" method="POST" enctype="multipart/form-data">
 
             <h1>Crear Producto Nuevo</h1>
             <div>
@@ -17,6 +17,7 @@
             <div>
             <p><label for="">Categoría</label></p>
             <select class="ingresar" name="category">
+                
                 <% for (let i = 0; i < categories.length; i++) { %> 
                     <option value="<%= categories[i].id %>">
                             <%= categories[i].name %> 
