@@ -20,9 +20,6 @@ module.exports = [
         .withMessage('Debe seleccionar al menos un Color'),    
     check('description')
         .notEmpty()
-        .withMessage('Debe escribir una descripción del Producto'),
-    check('img')
-        .notEmpty()
-        .withMessage('Debe seleccionar una imagen del Producto')    
+        .withMessage('Debe escribir una descripción del Producto')        
     
 ]

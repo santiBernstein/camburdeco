@@ -15,6 +15,19 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- -----------------------------------------------------
+-- Schema camburdeco_db
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema camburdeco_db
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `camburdeco_db` DEFAULT CHARACTER SET utf8 ;
+USE `camburdeco_db` ;
+
+-- -----------------------------------------------------
+-- Table `camburdeco_db`.`categories`
+-- -----------------------------------------------------
 --
 -- Table structure for table `carritos`
 --
@@ -329,15 +342,15 @@ CREATE TABLE `users` (
   `email` varchar(40) DEFAULT NULL,
   `password` varchar(100) NOT NULL,
   `user_name` varchar(25) NOT NULL,
-  `tipos_usuarios_id` int NOT NULL,
+  `tipo_usuario_id` int NOT NULL,
   `profile_id` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`user_name`),
   UNIQUE KEY `email_UNIQUE` (`email`),
-  KEY `fk_users_tipos_usuarios1_idx` (`tipos_usuarios_id`),
+  KEY `fk_users_tipos_usuarios1_idx` (`tipo_usuario_id`),
   KEY `fk_users_profiles1_idx` (`profile_id`),
   CONSTRAINT `fk_users_profiles1` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`),
-  CONSTRAINT `fk_users_tipos_usuarios1` FOREIGN KEY (`tipos_usuarios_id`) REFERENCES `tipos_usuarios` (`id`)
+  CONSTRAINT `fk_users_tipos_usuarios1` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipos_usuarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
