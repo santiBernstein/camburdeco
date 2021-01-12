@@ -14,12 +14,12 @@
             <article class="logininterior">
                 <div class="formulario">
                    
-                    <form action="/users/login" method="POST">
+                    <form id="form" action="/users/login" method="POST">
                         <input class="ingreso" type="email" value="<%= data.email %> " name="email" placeholder="e-mail">
                         <% if (errors.email != undefined){  %> 
                             <p class="errors"><%= errors.email.msg  %> </p>
                         <% } %> 
-                        <input class="ingreso" type="password" name="password" placeholder="Contraseña"></p>
+                        <input id="password" class="ingreso" type="password" name="password" placeholder="Contraseña"></p>
                         <% if (errors.password != undefined){  %> 
                             <p class="errors"><%= errors.password.msg  %> </p>
                         <% } %>
@@ -34,6 +34,8 @@
                 <img class="vista" src="/images/bolsas2.jpg" alt="bolsacamburdeco">
             </article>
         </section>
-        <%- include("../partials/footer") %>  
+        <%- include("../partials/footer") %> 
+         
+       <!--<script src="/script/login.js"></script> -->
     </body>
 </html>

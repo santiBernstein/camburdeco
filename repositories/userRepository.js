@@ -3,27 +3,17 @@ let path = require('path')
 //const userJsonFilePath = path.join(__dirname, '../data/users.json');
 const db = require('../database/models');
 let bcryptjs = require('bcryptjs');
-const User = require('../database/models/User');
 
 function create (req){
         //let content =JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}))
         let salt = bcryptjs.genSaltSync(10);
-        content.push ({
-                id: (this.lastest().id)+1,
-                name: req.body.name,
-                apellido: "",
-                dni: "",
-                email : req.body.email,
-                domicilio: "",
-                localidad: "",
-                pais: "",
-                password : bcryptjs.hashSync(req.body.password,salt),
-                metodo_pago:"",
-                nroTarjeta: "",
-                avatar: req.files[0].filename,
-                tipoUsuario: "Normal"
-        }) 
-        fs.writeFileSync(userJsonFilePath,JSON.stringify(content))
+        db.User.create({
+                include: [{association:"profile"}],
+                email: req.body.email,
+                password: bcryptjs.hashSync(req.body.password,salt),
+                user_name: req.body.name,
+                tipo_usuario_id: "2"
+        })
         return (this.lastest().id)
 }
 
@@ -54,25 +44,8 @@ function findById (id){
         })  }
 
 function findByEmail (imeil){
-        //let users = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
-        db.User.findOne({
-                where: {
-                        email: imeil
-                }
-        })
-        .then((userData) => {
-                console.log('validation pass ok')
-                //console.log('1.', email);
-                console.log('2.', userData);
-                console.log('3.', imeil);
-                console.log('4.', userData.email);
-                return (userData.email, userData.password)            
-            })
-        .catch((error) => {
-                console.log('validation pass not ok')
-                console.log(error);
-                return error;
-            })
+        
+        
 
 }
 
