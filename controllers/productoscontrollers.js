@@ -133,23 +133,17 @@ module.exports = {
        
     },
     edit : (req, res) => {
-        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        // let ids = Number(req.params.id);
-        // content = content[req.params.id];
-        
-        let pedidoProduct = db.Product.findByPk(req.params.id)
-
-        let pedidoCategory = db.Category.findAll()
-
-        let pedidoStyle = db.Product_Style.findAll()
-
-        let pedidoColor = db.Product_Color.findAll()
-
-        Promise.all([pedidoProduct, pedidoCategory, pedidoStyle, pedidoColor])
-        .then(function([product, category, style, color]){
-            res.render('products/edit', { product, category, style, color } )
+        let id = Number(req.params.id);
+        let pedidoProduct = db.Product.findByPk(id,{
+            include: [{association:"category"}, {association:"style"}, {association:"colores"}]
         })
-       
+        let pedidoCategory = db.Category.findAll()
+        let pedidoStyle = db.Style.findAll()
+        let pedidoColor = db.Color.findAll()
+        Promise.all([pedidoProduct, pedidoCategory, pedidoStyle, pedidoColor])
+        .then(function([product, categories, styles, colors]){
+            res.render('products/edit', { product, categories, styles, colors } )
+        })
     },
     update : (req, res) => {
         //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
