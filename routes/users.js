@@ -4,9 +4,8 @@ let multer = require('multer');
 let path = require('path');
 const usersControllers = require('../controllers/userscontrollers');
 const usersValidator = require('../middlewares/usersValidator');
-const registerValidation = require('../middlewares/registerValidator');
-const usersPerfilValidator = require('../middlewares/usersPerfilValidator')
-
+const userPerfilValidator = require('../middlewares/usersPerfilValidator');
+const registerValidator = require('../middlewares/registerValidator');
 
 let storage = multer.diskStorage({
     destination : function(req,file,cb){
@@ -19,12 +18,11 @@ let storage = multer.diskStorage({
 
 let upload = multer({storage})
 
-
 router.get('/contact', usersControllers.contacto);
 router.get('/quienes-somos', usersControllers.quienesSomos);
 
 router.get('/register', usersControllers.registro);
-router.post('/' ,upload.any(), registerValidation, usersControllers.store);
+router.post('/' ,upload.any(), registerValidator, usersControllers.store);
 
 router.get('/login', usersControllers.logearse);
 router.post('/login', usersValidator, usersControllers.processLogin);
@@ -32,7 +30,7 @@ router.post('/login', usersValidator, usersControllers.processLogin);
 router.post('/logout', usersControllers.logout);
 
 router.get('/recupero', usersControllers.recuperar);
-router.post('/perfil/:id/edit', upload.any(), usersPerfilValidator, usersControllers.edit);
+router.post('/perfil/:id/edit', upload.any(), userPerfilValidator, usersControllers.edit);
 router.get('/perfil/:id', usersControllers.perfil);
 
 module.exports = router;
