@@ -3,6 +3,7 @@
     <head>
         <%- include("../partials/head") %>
         <link rel="stylesheet" href="/stylesheets/create.css">
+        <script src="/script/productsFront.js"></script>
     </head> 
 <body> 
     <%- include("../partials/header", {data : 0}) %>
@@ -55,8 +56,8 @@
             </div>
 
             <div>
-            <p><label for="">Foto del Producto</label></p>
-            <input id="img" clas="imgup" type="file" name="img">    
+            <p><label for="img">Foto del Producto</label></p>
+            <input id="img" type="file" name="img">    
             </div>
 
             <div>    
@@ -68,7 +69,7 @@
 
         </form>
         </div>
-        <script src="/public/javascripts/productsFront.js"></script>
+        
 
         <%- include("../partials/footer") %>
 </body>
