@@ -17,14 +17,35 @@ let storage = multer.diskStorage({
 		 }
 })
 
-let upload = multer({storage})
+let upload = multer({
+	storage: storage,
+	limits: {
+		field: 1,
+		fieldNameSize: 50,
+		fieldSize: 20000,
+		fileSize: 1024*1024,
+	},
+	fileFilter: function(req,file,cb){
+		checkFileType(file,cb)
+	}
+})
 
+function checkFileType(file,cb){
+	const filetypes= /jpeg|jpg|png|gif/;
+	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+	const mimetype = filetypes.test(file.mimetype);
+	if(extname && mimetype) {
+		return cb(null,true) 
+	}else{
+		return cb(null, false)
+	}
+}
 
 
 router.get('/', productosControllers.productos);
 
 router.get('/create', productosControllers.create);
-router.post('/', upload.any(), productsValidator, productosControllers.store);
+router.post('/', upload.single('img'), productsValidator, productosControllers.store);
 
 router.get('/:id', productosControllers.detail);
 

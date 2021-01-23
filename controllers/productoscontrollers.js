@@ -91,7 +91,8 @@ module.exports = {
         
          let errors = validationResult(req)
          let avatar = true;
-
+        //  console.log(errors)
+        //  console.log(req.files)
          if(req.files[0] == null){
              avatar = false;
             }
@@ -143,6 +144,10 @@ module.exports = {
         Promise.all([pedidoProduct, pedidoCategory, pedidoStyle, pedidoColor])
         .then(function([product, categories, styles, colors]){
             res.render('products/edit', { product, categories, styles, colors } )
+        })
+        .catch(error => {
+            console.log(error)
+            return error
         })
     },
     update : (req, res) => {
