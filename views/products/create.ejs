@@ -3,16 +3,17 @@
     <head>
         <%- include("../partials/head") %>
         <link rel="stylesheet" href="/stylesheets/create.css">
+        <script src="/script/productsFront.js"></script>
     </head> 
 <body> 
     <%- include("../partials/header", {data : 0}) %>
         <div>    
-        <form id="create" action="/products" method="POST" enctype="multipart/form-data">
+        <form id="form" action="/products" method="POST" enctype="multipart/form-data">
 
             <h1>Crear Producto Nuevo</h1>
             <div>
                 <p><label for="">NOMBRE</label></p>
-                <input class="ingresar" type="text" name="name" placeholder="Nombre del producto">
+                <input id="name" class="ingresar" type="text" name="name" placeholder="Nombre del producto">
             </div>
             <div>
             <p><label for="">Categoría</label></p>
@@ -51,12 +52,12 @@
 
             <div>
             <p><label for="">Descripción</label></p>
-            <textarea name="description" name="description" cols="30" rows="10"></textarea>
+            <textarea id="description" name="description" cols="30" rows="10"></textarea>
             </div>
 
             <div>
-            <p><label for="">Foto del Producto</label></p>
-            <input class="imgup" type="file" name="img">    
+            <p><label for="img">Foto del Producto</label></p>
+            <input id="img" type="file" name="img">    
             </div>
 
             <div>    
@@ -68,6 +69,7 @@
 
         </form>
         </div>
+        
 
         <%- include("../partials/footer") %>
 </body>

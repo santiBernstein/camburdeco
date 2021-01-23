@@ -3,6 +3,7 @@
     <head>
         <%- include("../partials/head") %>
         <link rel="stylesheet" href="/stylesheets/create.css">
+        <script src="/script/productsFront.js"></script>
     </head>
 <body>
     <%- include("../partials/header", {data : 0}) %>
@@ -12,7 +13,7 @@
             <h1>Editar Producto</h1>
             <div>
                 <p><label for="">NOMBRE</label></p>
-                <input class="ingreso" type="text" name="name" value="<%= product.name %>">
+                <input id="name" class="ingreso" type="text" name="name" value="<%= product.name %>">
             </div>
             <div>
                <p><label for="">Categoría</label></p>
@@ -56,7 +57,7 @@
 
             <div>
             <p><label for="">Descripción</label></p>
-            <textarea class="ingreso" name="description" cols="30" rows="10" value="<%= product.description %>"></textarea>
+            <textarea id="description" class="ingreso" name="description" cols="30" rows="10" value="<%= product.description %>"></textarea>
             </div>
 
             <div>
@@ -76,6 +77,7 @@
 
         </form>
         </div>
+       
 
         <%- include("../partials/footer") %>
 </body>
