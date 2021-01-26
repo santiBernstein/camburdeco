@@ -9,15 +9,14 @@ window.addEventListener("load", function() {
     let errors = {};
 
     form.addEventListener("submit", (e)=> {
-        e.preventDefault(); 
-        
+        if(Object.keys(errors).length > 0){
+            e.preventDefault(); 
+        }
     });
 
     
     function cleanErrors(errorsKey, element) {
-        
         delete errors[errorsKey];
-        
         element.classList.remove('is-error');
     }
 
@@ -47,14 +46,9 @@ window.addEventListener("load", function() {
     img.addEventListener("change", ()=> {
         let pathStringToArray = img.value.split('.');
         let ext = pathStringToArray[pathStringToArray.length-1];
-    
-        cleanErrors('img', img);
-
-        if(!validator.contains(ext, ['jpg','jpeg','png','gif'])) {
-
-            setErrors('img', 'El archivo no posee un formato valido.', img);
-
-          
+        let formats = ['jpg','jpeg','png','gif'];
+        if(!formats.includes(ext)) {
+            setErrors('img', 'El formato de archivo debe ser jpg, jpeg, png o gif.', img);
         }
     });
 

@@ -13,11 +13,11 @@
             <h1>Editar Producto</h1>
             <div>
                 <p><label for="">NOMBRE</label></p>
-                <input id="name" class="ingreso" type="text" name="name" value="<%= product.name %>">
+                <input id="name" class="ingresar" type="text" name="name" value="<%= product.name %>">
             </div>
             <div>
                <p><label for="">Categoría</label></p>
-                <select class="ingreso" name="category">
+                <select class="ingresar" name="category">
                     <option value="elegir">Elegir Categoría</option>
                     <% categories.forEach(category => { %>
                         <option value=<%= category.id %> <%= product.category_id == category.id ? 'selected' : '' %>><%= category.name %></option>
@@ -26,11 +26,11 @@
             </div> 
             <div>
                 <p><label for="">Precio</label></p>
-                <input class="ingreso" type="text" name="price" value="<%= product.price %>">
+                <input class="ingresar" type="text" name="price" value="<%= product.price %>">
             </div>
             <div>
                 <p><label for="">Stock</label></p>
-                <input class="ingreso" type="text" name="stock" value="<%= product.stock %>">
+                <input class="ingresar" type="text" name="stock" value="<%= product.stock %>">
             </div>
             <div>
                 <p><label for="">Estilo</label></p> 
@@ -53,24 +53,23 @@
                 <% }) %>             
             </div>
             
-            
-
+        
             <div>
-            <p><label for="">Descripción</label></p>
-            <textarea id="description" class="ingreso" name="description" cols="30" rows="10" value="<%= product.description %>"></textarea>
+                <p><label for="">Descripción</label></p>
+                <textarea id="description" name="description" cols="30" rows="10" value="<%= product.description %>"></textarea>
             </div>
 
             <div>
             <p><label for="">Imagen del Producto</label></p>
-            <div class="image-edit">
-                <img class="img-edit" src="/images/<%= product.img %>" alt="imagenproducto">
-            </div>
-            <input class="ingreso" type="file" name="photo">    
+                <div class="image-edit">
+                    <img class="img-edit" src="/images/<%= product.img %>" alt="imagenproducto">
+                </div>
+                <input  id="img" type="file" name="photo">    
             </div>
 
             <div>    
-            <p><button class="enviar" type="submit">Cargar Producto</button></p>
-            <p><button class="reset" type="reset">Resetear Página</button></p>
+                <p><button class="enviar" type="submit">Cargar Producto</button></p>
+                <p><button class="reset" type="reset">Resetear Página</button></p>
             </div>
 
 

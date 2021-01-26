@@ -1,4 +1,4 @@
-const {check,body,validationResult} = require('express-validator');
+const {check} = require('express-validator');
 
 module.exports = [
     check('name')
@@ -21,23 +21,15 @@ module.exports = [
     check('description')
         .isLength({min:20})
         .withMessage('La Descripción debe contener al menos 20 caracteres'),
-    body('img')
-        .custom(function(value, {req}){
-            let errors = validationResult(req)
-            console.log(1,errors)
-            console.log(2,req.file)
-            console.log(3,value)
-            // if(req.file == null){
-            //     avatar = false;
-            //    }
-            // if(errors.errors.length || !avatar){
-                
-            //     return res.render('products/create', { 
-            //         errors : errors.mapped(),
-            //         data : req.body,
-            //         avatar: avatar
-            //     })
-            // }
-            return false
+    check('img')
+        .custom(function(value,{ req }){
+            if(req.file == undefined ){
+                return false
+            }
+            let formats = ['image/jpg','image/jpeg','image/png','image/gif'];
+            if(formats.includes(req.file.mimetype)){
+                return req.file.mimetype
+            }
         })
+       .withMessage('El formato de imagen debe ser jpg, jpeg, png o gif')
 ]
