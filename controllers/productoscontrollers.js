@@ -1,6 +1,10 @@
 const db = require('../database/models');
 const {validationResult} = require('express-validator');
 
+let allCategories = []
+let allColors = []
+let allStyles = []
+
 module.exports = {
     productos : (req, res) => {
         let opciones = [{
@@ -65,6 +69,7 @@ module.exports = {
             include: [{association:"category"}, {association:"style"}, {association:"colores"}]
         })
         .then((productsData) =>{
+            console.log(productsData)
             let dataEstilo = productsData.style
             let dataColor = productsData.colores
             res.render('products/detail', { productsData, dataEstilo, dataColor });
@@ -74,82 +79,78 @@ module.exports = {
         let categoriesPromise = db.Category.findAll();
         let colorsPromise = db.Color.findAll();
         let stylePromise = db.Style.findAll();
-
         Promise
             .all([categoriesPromise,colorsPromise,stylePromise])
-            .then(([categories, color, style] ) => {
-                //console.log(categories, color, style)
-                //  categories = result[0],                
-                //     color = result[1],             
-                //     style = result[2];
-
-                res.render('products/create',{categories,color,style});
+            .then(([categories,colors ,styles ] ) => {
+                allCategories = categories
+                allColors = colors
+                allStyles = styles
+                res.render('products/create',{
+                    categories: allCategories,
+                    color: allColors,
+                    style: allStyles
+                });
             });
     },
-    store : (req, res, next) => {
-
-        
+    store : async (req, res, next) => {
          let errors = validationResult(req)
-         let avatar = true;
-
-         if(req.files[0] == null){
-             avatar = false;
-            }
-         if(errors.errors.length || !avatar){
-             
+         if(errors.errors.length){
+            console.log(errors.mapped())
              return res.render('products/create', { 
 		 		errors : errors.mapped(),
-                 data : req.body,
-                 avatar: avatar
+                data : req.body,
+                categories: allCategories,
+                color: allColors,
+                style: allStyles
              })
          }
-         
         db.Product.create({
-
             name: req.body.name,
             description: req.body.description,
             category_id: req.body.category,
-            // style: req.body.style,
-            // color: req.body.color,
             stock: req.body.stock,
             price: req.body.price,
-            img: req.files[0].filename,
-            top: 0 
+            img: req.file.filename,
+            top: 0
+        })
+        .then(resultado=>{
+            let estilos =  (req.body.style.length < 2 )? [req.body.style] : req.body.style 
+            estilos.forEach(estiloId=>{
+                db.Product_Style.create({
+                    product_id: resultado.null,
+                    style_id: estiloId
+                })
+            })
+            let colores =  (req.body.color.length < 2 )? [req.body.color] : req.body.color 
+            colores.forEach(colorId=>{
+                db.Product_Color.create({
+                    product_id: resultado.null,
+                    color_id: colorId
+                })
+            })
         })
         .catch((error) => {
             console.log(error);
             return error;
         })   
-
-        
-        // for 
-        // db.Product_Style.create({
-
-        // })
-        // for
-        // db.
-       
        res.redirect('/')
-       
     },
     edit : (req, res) => {
-        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        // let ids = Number(req.params.id);
-        // content = content[req.params.id];
-        
-        let pedidoProduct = db.Product.findByPk(req.params.id)
-
-        let pedidoCategory = db.Category.findAll()
-
-        let pedidoStyle = db.Product_Style.findAll()
-
-        let pedidoColor = db.Product_Color.findAll()
-
-        Promise.all([pedidoProduct, pedidoCategory, pedidoStyle, pedidoColor])
-        .then(function([product, category, style, color]){
-            res.render('products/edit', { product, category, style, color } )
+        let id = Number(req.params.id);
+        let pedidoProduct = db.Product.findByPk(id,{
+            include: [{association:"category"}, {association:"style"}, {association:"colores"}]
         })
-       
+        let pedidoCategory = db.Category.findAll()
+        let pedidoStyle = db.Style.findAll()
+        let pedidoColor = db.Color.findAll()
+        Promise.all([pedidoProduct, pedidoCategory, pedidoStyle, pedidoColor])
+        .then(function([product, categories, styles, colors]){
+            res.render('products/edit', { product, categories, styles, colors } )
+        })
+        .catch(error => {
+            console.log(error)
+            return error
+        })
     },
     update : (req, res) => {
         //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));

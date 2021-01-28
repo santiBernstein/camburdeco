@@ -31,6 +31,13 @@ label {
 
 p {margin: 2%;}
 
+.errors{
+    color:  rgba(220, 20, 103);
+    font-size: 0.9em;
+    padding: 5px;
+    margin: 0%;
+}
+
 .ingresar {
     margin: 2%;
     background-color: var(--main-color);
@@ -93,6 +100,7 @@ p {margin: 2%;}
     }
 .image-edit {
     height: 200px;
+    margin-bottom: 20px;
 }
 
 .img-edit {
@@ -109,4 +117,9 @@ p {margin: 2%;}
     .ingresar {
         width: 60%;
     }
+}
+
+/* Estilos Validator */
+.is-error {
+    border: 1px solid red;
 }
