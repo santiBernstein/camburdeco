@@ -3,8 +3,10 @@ const path = require('path')
 let bcryptjs = require('bcryptjs');
 var userData = require('../repositories/userRepository');
 const {validationResult} = require('express-validator');
-const { log } = require('console');
+const { log, profile } = require('console');
 const db = require('../database/models');
+const User = require('../database/models/User');
+const Profile = require('../database/models/Profile');
 
 
 module.exports = {
@@ -25,7 +27,7 @@ module.exports = {
                 errors = {
                     email: {
                         value: '',
-                        msg: 'El email ingresado no existe',
+                        msg: 'El email ingresado NO existe',
                         param: 'email',
                         location: 'body'
                     }
@@ -37,10 +39,12 @@ module.exports = {
             } else {
                 if(bcryptjs.compareSync(req.body.password, userData.password)){
                     req.session.user = userData.user_name
+                    req.session.ides = userData.id
                     req.session.tipoUsuario = userData.tiposUsuarios.tipo
                     if(req.body.recordame){
                         res.cookie('recordame', userData.email, {maxAge: 120 * 1000})
                     }
+                    
                     return res.redirect('/')
                 } else { 
                     return res.render('users/login', {
@@ -63,48 +67,107 @@ module.exports = {
     registro : (req, res) => {
         res.render('users/register',{ data : {}, errors: {}, avatar: true }); 
     },
-    store : (req, res) => {
+    store : (req, res) => {        
         let errors = validationResult(req)
-        let avatar = true;
+        let avatars = true;
         if(req.files[0] == null){
-         avatar = false;
+            avatars = false;
         }
-        if(errors.errors.length || !avatar){
+        if(errors.errors.length || !avatars){
             return res.render('users/register', { 
 				errors : errors.mapped(),
                 data : req.body,
-                avatar: avatar
+                avatar: avatars
             })
         }
-        let ids = userData.create(req);
-        res.redirect('/users/perfil/'+ids)
-    },   
+        let salt = bcryptjs.genSaltSync(10);
+        // db.Profile.create({
+        //     first_name: '',
+        //         last_name: '',
+        //         avatar: req.files[0].filename,
+        //         address: '',
+        //         city: '',
+        //         pais: '',
+        //     User: {
+        //         email: req.body.email,
+        //         password: bcryptjs.hashSync(req.body.password,salt),
+        //         user_name: req.body.name,
+        //         tipo_usuario_id: 2,
+        //         profile_id: Profile.null
+        //     }
+            
+            
+        //   }, {
+        //     include: [{
+        //       association: "users"
+        //     }]
+        //   })
+        //   .then((result) => {
+        //       console.log(result)
+        //     res.redirect('/')
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //     return error;
+        // })
+          
+        db.Profile.create({
+            first_name: '',
+            last_name: '',
+            avatar: req.files[0].filename,
+            address: '',
+            city: '',
+            pais: '',
+        })
+        
+            db.Profile.count()
+                .then (result => {
+                    result = result + 1
+                    db.User.create({
+                        email: req.body.email,
+                        password: bcryptjs.hashSync(req.body.password,salt),
+                        user_name: req.body.name,
+                        tipo_usuario_id: 2,
+                        profile_id: result,                
+                    })
+                    .then((resultado) => {
+                        console.log(resultado)
+                        res.redirect('/users/login')
+                    })
+                    
+                }
+            )          
+        
+    }, 
     perfil : (req,res) => {
         let errors = validationResult(req)
-        //let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
-        let ids = content.length - 1
-        res.render('users/perfil', { errors : errors.mapped(), data : content[ids] })
+        ids = req.params.id
+        console.log('ids', ids)
+        db.User.findByPk(ids,
+                {
+                    include: [{association:"profiles"}]
+                })
+                    .then((data) => {
+                        console.log('result', data)
+                        res.render('users/perfil', { errors : errors.mapped(), data, ids })
+                    }
+                )   
     },
     edit : (req, res) => {
         let errors = validationResult(req)
         if (!errors.msg) {
-            //let content = JSON.parse(fs.readFileSync(userJsonFilePath, {encoding: 'utf-8'}));
-            
-            let ids = Number(req.params.id) - 1;
-            content[ids].name = req.body.name;
-            content[ids].apellido = req.body.apellido;
-            content[ids].dni = req.body.dni;
-            content[ids].email = req.body.email;
-            content[ids].domicilio = req.body.domicilio;
-            content[ids].localidad = req.body.localidad;
-            content[ids].pais = req.body.pais;
-    		content[ids].password = req.body.password;
-            content[ids].metodo_pago = req.body.metodo_pago;
-            content[ids].nroTarjeta = req.body.nroTarjeta;
-            if(req.files[0] != null){
-                content[ids].abatar = req.files[0].filename;
-            }            
-            fs.writeFileSync(userJsonFilePath, JSON.stringify(content))
+            db.Profile.update({
+                first_name: req.body.name,
+                last_name: req.body.apellido,
+                avatar: req.body.avatar,
+                address: req.body.domicilio,
+                city: req.body.localidad,
+                pais: req.body.pais,
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            })
             res.redirect('/');
         } else {
             res.render('users/perfil', { errors : errors.mapped(), data : req.body });

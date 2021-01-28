@@ -12,18 +12,18 @@
             </div>
             <article class="registrointerior">
                 <div class="formulario">
-                    <form action="<%= data.id %>/edit" method="POST" enctype="multipart/form-data">
+                    <form id="form" action="/users/<%= locals.ides %>?_method=PUT" method="POST" enctype="multipart/form-data">
                         <div>
-                            <p><img class="imagenes" src="../../images/users/<%= data.avatar %>" alt="avatar"></p>
+                            <p><img class="imagenes" src="../../images/users/<%= data.profiles.avatar %>" alt="avatar"></p>
                             <label for="imagen" class="form-label">Cargar imagen</label>
                             <input type="file" multiple="multiple" id="avatar" name="avatar" value="<%= data.avatar %>">
                         </div>
                         <label for="imagen" class="form-label">Datos de identidad</label>
-                        <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.name %>">
+                        <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.first_name %>">
                         <% if (errors.name != undefined){  %> 
                             <p><%= errors.name.msg  %> </p>
                         <% } %> 
-                        <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.apellido %>">
+                        <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.last_name %>">
                         <% if (errors.apellido != undefined){  %> 
                             <p><%= errors.apellido.msg  %> </p>
                         <% } %> 
@@ -40,7 +40,7 @@
                         <input class="ingreso" type="text" id="medoto_pago" name="metodo_pago" placeholder="Método de pago" value="<%= data.metodo_pago %>">
                         <input class="ingreso" type="text" id="nroTarjeta" name="nrotarjeta" placeholder="Nro. tarjeta de crédito" value="<%= data.nroTarjeta %>">
                         <label for="imagen" class="form-label">Password</label>
-                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña"></p>
+                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña" value="<%= data.password %></p>
                         <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña"></p>
             
                         <p><button class="boton" type="submit" value="Crear cuenta">Continuar</p>
@@ -49,6 +49,7 @@
                 </div>
             </article>
         </section>
-        <%- include("../partials/footer") %>      
+        <%- include("../partials/footer") %>    
+        <script src="/script/perfil.js"></script>  
     </body>
 </html>
