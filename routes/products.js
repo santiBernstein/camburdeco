@@ -50,8 +50,7 @@ router.post('/', upload.single('img'), productsValidator, productosControllers.s
 router.get('/:id', productosControllers.detail);
 
 router.get('/:id/edit', productosControllers.edit);
-
-router.put('/:id', upload.any(), productosControllers.update);
+router.put('/:id', upload.single('img'), productosControllers.update);
 
 router.delete('/:id', productosControllers.destroy);
 

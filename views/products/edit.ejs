@@ -6,14 +6,16 @@
         <script src="/script/productsFront.js"></script>
     </head>
 <body>
-    <%- include("../partials/header", {data : 0}) %>
-        <div>    
-            
-        <form action="/products/<%= product.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+    <%- include("../partials/header", {data : 1, ids: product.id}) %>
+        <div>        
+        <form id="form" action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <h1>Editar Producto</h1>
             <div>
                 <p><label for="">NOMBRE</label></p>
                 <input id="name" class="ingresar" type="text" name="name" value="<%= product.name %>">
+                <% if(typeof errors != 'undefined') { %>
+                    <p class="errors"><%= errors.name.msg %> </p>
+                <% } %>
             </div>
             <div>
                <p><label for="">Categoría</label></p>
@@ -22,11 +24,17 @@
                     <% categories.forEach(category => { %>
                         <option value=<%= category.id %> <%= product.category_id == category.id ? 'selected' : '' %>><%= category.name %></option>
                     <% }) %> 
+                    <% if(typeof errors != 'undefined' && typeof errors.category != 'undefined') { %>
+                        <p class="errors"><%= errors.category.msg %> </p>
+                    <% } %> 
                 </select>
             </div> 
             <div>
                 <p><label for="">Precio</label></p>
                 <input class="ingresar" type="text" name="price" value="<%= product.price %>">
+                <% if(typeof errors != 'undefined') { %>
+                    <p class="errors"><%= errors.price.msg %> </p>
+                <% } %>
             </div>
             <div>
                 <p><label for="">Stock</label></p>
@@ -40,7 +48,10 @@
                         <% if(estilo.id == style.id) { checked = "checked"}%>
                    <% }) %> 
                     <input name="style" type="checkbox" value=<%= style.id %> <%= checked %>> <%= style.name%></input> 
-                <% }) %>             
+                <% }) %>            
+                <% if(typeof errors != 'undefined') { %>
+                    <p class="errors"><%= errors.style.msg %> </p>
+                <% } %> 
             </div>
             <div>
                 <p><label for="">Color</label></p> 
@@ -50,21 +61,30 @@
                         <% if(colour.id == color.id) { checked = "checked"}%>
                    <% }) %> 
                     <input name="color" type="checkbox" value=<%= color.id %> <%= checked %>> <%= color.name%></input> 
-                <% }) %>             
+                <% }) %>        
+                <% if(typeof errors != 'undefined') { %>
+                    <p class="errors"><%= errors.color.msg %> </p>
+                <% } %>     
             </div>
             
         
             <div>
                 <p><label for="">Descripción</label></p>
-                <textarea id="description" name="description" cols="30" rows="10" value="<%= product.description %>"></textarea>
+                <textarea id="description" name="description" cols="30" rows="10" ><%= product.description %></textarea>
+                <% if(typeof errors != 'undefined') { %>
+                    <p class="errors"><%= errors.description.msg %> </p>
+                <% } %>
             </div>
 
             <div>
-            <p><label for="">Imagen del Producto</label></p>
+            <p><label for="img">Imagen del Producto</label></p>
                 <div class="image-edit">
                     <img class="img-edit" src="/images/<%= product.img %>" alt="imagenproducto">
                 </div>
-                <input  id="img" type="file" name="photo">    
+                <input id="img" type="file" name="photo">  
+                <% if(typeof errors != 'undefined') { %>
+                    <p class="errors"><%= errors.img.msg %> </p>
+                <% } %>  
             </div>
 
             <div>    

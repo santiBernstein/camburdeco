@@ -165,23 +165,62 @@ module.exports = {
         // content[ids].color.splice(0,content[ids].style.length-1,req.body.color); 
         // content[ids].description = req.body.desciption;
         // content[ids].img = req.files[0].filename;
-        
+        console.log("estoy llegando a updaten")
+        let errors = validationResult(req)
+        if(errors.errors.length){
+           console.log(errors.mapped())
+            return res.render('products/create', { 
+                errors : errors.mapped(),
+               data : req.body,
+               categories: allCategories,
+               color: allColors,
+               style: allStyles
+            })
+        }
+
         db.Products.update({
             name: req.body.name,
             description: req.body.description,
-            category: req.body.category,
-            style: req.body.style,
-            color: req.body.color,
+            category_id: req.body.category,
             stock: req.body.stock,
             price: req.body.price,
-            img: req.files[0].filename,
-            top: req.body.top 
+            img: req.file.filename,
+            top: 0
         }, {
             where: {
                 id: req.params.id
             }
+        }).then(resultado=>{
+            let estilos =  (req.body.style.length < 2 )? [req.body.style] : req.body.style 
+            estilos.forEach(estiloId=>{
+                db.Product_Style.update({
+                    product_id: resultado.null,
+                    style_id: estiloId
+                },{
+                    where: {
+                        product_id: req.params.id
+                    }
+                })
+            })
+            let colores =  (req.body.color.length < 2 )? [req.body.color] : req.body.color 
+            colores.forEach(colorId=>{
+                db.Product_Color.create({
+                    product_id: resultado.null,
+                    color_id: colorId
+                },{
+                    where: {
+                        product_id: req.params.id
+                    }
+                })
+            })
+             res.redirect('/')
         })
-		res.redirect('/')
+        .catch((error) => {
+            console.log(error);
+            return error;
+        })   
+      
+     
     },
     destroy : (req,res) => {
         //let content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
