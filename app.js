@@ -33,7 +33,8 @@ app.use(remember)
 app.use(function(req,res,next){
   if(req.session.user != undefined){
     res.locals.user = req.session.user
-    res.locals.tipoUsuario = req.session.tipoUsuario   
+    res.locals.ides = req.session.ides
+    res.locals.tipoUsuario = req.session.tipoUsuario  
   }  next()
 })
 

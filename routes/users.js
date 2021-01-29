@@ -30,7 +30,7 @@ router.post('/login', usersValidator, usersControllers.processLogin);
 router.post('/logout', usersControllers.logout);
 
 router.get('/recupero', usersControllers.recuperar);
-router.post('/perfil/:id/edit', upload.any(), userPerfilValidator, usersControllers.edit);
+router.put('/:id', upload.any(), userPerfilValidator, usersControllers.edit);
 router.get('/perfil/:id', usersControllers.perfil);
 
 module.exports = router;

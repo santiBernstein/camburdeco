@@ -4,7 +4,7 @@
 
             <% if(locals.user){  %>
             <div class="options-user">
-                <a class="lin-vertical">Hola <%= locals.user %>!</a>
+                <a class="lin-vertical" href="/users/perfil/<%= locals.ides %>">Hola <%= locals.user %>!</a>
                 <form class="form-inline boton-header" action="/users/logout" method="POST">
                     <button class="button-delete">Cerrar Sesión</button>
                 </form>
