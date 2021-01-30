@@ -153,20 +153,7 @@ module.exports = {
         })
     },
     update : (req, res) => {
-        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        // let ids = Number(req.params.id) - 1;
-        
-
-        // content[ids].name = req.body.name;
-		// content[ids].category = req.body.category;
-		// content[ids].price = req.body.price;
-		// content[ids].stock = req.body.stock; 
-        // content[ids].style.splice(0,content[ids].style.length-1,req.body.style);
-        // content[ids].color.splice(0,content[ids].style.length-1,req.body.color); 
-        // content[ids].description = req.body.desciption;
-        // content[ids].img = req.files[0].filename;
-        
-        db.Products.update({
+        db.Product.update({
             name: req.body.name,
             description: req.body.description,
             category: req.body.category,
