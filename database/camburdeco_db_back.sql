@@ -15,6 +15,19 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- -----------------------------------------------------
+-- Schema camburdeco_db
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema camburdeco_db
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `camburdeco_db` DEFAULT CHARACTER SET utf8 ;
+USE `camburdeco_db` ;
+
+-- -----------------------------------------------------
+-- Table `camburdeco_db`.`categories`
+-- -----------------------------------------------------
 --
 -- Table structure for table `carritos`
 --
@@ -28,8 +41,8 @@ CREATE TABLE `carritos` (
   `forma_pago` varchar(15) NOT NULL,
   `user_id` int NOT NULL COMMENT '\n',
   PRIMARY KEY (`id`),
-  KEY `fk_user_id_idx` (`user_id`),
-  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  KEY `fk_carritos_users1_idx` (`user_id`),
+  CONSTRAINT `fk_carritos_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -236,7 +249,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Cali','',5,400.00,'cali.jpg',1,1),(2,'Bono','Maceta de forma hexagonal de 12cm de altura',8,600.00,'bono.gif',1,1),(3,'Gala Small','Nuestro modelo mas pequeño para tus sucus o cactus',12,300.00,'gala.jpg',1,1),(4,'Gala','Nuestra versión Gala de 9cm',6,400.00,'gala.jpg',1,1),(5,'Flora','Flora es ideal para plantas grandes. Su diseño esta en todos los detalles',15,1000.00,'flora.jpg',0,1),(6,'Tino','Un modelo tradicional, pero que destaca por su calidad',4,450.00,'tino.jpg',1,1),(7,'Gea','Nuestro modelo colgante',7,600.00,'colgante.jpg',1,1),(8,'Cenicero','Nuestros Cenicero',11,300.00,'cenicero.jpg',0,2),(9,'Vela','Nuestras Velas',10,400.00,'velas.jpg',0,3);
+INSERT INTO `products` VALUES (1,'Cali','Alta maceta',5,400.00,'photo-1605575282313.jpg',1,1),(2,'Bono','Maceta de forma hexagonal de 12cm de altura',8,600.00,'bono.gif',1,1),(3,'Gala Small','Nuestro modelo mas pequeño para tus sucus o cactus',12,300.00,'gala.jpg',1,1),(4,'Gala','Nuestra versión Gala de 9cm',6,400.00,'gala.jpg',1,1),(5,'Flora','Flora es ideal para plantas grandes. Su diseño esta en todos los detalles',15,1000.00,'flora.jpg',0,1),(6,'Tino','Un modelo tradicional, pero que destaca por su calidad',4,450.00,'tino.jpg',1,1),(7,'Gea','Nuestro modelo colgante',7,600.00,'colgante.jpg',1,1),(8,'Cenicero','Nuestros Cenicero',11,300.00,'cenicero.jpg',0,2),(9,'Vela','Nuestras Velas',10,400.00,'velas.jpg',0,3);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +269,7 @@ CREATE TABLE `profiles` (
   `city` varchar(50) DEFAULT NULL,
   `pais` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +278,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,'Abril','Abril',' ',' ','La Plata','Argentina'),(2,'Kamila','Camil',' ',' ','Bs. As.','Argentina'),(3,'Tomasina','Tamous',' ',' ','General Pico','Argentina'),(4,'Ken','Keny',' ',' ','Bariloche','Argentina'),(5,'Emyle','Emilia',' ',' ','San Rafael','Argentina'),(6,'Melosa','Mel',' ',' ','Santa Fe','Argentina'),(7,'Craig','Crac',' ',' ','Cordoba','Argentina'),(8,'Tonye','Toni',' ',' ','Bahia Blanca','Argentina'),(9,'Mitchel','Miguel',' ',' ','Parana','Argentina'),(10,'Eustace','Esta',' ',' ','San Nicolas','Argentina'),(11,'Guss','Gomez',' ',' ','Junin','Argentina'),(12,'Ramon','Ramon','avatar-1606682398336.jpg','La vecindad puerta 72','Mexico','Mexico'),(13,'','','avatar-1612009571003.png','','',''),(14,'','','avatar-1612009624965.png','','','');
+INSERT INTO `profiles` VALUES (1,'Abril','Abril',' ',' ','La Plata','Argentina'),(2,'Kamila','Camil',' ',' ','Bs. As.','Argentina'),(3,'Tomasina','Tamous',' ',' ','General Pico','Argentina'),(4,'Ken','Keny',' ',' ','Bariloche','Argentina'),(5,'Emyle','Emilia',' ',' ','San Rafael','Argentina'),(6,'Melosa','Mel',' ',' ','Santa Fe','Argentina'),(7,'Craig','Crac',' ',' ','Cordoba','Argentina'),(8,'Tonye','Toni',' ',' ','Bahia Blanca','Argentina'),(9,'Mitchel','Miguel',' ',' ','Parana','Argentina'),(10,'Eustace','Esta',' ',' ','San Nicolas','Argentina'),(11,'Guss','Gomez',' ',' ','Junin','Argentina'),(12,'Ramon','Ramon','avatar-1606682398336.jpg','La vecindad puerta 72','Mexico','Mexico');
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,7 +338,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL,
   `email` varchar(40) DEFAULT NULL,
   `password` varchar(100) NOT NULL,
   `user_name` varchar(25) NOT NULL,
@@ -336,10 +349,9 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_users_tipos_usuarios1_idx` (`tipo_usuario_id`),
   KEY `fk_users_profiles1_idx` (`profile_id`),
-  KEY `idx_users_id` (`id`),
   CONSTRAINT `fk_users_profiles1` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`),
   CONSTRAINT `fk_users_tipos_usuarios1` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipos_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +360,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'abril@gmail.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Abril',1,1),(2,'knern1@shinystat.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Kamila',2,2),(3,'treeday2@jimdo.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Tomasina',2,3),(4,'kcouronne3@gov.uk','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Ken',2,4),(5,'efayerbrother4@ucoz.ru','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Emyle',2,5),(6,'mcoase5@dropbox.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Melosa',2,6),(7,'cgully6@cbslocal.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Craig',2,7),(8,'tdeeks7@joomla.org','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Tonye',2,8),(9,'mflageul8@github.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Mitchel',2,9),(10,'ecoath9@hugedomains.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Eustace',2,10),(11,'gfairbridge0@earthlink.net','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Guss',2,11),(12,'donramon@net.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Monchito',2,12),(13,'ale@dh.com','$2a$10$xM3BkjUpslVJ4Bnd2b2i2ODghIzQuTaXEsT6qps6faRVjzE7d/Fly','alevi_dh',1,13),(14,'agus@dh.com','$2a$10$9CuzJL1lgTIHNqbFvHRXBublCQuYlGQ9uOT3n6soG9N3CiBDEi5oW','aguspi_dh',1,14);
+INSERT INTO `users` VALUES (1,'abril@gmail.com','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Abril',1,1),(2,'knern1@shinystat.com','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Kamila',2,2),(3,'treeday2@jimdo.com','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Tomasina',2,3),(4,'kcouronne3@gov.uk','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Ken',2,4),(5,'efayerbrother4@ucoz.ru','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Emyle',2,5),(6,'mcoase5@dropbox.com','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Melosa',2,6),(7,'cgully6@cbslocal.com','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Craig',2,7),(8,'tdeeks7@joomla.org','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Tonye',2,8),(9,'mflageul8@github.com','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Mitchel',2,9),(10,'ecoath9@hugedomains.com','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Eustace',2,10),(11,'gfairbridge0@earthlink.net','$2a$10$LUZpgLGUGfDNP4jW8HWeU.KZx80SvZUg8COvg7zjVRNBfEB12C95S','Guss',2,11),(12,'donramon@net.com','$2a$10$AfcXK6e/KjiIqaO4rFbdKe79sl0OVm52BV398ycCBhu9rsy26fNv.','Monchito',2,12);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -361,4 +373,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-30 10:01:19
+-- Dump completed on 2021-01-09 17:02:06

@@ -153,6 +153,7 @@ module.exports = {
         })
     },
     update : (req, res) => {
+<<<<<<< HEAD
         //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
         // let ids = Number(req.params.id) - 1;
         
@@ -179,6 +180,9 @@ module.exports = {
         }
 
         db.Products.update({
+=======
+        db.Product.update({
+>>>>>>> aa03564180c8d04722b8317289ba9458ed889a41
             name: req.body.name,
             description: req.body.description,
             category_id: req.body.category,
