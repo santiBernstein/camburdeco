@@ -44,6 +44,7 @@ window.addEventListener("load", function() {
     });
 
     img.addEventListener("change", ()=> {
+        cleanErrors('img', img);
         let pathStringToArray = img.value.split('.');
         let ext = pathStringToArray[pathStringToArray.length-1];
         let formats = ['jpg','jpeg','png','gif'];

@@ -1,5 +1,7 @@
 const db = require('../database/models');
 const {validationResult} = require('express-validator');
+const path = require('path');
+const fs = require('fs')
 
 let allCategories = []
 let allColors = []
@@ -69,7 +71,6 @@ module.exports = {
             include: [{association:"category"}, {association:"style"}, {association:"colores"}]
         })
         .then((productsData) =>{
-            console.log(productsData)
             let dataEstilo = productsData.style
             let dataColor = productsData.colores
             res.render('products/detail', { productsData, dataEstilo, dataColor });
@@ -95,7 +96,6 @@ module.exports = {
     store : async (req, res, next) => {
          let errors = validationResult(req)
          if(errors.errors.length){
-            console.log(errors.mapped())
              return res.render('products/create', { 
 		 		errors : errors.mapped(),
                 data : req.body,
@@ -153,36 +153,19 @@ module.exports = {
         })
     },
     update : (req, res) => {
-<<<<<<< HEAD
-        //let content = JSON.parse(fs.readFileSync(productFilePath, {encoding: 'utf-8'}));
-        // let ids = Number(req.params.id) - 1;
-        
-
-        // content[ids].name = req.body.name;
-		// content[ids].category = req.body.category;
-		// content[ids].price = req.body.price;
-		// content[ids].stock = req.body.stock; 
-        // content[ids].style.splice(0,content[ids].style.length-1,req.body.style);
-        // content[ids].color.splice(0,content[ids].style.length-1,req.body.color); 
-        // content[ids].description = req.body.desciption;
-        // content[ids].img = req.files[0].filename;
-        console.log("estoy llegando a updaten")
         let errors = validationResult(req)
         if(errors.errors.length){
-           console.log(errors.mapped())
+            console.log(errors.mapped())
             return res.render('products/create', { 
                 errors : errors.mapped(),
-               data : req.body,
-               categories: allCategories,
-               color: allColors,
-               style: allStyles
+                data : req.body,
+                categories: allCategories,
+                color: allColors,
+                style: allStyles
             })
         }
 
-        db.Products.update({
-=======
         db.Product.update({
->>>>>>> aa03564180c8d04722b8317289ba9458ed889a41
             name: req.body.name,
             description: req.body.description,
             category_id: req.body.category,
@@ -227,22 +210,51 @@ module.exports = {
      
     },
     destroy : (req,res) => {
-        //let content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
-		//  const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
-        //  console.log(imagePath)
-        //  fs.unlink(imagePath, function (err) {
-		//  	if (err) throw err;
-		//  	console.log('File deleted!');
-		//  })
-		 //content.splice((Number(req.params.id)-1),1)
-		 //let i=1;
-		 //content.forEach(product=>product.id = i++)
-        // fs.writeFileSync(productFilePath,JSON.stringify(content))
-        
-        db.Products.destroy({
-            where: { id: req.params.id }
+        db.Product.findByPk(req.params.id)
+        .then(resultado=>{
+            const imagePath = path.join(__dirname,"../public/images",resultado.img);
+            fs.unlink(imagePath, function (err) {
+                  if (err) throw err;
+            })
+            db.Product_Color.destroy({
+                where: {
+                    product_id : req.params.id
+                }
+            })
         })
-        .then()
-		res.redirect('/')
+        .then(resultado => {
+            db.Product_Style.destroy({
+                where: {
+                    product_id: req.params.id
+                }
+            })
+        })
+        .then(resultado=> {
+            db.Product_Carrito.destroy({
+                where: {
+                    product_id: req.params.id
+                }
+            })
+        })
+        .then(resultado=>{
+            db.Product.destroy({
+                where: { 
+                    id: req.params.id 
+                },
+                include: [
+                    {association:"category"},
+                    {association:"style"},
+                    {association:"colores"}
+                ]
+            })
+        })
+        .then(resultado => {
+            res.redirect('/')
+        })
+        .catch(error=>{
+            console.log(error)
+            return error;
+        })
+		
     }
 }

@@ -13,6 +13,7 @@ let storage = multer.diskStorage({
 			cb(null, 'public/images')
 		},
 		filename : function(req,file,cb){
+			console.log(file)
 			cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
 		 }
 })
@@ -50,7 +51,7 @@ router.post('/', upload.single('img'), productsValidator, productosControllers.s
 router.get('/:id', productosControllers.detail);
 
 router.get('/:id/edit', productosControllers.edit);
-router.put('/:id', upload.single('img'), productosControllers.update);
+router.put('/:id', upload.single('img'), productsValidator, productosControllers.update);
 
 router.delete('/:id', productosControllers.destroy);
 
