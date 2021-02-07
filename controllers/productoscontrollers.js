@@ -1,5 +1,7 @@
 const db = require('../database/models');
 const {validationResult} = require('express-validator');
+const path = require('path');
+const fs = require('fs')
 
 let allCategories = []
 let allColors = []
@@ -69,7 +71,6 @@ module.exports = {
             include: [{association:"category"}, {association:"style"}, {association:"colores"}]
         })
         .then((productsData) =>{
-            console.log(productsData)
             let dataEstilo = productsData.style
             let dataColor = productsData.colores
             res.render('products/detail', { productsData, dataEstilo, dataColor });
@@ -95,7 +96,6 @@ module.exports = {
     store : async (req, res, next) => {
          let errors = validationResult(req)
          if(errors.errors.length){
-            console.log(errors.mapped())
              return res.render('products/create', { 
 		 		errors : errors.mapped(),
                 data : req.body,
@@ -153,40 +153,108 @@ module.exports = {
         })
     },
     update : (req, res) => {
+        let errors = validationResult(req)
+        if(errors.errors.length){
+            console.log(errors.mapped())
+            return res.render('products/create', { 
+                errors : errors.mapped(),
+                data : req.body,
+                categories: allCategories,
+                color: allColors,
+                style: allStyles
+            })
+        }
+
         db.Product.update({
             name: req.body.name,
             description: req.body.description,
-            category: req.body.category,
-            style: req.body.style,
-            color: req.body.color,
+            category_id: req.body.category,
             stock: req.body.stock,
             price: req.body.price,
-            img: req.files[0].filename,
-            top: req.body.top 
+            img: req.file.filename,
+            top: 0
         }, {
             where: {
                 id: req.params.id
             }
+        }).then(resultado=>{
+            let estilos =  (req.body.style.length < 2 )? [req.body.style] : req.body.style 
+            estilos.forEach(estiloId=>{
+                db.Product_Style.update({
+                    product_id: resultado.null,
+                    style_id: estiloId
+                },{
+                    where: {
+                        product_id: req.params.id
+                    }
+                })
+            })
+            let colores =  (req.body.color.length < 2 )? [req.body.color] : req.body.color 
+            colores.forEach(colorId=>{
+                db.Product_Color.create({
+                    product_id: resultado.null,
+                    color_id: colorId
+                },{
+                    where: {
+                        product_id: req.params.id
+                    }
+                })
+            })
+             res.redirect('/')
         })
-		res.redirect('/')
+        .catch((error) => {
+            console.log(error);
+            return error;
+        })   
+      
+     
     },
     destroy : (req,res) => {
-        //let content = JSON.parse(fs.readFileSync(productFilePath, 'utf-8'));
-		//  const imagePath = path.join(__dirname,"../public/images",content[(Number(req.params.id)-1)].img);
-        //  console.log(imagePath)
-        //  fs.unlink(imagePath, function (err) {
-		//  	if (err) throw err;
-		//  	console.log('File deleted!');
-		//  })
-		 //content.splice((Number(req.params.id)-1),1)
-		 //let i=1;
-		 //content.forEach(product=>product.id = i++)
-        // fs.writeFileSync(productFilePath,JSON.stringify(content))
-        
-        db.Products.destroy({
-            where: { id: req.params.id }
+        db.Product.findByPk(req.params.id)
+        .then(resultado=>{
+            const imagePath = path.join(__dirname,"../public/images",resultado.img);
+            fs.unlink(imagePath, function (err) {
+                  if (err) throw err;
+            })
+            db.Product_Color.destroy({
+                where: {
+                    product_id : req.params.id
+                }
+            })
         })
-        .then()
-		res.redirect('/')
+        .then(resultado => {
+            db.Product_Style.destroy({
+                where: {
+                    product_id: req.params.id
+                }
+            })
+        })
+        .then(resultado=> {
+            db.Product_Carrito.destroy({
+                where: {
+                    product_id: req.params.id
+                }
+            })
+        })
+        .then(resultado=>{
+            db.Product.destroy({
+                where: { 
+                    id: req.params.id 
+                },
+                include: [
+                    {association:"category"},
+                    {association:"style"},
+                    {association:"colores"}
+                ]
+            })
+        })
+        .then(resultado => {
+            res.redirect('/')
+        })
+        .catch(error=>{
+            console.log(error)
+            return error;
+        })
+		
     }
 }
