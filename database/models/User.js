@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
         tipo_usuario_id: {
             type: DataTypes.INTEGER,
             foreignKey: true,
-        },
-        profile_id: {
-            type: DataTypes.INTEGER,
-            foreignKey: true,
         }
     };
     let config = {
@@ -35,9 +31,9 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "tipo_usuario_id"
 
         })
-        User.belongsTo(models.Profile, {
+        User.hasOne(models.Profile, {
             as: "profiles",
-            foreignKey: "profile_id"
+            foreignKey: "user_id"
 
         })
         User.hasMany(models.Carrito, {

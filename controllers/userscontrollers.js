@@ -15,28 +15,18 @@ module.exports = {
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
-        db.User.findOne({
-            include: [{association:"tiposUsuarios"}],
-            where: {
-                email: req.body.email
-            }
-        })
-        .then((userData) => {
-            if(userData === null){
-                errors = errors.mapped()
-                errors = {
-                    email: {
-                        value: '',
-                        msg: 'El email ingresado NO existe',
-                        param: 'email',
-                        location: 'body'
-                    }
-                }             
-                return res.render('users/login', { 
-                    errors,
-                    data : req.body
-                })  
-            } else {
+        console.log('ERRORS', errors)
+        if(errors.errors.length > 0){
+            errors = errors.mapped()
+            res.render('users/login', { errors, data : req.body })  
+        } else {
+            db.User.findOne({
+                include: [{association:"tiposUsuarios"}],
+                where: {
+                    email: req.body.email
+                }
+            })
+            .then((userData) => {
                 if(bcryptjs.compareSync(req.body.password, userData.password)){
                     req.session.user = userData.user_name
                     req.session.ides = userData.id
@@ -44,7 +34,6 @@ module.exports = {
                     if(req.body.recordame){
                         res.cookie('recordame', userData.email, {maxAge: 120 * 1000})
                     }
-                    
                     return res.redirect('/')
                 } else { 
                     return res.render('users/login', {
@@ -52,12 +41,59 @@ module.exports = {
                         data : req.body
                     }) 
                 }
-            }	           
-        })
-        .catch((error) => {
-            console.log(error);
-            return error;
-        })		
+                
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            })
+            
+        }
+        
+
+        // db.User.findOne({
+        //     include: [{association:"tiposUsuarios"}],
+        //     where: {
+        //         email: req.body.email
+        //     }
+        // })
+        // .then((userData) => {
+        //     if(userData === null){
+        //         errors = errors.mapped()
+        //         errors = {
+        //             email: {
+        //                 value: '',
+        //                 msg: 'El email ingresado NO existe',
+        //                 param: 'email',
+        //                 location: 'body'
+        //             }
+        //         }             
+        //         return res.render('users/login', { 
+        //             errors,
+        //             data : req.body
+        //         })  
+        //     } else {
+        //         if(bcryptjs.compareSync(req.body.password, userData.password)){
+        //             req.session.user = userData.user_name
+        //             req.session.ides = userData.id
+        //             req.session.tipoUsuario = userData.tiposUsuarios.tipo
+        //             if(req.body.recordame){
+        //                 res.cookie('recordame', userData.email, {maxAge: 120 * 1000})
+        //             }
+                    
+        //             return res.redirect('/')
+        //         } else { 
+        //             return res.render('users/login', {
+        //                 errors : errors.mapped(),
+        //                 data : req.body
+        //             }) 
+        //         }
+        //     }	           
+        // })
+        // .catch((error) => {
+        //     console.log(error);
+        //     return error;
+        // })		
 	},
 	logout: (req, res) => {
 		req.session.destroy()
@@ -81,62 +117,87 @@ module.exports = {
             })
         }
         let salt = bcryptjs.genSaltSync(10);
-        // db.Profile.create({
+        return db.User.create({
+            email: req.body.email,
+                password: bcryptjs.hashSync(req.body.password,salt),
+                user_name: req.body.name,
+                tipo_usuario_id: 2,    
+                profiles: {
+                    first_name: '',
+                    last_name: '',
+                    avatar: req.files[0].filename,
+                    address: '',
+                    city: '',
+                    pais: '', 
+                }
+            }, {
+            include: [{
+                association: "profiles"
+            }]
+        })
+            .then((result) => {
+                console.log('result1',result)
+                res.redirect('/')
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            })
+
+        // return db.Profile.create({
         //     first_name: '',
-        //         last_name: '',
-        //         avatar: req.files[0].filename,
-        //         address: '',
-        //         city: '',
-        //         pais: '',
+        //     last_name: '',
+        //     avatar: req.files[0].filename,
+        //     address: '',
+        //     city: '',
+        //     pais: '',            
         //     User: {
         //         email: req.body.email,
         //         password: bcryptjs.hashSync(req.body.password,salt),
         //         user_name: req.body.name,
         //         tipo_usuario_id: 2,
-        //         profile_id: Profile.null
+        //         profile_id: null,
         //     }
-            
-            
-        //   }, {
+        // }, {
         //     include: [{
-        //       association: "users"
+        //     association: "users"
         //     }]
-        //   })
-        //   .then((result) => {
-        //       console.log(result)
-        //     res.redirect('/')
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //     return error;
         // })
+        //     .then((result) => {
+        //         console.log('result1',result)
+        //         res.redirect('/')
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //         return error;
+        //     })
           
-        db.Profile.create({
-            first_name: '',
-            last_name: '',
-            avatar: req.files[0].filename,
-            address: '',
-            city: '',
-            pais: '',
-        })
+        // db.Profile.create({
+        //     first_name: '',
+        //     last_name: '',
+        //     avatar: req.files[0].filename,
+        //     address: '',
+        //     city: '',
+        //     pais: '',
+        // })
         
-            db.Profile.count()
-                .then (result => {
-                    result = result + 1
-                    db.User.create({
-                        email: req.body.email,
-                        password: bcryptjs.hashSync(req.body.password,salt),
-                        user_name: req.body.name,
-                        tipo_usuario_id: 2,
-                        profile_id: result,                
-                    })
-                    .then((resultado) => {
-                        console.log(resultado)
-                        res.redirect('/users/login')
-                    })
+        //     db.Profile.count()
+        //         .then (result => {
+        //             result = result + 1
+        //             db.User.create({
+        //                 email: req.body.email,
+        //                 password: bcryptjs.hashSync(req.body.password,salt),
+        //                 user_name: req.body.name,
+        //                 tipo_usuario_id: 2,
+        //                 profile_id: result,                
+        //             })
+        //             .then((resultado) => {
+        //                 console.log(resultado)
+        //                 res.redirect('/users/login')
+        //             })
                     
-                }
-            )          
+        //         }
+        //     )          
         
     }, 
     perfil : (req,res) => {

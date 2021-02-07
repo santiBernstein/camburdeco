@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         pais: {
             type: DataTypes.STRING
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            foreignKey: true,
         }
     };
     let config = {
@@ -32,9 +36,9 @@ module.exports = (sequelize, DataTypes) => {
     let Profile = sequelize.define(alias, cols, config);
 
     Profile.associate = (models) => {
-        Profile.hasOne(models.User, {
+        Profile.belongsTo(models.User, {
             as: "users",
-            foreignKey: "profile_id"
+            foreignKey: "user_id"
         })
     }
     return Profile;

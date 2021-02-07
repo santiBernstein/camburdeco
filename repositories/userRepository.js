@@ -3,22 +3,18 @@ let path = require('path')
 const db = require('../database/models');
 let bcryptjs = require('bcryptjs');
 
-function create (req){
-        
-        return 
-}
-
 function findByName(name){
         db.User.findOne({
                 include: [{association:"tiposUsuarios"}],
                 where: {
-                        name: user.name
+                        user_name: name
                 }
         })
-        .then((usersData) => {
-                if (usersData == null) {
-                        return 
-                }                
+        .then((dataResult) => {
+                if (dataResult == null) {
+                        dataResult = 'no match'
+                }
+                return dataResult              
             })
         .catch((error) => {
                 console.log(error);
@@ -26,16 +22,37 @@ function findByName(name){
             })          
 }
 
-async function findById (id){
-        await db.Profile.findByPk(id)
-                .then((result) => {
-                        return result
-                }
-        )
+function findById (id){
+        db.User.findByPk(id)
+                .then((dataResult) => {
+                        if (dataResult == null) {
+                                dataResult = 'no match'
+                        }
+                        return dataResult              
+                })
+                .catch((error) => {
+                        console.log(error);
+                        return error;
+                }) 
 }
 
 function findByEmail (imeil){
-        
+        db.User.findOne({
+                include: [{association:"tiposUsuarios"}],
+                where: {
+                        email: imail
+                }
+        })
+        .then((dataResult) => {
+                if (dataResult == null) {
+                        dataResult = 'no match'
+                }
+                return dataResult              
+            })
+        .catch((error) => {
+                console.log(error);
+                return error;
+            })    
 }
 
 function lastest (dataBase){
@@ -49,9 +66,13 @@ function compare(value1,value2){
 }
 
 function contar(dataBase){
-        db.Profile.count().then(resultado => { 
-                console.log('count', resultado) 
-                return resultado
+        db.Profile.count()
+        .then((dataResul) => { 
+                return dataResult
+        })
+        .catch((error) => {
+                console.log(error);
+                return error;
         })
 }
 
@@ -60,7 +81,6 @@ module.exports = {
         findByName,
         findByEmail,
         findById,
-        create,
         lastest,
         compare
 }
