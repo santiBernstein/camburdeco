@@ -29,6 +29,10 @@ router.post('/login', usersValidator, usersControllers.processLogin);
 
 router.post('/logout', usersControllers.logout);
 
+router.get('/list', usersControllers.list);
+router.get('/detail/:id', usersControllers.detail);
+router.put('/upgrade/:id',usersControllers.upgrade)
+
 router.get('/recupero', usersControllers.recuperar);
 router.put('/:id', upload.any(), userPerfilValidator, usersControllers.edit);
 router.get('/perfil/:id', usersControllers.perfil);

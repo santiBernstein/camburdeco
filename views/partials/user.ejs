@@ -1,0 +1,13 @@
+<article class="product-card">
+    <a href="/users/detail/<%= user.id %>">
+        <div class="picture">
+            <% if (user.profiles.avatar.length < 24) { %> 
+                <img src="/images/users/not_image.png">
+            <% } else { %> 
+                <img src="/images/users/<%= user.profiles.avatar %>">
+            <% } %> 
+        </div>
+        <p class="product-name"> <%= user.user_name %></p>
+        <p class="product-price">$<%= user.email %></p>
+    </a>
+</article>

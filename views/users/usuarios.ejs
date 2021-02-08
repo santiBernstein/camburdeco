@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/stylesheets/products.css">
+</head>
+
+<body>
+    <%- include("../partials/header", {data : 0}) %>
+
+    <main>
+
+        <div class="banner-contain">
+            <img class="banner-portada" src="/images/banner-bananas.png" alt="baner">
+        </div>
+
+        <div>
+            <div class="title-container">
+                <p>USUARIOS</p>
+            </div>
+        </div>
+       
+        <div class="products w-80">
+            <div class="d-flex flex-wrap">
+                <% if(usersData.length != 0) {%> 
+                    <% usersData.forEach(user => { %> 
+                        <%- include("../partials/user", {user}) %>
+                    <% }); %> 
+                <% } %>  
+            </div>
+        </div>
+     </main>
+
+    <%- include("../partials/footer") %>
+
+</body>
+
+</html>

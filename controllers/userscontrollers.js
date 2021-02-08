@@ -100,6 +100,20 @@ module.exports = {
 		res.cookie('recordame', null, {maxAge: 0})
 	    res.redirect('/')
     },
+    list: (req,res) => {
+        listUser = db.User.findAll({
+            include: ["profiles","tiposUsuarios"]
+        }) 
+        Promise.all([listUser])            
+            .then(([usersData]) => {
+                res.render('users/usuarios', {usersData}); 
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            })
+
+    },
     registro : (req, res) => {
         res.render('users/register',{ data : {}, errors: {}, avatar: true }); 
     },
@@ -143,76 +157,29 @@ module.exports = {
                 console.log(error);
                 return error;
             })
-
-        // return db.Profile.create({
-        //     first_name: '',
-        //     last_name: '',
-        //     avatar: req.files[0].filename,
-        //     address: '',
-        //     city: '',
-        //     pais: '',            
-        //     User: {
-        //         email: req.body.email,
-        //         password: bcryptjs.hashSync(req.body.password,salt),
-        //         user_name: req.body.name,
-        //         tipo_usuario_id: 2,
-        //         profile_id: null,
-        //     }
-        // }, {
-        //     include: [{
-        //     association: "users"
-        //     }]
-        // })
-        //     .then((result) => {
-        //         console.log('result1',result)
-        //         res.redirect('/')
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //         return error;
-        //     })
-          
-        // db.Profile.create({
-        //     first_name: '',
-        //     last_name: '',
-        //     avatar: req.files[0].filename,
-        //     address: '',
-        //     city: '',
-        //     pais: '',
-        // })
-        
-        //     db.Profile.count()
-        //         .then (result => {
-        //             result = result + 1
-        //             db.User.create({
-        //                 email: req.body.email,
-        //                 password: bcryptjs.hashSync(req.body.password,salt),
-        //                 user_name: req.body.name,
-        //                 tipo_usuario_id: 2,
-        //                 profile_id: result,                
-        //             })
-        //             .then((resultado) => {
-        //                 console.log(resultado)
-        //                 res.redirect('/users/login')
-        //             })
-                    
-        //         }
-        //     )          
-        
     }, 
     perfil : (req,res) => {
         let errors = validationResult(req)
         ids = req.params.id
-        console.log('ids', ids)
         db.User.findByPk(ids,
                 {
                     include: [{association:"profiles"}]
                 })
                     .then((data) => {
-                        console.log('result', data)
                         res.render('users/perfil', { errors : errors.mapped(), data, ids })
                     }
                 )   
+    },
+    detail : (req,res) => {
+        ids = req.params.id
+        db.User.findByPk(ids,
+            {
+                include: ["profiles","tiposUsuarios"]
+            })
+            .then((data) => {
+                res.render('users/users', { data, ids })
+            }
+        )   
     },
     edit : (req, res) => {
         let errors = validationResult(req)
@@ -234,6 +201,22 @@ module.exports = {
             res.render('users/perfil', { errors : errors.mapped(), data : req.body });
         }
     },    
+    upgrade : (req, res) => {
+        console.log('UPGRADE1', req.body.tipousuario)
+        console.log('UPGRADE2', req.body.nrocliente)
+        console.log('UPGRADE3', req.params.id)
+        db.User.update({
+            email: '',
+            password: '',
+            user_name: '',
+            tipo_usuario_id: req.body.tipousuario,
+        }, {
+            where: {
+                id: req.body.nrocliente
+            }
+        })
+        res.redirect('/users/list');
+    },  
     recuperar : (req, res) => {
         res.render('users/recupero'); 
     },

@@ -11,14 +11,16 @@
             </div>
             <% if (locals.tipoUsuario == 'ADMIN') { %>
             <ul class="d-flex">
+                <li  class = "options-user">
+                    <a class="lin-vertical lin-vertical-izquierda" href="/users/list">Modificar Perfiles</a>
+                </li>
                 <li class = "options-user">
-                    <a class="lin-vertical lin-vertical-izquierda" href="/products/create">Agregar Productos</a>
+                    <a class="lin-vertical " href="/products/create">Agregar Productos</a>
                 </li>
                 <% if (data == 1) { %>
                 <li  class = "options-user">
                     <a class="lin-vertical" href="/products/<%= ids %>/edit">Modificar Productos</a>
                 </li>
-
                 <li  class = "options-user">
                     <form action="/products/<%= ids %>?_method=DELETE" method="POST" class="form-inline">
                         <button class="button-delete" type="submit">Eliminar Productos</button>
