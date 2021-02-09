@@ -12,33 +12,19 @@
             </div>
             <article class="registrointerior">
                 <div class="formulario">
-                    <form id="form" action="/users/upgrade/<%= locals.ides %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <form id="form" action="/users/upgrade/<%= data.id %>?_method=PUT" method="POST">
                         <div>
                             <p><img class="imagenes" src="../../images/users/<%= data.profiles.avatar %>" alt="avatar"></p>
                         </div>
-                        <input class="ingreso" type="" id="nrocliente" name="nrocliente" value="<%= data.id %>">
-                        <label for="imagen" class="form-label">Datos de identidad</label>
-                        <p class="ingreso">Nombre: <%= data.profiles.first_name %></label>
-                        
-                        <p class="ingreso">Apellido: <%= data.profiles.last_name %> </p>
-                         
-                        <p class="ingreso">D.N.I.: <%= data.profiles.dni %></p>
-                        <p class="ingreso">e-mail: <%= data.email %></p>
-                        
-                        <label for="imagen" class="form-label">Datos de envío</label>
-                        <p class="ingreso">Domicilio: <%= data.profiles.address %></p>
-                        <p class="ingreso">Localidad: <%= data.profiles.city %></p>
-                        <p class="ingreso">Pais: <%= data.profiles.pais %></p>
-                        <label for="imagen" class="form-label">Datos de pago</label>
-                        <p class="ingreso">Método de pago: <%= data.metodo_pago %></p>
-                        <p class="ingreso">Nro. tarjeta de crédito: <%= data.nroTarjeta %></p>
+                        <label for="" class="form-label">Datos de identidad</label>
+                        <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.profiles.first_name %>" disabled>
+                        <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.profiles.last_name %>" disabled>
+                        <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail" value="<%= data.email %>" disabled>    
+                        <label for="" class="form-label">Tipo de Usuario</label>
+                        <input class="ingreso" type="text" id="tipousuario" name="tipousuario" placeholder="Tipo Usuario" value="<%= data.tipo_usuario_id %>"></p>
             
-                        <label for="imagen" class="form-label">Tipo de usuario</label>
-                        <p class="ingreso">Usuario: <%= data.tiposUsuarios.tipo %></p>
-                        <input class="ingreso" type="" id="tipousuario" name="tipousuario" placeholder="Indicar tipo de usuario" value="<%= data.tipo_usuario_id %>">
-                        <p><button class="boton" type="submit" value="Actualizar">Actualizar Perfil</p>
+                        <p><button class="boton" type="submit" value="actualizar">Continuar</p>                        
                     </form>
-                    
                 </div>
             </article>
         </section>

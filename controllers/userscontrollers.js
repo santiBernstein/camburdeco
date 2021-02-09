@@ -202,17 +202,14 @@ module.exports = {
         }
     },    
     upgrade : (req, res) => {
-        console.log('UPGRADE1', req.body.tipousuario)
-        console.log('UPGRADE2', req.body.nrocliente)
-        console.log('UPGRADE3', req.params.id)
+        console.log('UPGRADE1', req.body)
+        console.log('params', req.params.id)
         db.User.update({
-            email: '',
-            password: '',
-            user_name: '',
+            
             tipo_usuario_id: req.body.tipousuario,
         }, {
             where: {
-                id: req.body.nrocliente
+                id: req.params.id
             }
         })
         res.redirect('/users/list');
