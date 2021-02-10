@@ -9,21 +9,9 @@ module.exports = [
     check('password')
         .isLength({min:8})
         .withMessage('Contraseña Invalida'),
-    // body('email')
-    //     .custom(value => {
-    //         return User.findUserByEmail(value).then(user => {
-    //           if (user == null) {
-    //             return Promise.reject('El email ingresado NO existe');
-    //           }
-    //         });
-    //       }),
-    //       (req, res) => {
-    //         // Handle the request
-    //       },
     body('email')
         .custom(function(value, {req}){
             console.log('VALUE', value)
-            let errors = validationResult(req)
             return db.User.findOne({
                 include: [{association:"tiposUsuarios"}],
                 where: {
@@ -31,16 +19,9 @@ module.exports = [
                 }
             })
             .then((userData) => {
-                console.log('USERDATA', userData)
-                if (userData == null) {          
-                    //new Error('Password confirmation is incorrect');
-
-                    return Promise.reject(new Error('El email ingresado NO existe'));
-                }    
-            })
-            .catch((error) => {
-                console.log(error);
-                return error;
+                if (userData == null) {         
+                    return Promise.reject('El email ingresado NO existe')
+                }  
             })
         })
 ]
