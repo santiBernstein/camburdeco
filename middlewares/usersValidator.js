@@ -19,14 +19,9 @@ module.exports = [
                 }
             })
             .then((userData) => {
-                console.log('USERDATA', validationResult(req))
                 if (userData == null) {         
-                    return Promise.reject('El email ingresado NO existe man')
+                    return Promise.reject('El email ingresado NO existe')
                 }  
-            })
-            .catch((error) => {
-                console.log(error);
-                return error;
             })
         })
 ]

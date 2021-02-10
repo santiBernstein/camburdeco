@@ -8,14 +8,12 @@ const db = require('../database/models');
 const User = require('../database/models/User');
 const Profile = require('../database/models/Profile');
 
-
 module.exports = {
     logearse : (req, res) => {
         res.render('users/login',{ data : { }, errors: { } }); 
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
-        console.log('ERRORS', errors)
         if(errors.errors.length > 0){
             errors = errors.mapped()
             res.render('users/login', { errors, data : req.body })  
@@ -46,54 +44,8 @@ module.exports = {
             .catch((error) => {
                 console.log(error);
                 return error;
-            })
-            
-        }
-        
-
-        // db.User.findOne({
-        //     include: [{association:"tiposUsuarios"}],
-        //     where: {
-        //         email: req.body.email
-        //     }
-        // })
-        // .then((userData) => {
-        //     if(userData === null){
-        //         errors = errors.mapped()
-        //         errors = {
-        //             email: {
-        //                 value: '',
-        //                 msg: 'El email ingresado NO existe',
-        //                 param: 'email',
-        //                 location: 'body'
-        //             }
-        //         }             
-        //         return res.render('users/login', { 
-        //             errors,
-        //             data : req.body
-        //         })  
-        //     } else {
-        //         if(bcryptjs.compareSync(req.body.password, userData.password)){
-        //             req.session.user = userData.user_name
-        //             req.session.ides = userData.id
-        //             req.session.tipoUsuario = userData.tiposUsuarios.tipo
-        //             if(req.body.recordame){
-        //                 res.cookie('recordame', userData.email, {maxAge: 120 * 1000})
-        //             }
-                    
-        //             return res.redirect('/')
-        //         } else { 
-        //             return res.render('users/login', {
-        //                 errors : errors.mapped(),
-        //                 data : req.body
-        //             }) 
-        //         }
-        //     }	           
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        //     return error;
-        // })		
+            })   
+        }		
 	},
 	logout: (req, res) => {
 		req.session.destroy()
