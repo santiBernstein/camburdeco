@@ -33,8 +33,9 @@ module.exports = [
             .then((userData) => {
                 console.log('USERDATA', userData)
                 if (userData == null) {          
-                    new Error('Password confirmation is incorrect');
-                    return Promise.reject('El email ingresado NO existe');
+                    //new Error('Password confirmation is incorrect');
+
+                    return Promise.reject(new Error('El email ingresado NO existe'));
                 }    
             })
             .catch((error) => {
