@@ -255,7 +255,11 @@ CREATE TABLE `profiles` (
   `address` varchar(255) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
   `pais` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_profiles_users1_idx` (`user_id`),
+  KEY `users_id_idx` (`user_id`),
+  CONSTRAINT `users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -265,7 +269,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,'Abril','Abril',' ',' ','La Plata','Argentina'),(2,'Kamila','Camil',' ',' ','Bs. As.','Argentina'),(3,'Tomasina','Tamous',' ',' ','General Pico','Argentina'),(4,'Ken','Keny',' ',' ','Bariloche','Argentina'),(5,'Emyle','Emilia',' ',' ','San Rafael','Argentina'),(6,'Melosa','Mel',' ',' ','Santa Fe','Argentina'),(7,'Craig','Crac',' ',' ','Cordoba','Argentina'),(8,'Tonye','Toni',' ',' ','Bahia Blanca','Argentina'),(9,'Mitchel','Miguel',' ',' ','Parana','Argentina'),(10,'Eustace','Esta',' ',' ','San Nicolas','Argentina'),(11,'Guss','Gomez',' ',' ','Junin','Argentina'),(12,'Ramon','Ramon','avatar-1606682398336.jpg','La vecindad puerta 72','Mexico','Mexico'),(13,'','','avatar-1612009571003.png','','',''),(14,'','','avatar-1612009624965.png','','','');
+INSERT INTO `profiles` VALUES (1,'Abril','Abril','avatar-1606682398339.jpg',' ','La Plata','Argentina',1),(2,'Kamila','Camil',' ',' ','Bs. As.','Argentina',2),(3,'Tomasina','Tamous',' ',' ','General Pico','Argentina',3),(4,'Ken','Keny',' ',' ','Bariloche','Argentina',4),(5,'Emyle','Emilia',' ',' ','San Rafael','Argentina',5),(6,'Melosa','Mel',' ',' ','Santa Fe','Argentina',6),(7,'Craig','Crac',' ',' ','Cordoba','Argentina',7),(8,'Tonye','Toni',' ',' ','Bahia Blanca','Argentina',8),(9,'Mitchel','Miguel',' ',' ','Parana','Argentina',9),(10,'Eustace','Esta',' ',' ','San Nicolas','Argentina',10),(11,'Guss','Gomez',' ',' ','Junin','Argentina',11),(12,'Ramon','Ramon','avatar-1606682398336.jpg','La vecindad puerta 72','Mexico','Mexico',12),(13,'','','avatar-1612907504704.jpg','','','',13),(14,'','','avatar-1612907688613.jpg','','','',14);
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,14 +334,11 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `user_name` varchar(25) NOT NULL,
   `tipo_usuario_id` int NOT NULL,
-  `profile_id` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`user_name`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_users_tipos_usuarios1_idx` (`tipo_usuario_id`),
-  KEY `fk_users_profiles1_idx` (`profile_id`),
   KEY `idx_users_id` (`id`),
-  CONSTRAINT `fk_users_profiles1` FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`),
   CONSTRAINT `fk_users_tipos_usuarios1` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipos_usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -348,7 +349,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'abril@gmail.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Abril',1,1),(2,'knern1@shinystat.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Kamila',2,2),(3,'treeday2@jimdo.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Tomasina',2,3),(4,'kcouronne3@gov.uk','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Ken',2,4),(5,'efayerbrother4@ucoz.ru','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Emyle',2,5),(6,'mcoase5@dropbox.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Melosa',2,6),(7,'cgully6@cbslocal.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Craig',2,7),(8,'tdeeks7@joomla.org','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Tonye',2,8),(9,'mflageul8@github.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Mitchel',2,9),(10,'ecoath9@hugedomains.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Eustace',2,10),(11,'gfairbridge0@earthlink.net','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Guss',2,11),(12,'donramon@net.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Monchito',2,12),(13,'ale@dh.com','$2a$10$xM3BkjUpslVJ4Bnd2b2i2ODghIzQuTaXEsT6qps6faRVjzE7d/Fly','alevi_dh',1,13),(14,'agus@dh.com','$2a$10$9CuzJL1lgTIHNqbFvHRXBublCQuYlGQ9uOT3n6soG9N3CiBDEi5oW','aguspi_dh',1,14);
+INSERT INTO `users` VALUES (1,'abril@gmail.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Abril',1),(2,'knern1@shinystat.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Kamila',2),(3,'treeday2@jimdo.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Tomasina',2),(4,'kcouronne3@gov.uk','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Ken',2),(5,'efayerbrother4@ucoz.ru','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Emyle',2),(6,'mcoase5@dropbox.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Melosa',2),(7,'cgully6@cbslocal.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Craig',2),(8,'tdeeks7@joomla.org','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Tonye',2),(9,'mflageul8@github.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Mitchel',2),(10,'ecoath9@hugedomains.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Eustace',2),(11,'gfairbridge0@earthlink.net','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Guss',2),(12,'donramon@net.com','$2a$10$IW0tAlhw9MvyPZax7BWrvO65XRHXjdtDhjiBJcTzwHaAY09Y6aAyO','Monchito',2),(13,'lisacieloazul@net.com','$2a$10$dk835vEm4j3bnoDmaN0egeSGUXVghvfKszq/Wdp6/B7JdyzNv6yby','Lisa_cieloAzul',2),(14,'barto666@net.com','$2a$10$MU/eJ/pMMqfr9MVZj5LtCeORSZOH/PkSKjn.nkCZQ0RVPfE2wnPPa','Barto666',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -361,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-30 10:01:19
+-- Dump completed on 2021-02-11 20:17:53
