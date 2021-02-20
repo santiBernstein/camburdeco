@@ -9,7 +9,7 @@ const User = require('../database/models/User');
 const Profile = require('../database/models/Profile');
 
 module.exports = {
-    logearse : (req, res) => {
+    logearse: (req, res) => {
         res.render('users/login',{ data : { }, errors: { } }); 
     },
     processLogin: (req, res) => {
@@ -38,8 +38,7 @@ module.exports = {
                         errors : errors.mapped(),
                         data : req.body
                     }) 
-                }
-                
+                } 
             })
             .catch((error) => {
                 console.log(error);
@@ -64,12 +63,11 @@ module.exports = {
                 console.log(error);
                 return error;
             })
-
     },
-    registro : (req, res) => {
+    registro: (req, res) => {
         res.render('users/register',{ data : {}, errors: {}, avatar: true }); 
     },
-    store : (req, res) => {        
+    store: (req, res) => {        
         let errors = validationResult(req)
         let avatars = true;
         if(req.files[0] == null){
@@ -109,7 +107,7 @@ module.exports = {
                 return error;
             })
     }, 
-    perfil : (req,res) => {
+    perfil: (req,res) => {
         let errors = validationResult(req)
         ids = req.params.id
         db.User.findByPk(ids,
@@ -121,7 +119,7 @@ module.exports = {
                     }
                 )   
     },
-    detail : (req,res) => {
+    detail: (req,res) => {
         ids = req.params.id
         db.User.findByPk(ids,
             {
@@ -135,7 +133,7 @@ module.exports = {
             }
         )   
     },
-    edit : (req, res) => {
+    edit: (req, res) => {
         let errors = validationResult(req)
         if (!errors.msg) {
             db.Profile.update({
@@ -155,7 +153,7 @@ module.exports = {
             res.render('users/perfil', { errors : errors.mapped(), data : req.body });
         }
     },    
-    upgrade : (req, res) => {
+    upgrade: (req, res) => {
         db.User.update({
             
             tipo_usuario_id: req.body.tipousuario,
@@ -166,31 +164,40 @@ module.exports = {
         })
         res.redirect('/users/list');
     },  
-    recuperar : (req, res) => {
+    recuperar: (req, res) => {
         res.render('users/recupero'); 
     },
     newsLetter: (req, res) => {
         let errors = validationResult(req)
-        console.log("ERRORS", !errors.errors)
         if (!errors.errors[0]) {
             return db.Newsletter.create({
                 email: req.body.email_news,
             })
             .then((result) => {
-                res.render('users/newsletterError', { errors : "Su e-mail ha sido registrado", data : req.body });
+                res.render('users/mensaje', { errors : "Su e-mail ha sido registrado", data : req.body, mensaje: "NEWSLETER" });
             })
             .catch((error) => {
                 console.log(error);
                 return error;
             })
         } else {
-            res.render('users/newsletterError', { errors : errors.errors[0].msg, data : req.body });
+            res.render('users/mensaje', { errors : errors.errors[0].msg, data : req.body, mensaje: "NEWSLETERS" });
         }
     },
-    contacto : (req, res) => {
-        res.render('users/contact'); 
+    contacto: (req, res) => {
+        let errors = validationResult(req)
+        res.render('users/contact', { errors : errors, data : req.body }); 
     },
-    quienesSomos : (req, res) => {
+    sendMsg: (req,res) => {
+        let errors = validationResult(req)
+        if(errors.errors.length <= 0){
+            res.render('users/mensaje', { errors : "Su mensaje ha sido enviado. Pronto estaremos respondiendo su inquietud.", data : req.body, mensaje: "CONTACTO" });
+        } else {
+            errors = errors.mapped()
+            res.render('users/contact', { errors : errors, data : req.body });
+        }
+    },
+    quienesSomos: (req, res) => {
         res.render('users/quienes-somos');
     }
 }

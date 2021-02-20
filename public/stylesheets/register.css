@@ -101,6 +101,7 @@
     margin: 10px 0px;
     border: solid 2px;
     padding: 5px;
+    border-color: var(--main-color);
                         
 }
 .registrointerior label {

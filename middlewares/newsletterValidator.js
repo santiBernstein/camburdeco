@@ -7,7 +7,6 @@ module.exports = [
         .withMessage('Debe ingresar un e-mail válido'),
     body('email_news')
         .custom(function(value, {req}){
-            console.log("VALUE", value)
             return db.Newsletter.findOne({
                 where: {
                     email: value
