@@ -23,7 +23,7 @@ let upload = multer({
 	limits: {
 		field: 1,
 		fieldNameSize: 50,
-		fieldSize: 20000,
+		fieldSize: 200000,
 		fileSize: 1024*1024,
 	},
 	fileFilter: function(req,file,cb){
