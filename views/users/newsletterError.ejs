@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/stylesheets/register.css">
+</head>
+
+<body>
+    <header>
+        <%- include("../partials/header", {data : 0}) %>
+    </header>
+    <main>
+
+        <section id="registro">
+            <div class="titulo">
+                NEWSLETTER
+            </div>
+            <article class="registrointerior">
+
+                <div class="formulario">
+
+                        <p><label for="name" class="errormsg"><%= data.email_news %></label></p>
+                    
+                        <p><label for="name" class="errormsg"><%= errors %></label></p>
+                    
+                </div>
+            </article>
+        </section>
+
+    </main>
+    <footer>
+        <%- include("../partials/footer") %>
+    </footer>
+</body>
+
+</html>

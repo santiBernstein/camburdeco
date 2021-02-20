@@ -6,6 +6,7 @@ const usersControllers = require('../controllers/userscontrollers');
 const usersValidator = require('../middlewares/usersValidator');
 const userPerfilValidator = require('../middlewares/usersPerfilValidator');
 const registerValidator = require('../middlewares/registerValidator');
+const newsletterValidator = require('../middlewares/newsletterValidator');
 
 let storage = multer.diskStorage({
     destination : function(req,file,cb){
@@ -20,6 +21,7 @@ let upload = multer({storage})
 
 router.get('/contact', usersControllers.contacto);
 router.get('/quienes-somos', usersControllers.quienesSomos);
+router.post('/newsletter', newsletterValidator, usersControllers.newsLetter);
 
 router.get('/register', usersControllers.registro);
 router.post('/' ,upload.any(), registerValidator, usersControllers.store);

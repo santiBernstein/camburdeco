@@ -84,7 +84,7 @@ module.exports = {
         }
         let salt = bcryptjs.genSaltSync(10);
         return db.User.create({
-            email: req.body.email,
+                email: req.body.email,
                 password: bcryptjs.hashSync(req.body.password,salt),
                 user_name: req.body.name,
                 tipo_usuario_id: 2,    
@@ -102,7 +102,6 @@ module.exports = {
             }]
         })
             .then((result) => {
-                console.log('result1',result)
                 res.redirect('/')
             })
             .catch((error) => {
@@ -157,8 +156,6 @@ module.exports = {
         }
     },    
     upgrade : (req, res) => {
-        console.log('UPGRADE1', req.body)
-        console.log('params', req.params.id)
         db.User.update({
             
             tipo_usuario_id: req.body.tipousuario,
@@ -171,6 +168,24 @@ module.exports = {
     },  
     recuperar : (req, res) => {
         res.render('users/recupero'); 
+    },
+    newsLetter: (req, res) => {
+        let errors = validationResult(req)
+        console.log("ERRORS", !errors.errors)
+        if (!errors.errors[0]) {
+            return db.Newsletter.create({
+                email: req.body.email_news,
+            })
+            .then((result) => {
+                res.render('users/newsletterError', { errors : "Su e-mail ha sido registrado", data : req.body });
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            })
+        } else {
+            res.render('users/newsletterError', { errors : errors.errors[0].msg, data : req.body });
+        }
     },
     contacto : (req, res) => {
         res.render('users/contact'); 

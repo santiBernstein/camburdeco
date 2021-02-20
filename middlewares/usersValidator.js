@@ -11,7 +11,6 @@ module.exports = [
         .withMessage('Contraseña Invalida'),
     body('email')
         .custom(function(value, {req}){
-            console.log('VALUE', value)
             return db.User.findOne({
                 include: [{association:"tiposUsuarios"}],
                 where: {
