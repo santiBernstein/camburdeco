@@ -7,7 +7,4 @@ router.get('/', usersControllerApi.users);
 
 router.get('/:id', usersControllerApi.one);
 
-
-
-
 module.exports = router;

@@ -7,7 +7,4 @@ router.get('/', productsControllerApi.productos);
 
 router.get('/:id', productsControllerApi.find);
 
-
-
-
 module.exports = router;

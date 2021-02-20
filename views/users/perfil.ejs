@@ -15,15 +15,16 @@
                     <form id="form" action="/users/<%= locals.ides %>?_method=PUT" method="POST" enctype="multipart/form-data">
                         <div>
                             <p><img class="imagenes" src="../../images/users/<%= data.profiles.avatar %>" alt="avatar"></p>
-                            <label for="imagen" class="form-label">Cargar imagen</label>
+                            <label for="imagen" class="label2">Cargar nueva imagen</label>
                             <input type="file" multiple="multiple" id="avatar" name="avatar" value="<%= data.avatar %>">
                         </div>
+                        <p class="label1">USER NAME: <%= data.user_name %></p>
                         <label for="imagen" class="form-label">Datos de identidad</label>
-                        <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.first_name %>">
+                        <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.profiles.first_name %>">
                         <% if (errors.name != undefined){  %> 
                             <p><%= errors.name.msg  %> </p>
                         <% } %> 
-                        <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.last_name %>">
+                        <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.profiles.last_name %>">
                         <% if (errors.apellido != undefined){  %> 
                             <p><%= errors.apellido.msg  %> </p>
                         <% } %>
@@ -32,16 +33,9 @@
                             <p><%= errors.email.msg  %> </p>
                         <% } %> 
                         <label for="imagen" class="form-label">Datos de envío</label>
-                        <input class="ingreso" type="text" id="domicilio" name="domicilio" placeholder="Domicilio completo" value="<%= data.domicilio %>">
-                        <input class="ingreso" type="text" id="localidad" name="localidad" placeholder="Ciudad" value="<%= data.localidad %>">
-                        <input class="ingreso" type="text" id="pais" name="pais" placeholder="Pais" value="<%= data.pais %>">
-                        <label for="imagen" class="form-label">Datos de pago</label>
-                        <input class="ingreso" type="text" id="medoto_pago" name="metodo_pago" placeholder="Método de pago" value="<%= data.metodo_pago %>">
-                        <input class="ingreso" type="text" id="nroTarjeta" name="nrotarjeta" placeholder="Nro. tarjeta de crédito" value="<%= data.nroTarjeta %>">
-                        <label for="imagen" class="form-label">Password</label>
-                        <input class="ingreso" type="password" id="password" name="password" placeholder="Contraseña" value="<%= data.password %>"></p>
-                        <input class="ingreso" type="password" id="confirmapassword" name="confirmPassword" placeholder="Confirmar Contraseña"></p>
-            
+                        <input class="ingreso" type="text" id="domicilio" name="domicilio" placeholder="Domicilio completo" value="<%= data.profiles.address %>">
+                        <input class="ingreso" type="text" id="localidad" name="localidad" placeholder="Ciudad" value="<%= data.profiles.city %>">
+                        <input class="ingreso" type="text" id="pais" name="pais" placeholder="Pais" value="<%= data.profiles.pais %>">            
                         <p><button class="boton" type="submit" value="Crear cuenta">Continuar</p>
                     </form>
                     

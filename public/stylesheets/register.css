@@ -107,8 +107,26 @@
     font-weight: bolder;
     font-size: 14px;
     padding: 5px;
+    color: #17cff3;
 }
 
+.registrointerior .label1 {
+    font-weight: bolder;
+    font-size: 14px;
+    padding: 5px;
+    color: magenta;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.registrointerior .label2 {
+    font-weight: bolder;
+    font-size: 14px;
+    padding: 5px;
+    color: black;
+}
 
 @media (max-width: 599px) {
     .registrointerior .vista {
