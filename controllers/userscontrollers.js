@@ -129,6 +129,9 @@ module.exports = {
                 include: ["profiles","tiposUsuarios"]
             })
             .then((data) => {
+                if ( data.profiles.avatar.length < 20 ) {
+                    data.profiles.avatar = "not_image.png"
+                }
                 res.render('users/users', { data, ids })
             }
         )   
