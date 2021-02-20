@@ -155,7 +155,6 @@ module.exports = {
     },    
     upgrade: (req, res) => {
         db.User.update({
-            
             tipo_usuario_id: req.body.tipousuario,
         }, {
             where: {

@@ -57,8 +57,7 @@ function findByEmail (imeil){
 
 function lastest (dataBase){
         let userData = db.dataBase.findAll();
-        return usersData.reverse()[0]    
-                   
+        return usersData.reverse()[0]                    
 }
 
 function compare(value1,value2){

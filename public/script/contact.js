@@ -7,7 +7,6 @@ window.addEventListener("load", () => {
     let errors = {}
     
         form.addEventListener("submit", (e)=> {
-            console.log(errors)
             if(Object.keys(errors).length > 0){
                 e.preventDefault(); 
             }
@@ -22,7 +21,6 @@ window.addEventListener("load", () => {
             }
         });
         email.addEventListener("keyup", ()=> {
-            console.log(email)
             if (!validator.isEmail(email.value,)) {
                 email.style.border = "2px solid red"
                 errors[email]="email"
