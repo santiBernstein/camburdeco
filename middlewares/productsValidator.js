@@ -19,8 +19,8 @@ module.exports = [
         .notEmpty()
         .withMessage('Debe seleccionar al menos un Color'),    
     check('description')
-        .isLength({min:20})
-        .withMessage('La Descripción debe contener al menos 20 caracteres'),
+        .isLength({min:10})
+        .withMessage('La Descripción debe contener al menos 10 caracteres'),
     check('img')
         .custom(function(value,{ req }){
             if(req.file == undefined ){

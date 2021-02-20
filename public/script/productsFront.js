@@ -29,7 +29,7 @@ window.addEventListener("load", function() {
     name.addEventListener("keyup", ()=> {
         cleanErrors('name', name);
 
-        if(!validator.isAlpha(name.value) || !validator.isLength(name.value, {min:3, max:50})) {
+        if(!validator.isLength(name.value, {min:3, max:50})) {
             setErrors('name', 'El campo name debe tener al menos 3 caracteres', name);
         }
     });
