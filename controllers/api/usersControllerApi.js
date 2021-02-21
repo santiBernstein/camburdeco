@@ -11,7 +11,7 @@ module.exports = {
         .then((usersData) => {            
 
             for (let i = 0; i < usersData.length; i++){
-                usersData[i].setDataValue("endpoint", "http://localhost:3000/api/users/" + usersData[i].id)
+                usersData[i].setDataValue("endpoint", `http://localhost:${process.env.PORT || '3000'}/api/users/${usersData[i].id}`)
                 delete usersData[i].dataValues.password;
                 delete usersData[i].dataValues.tipo_usuario_id;
             }
@@ -48,12 +48,12 @@ module.exports = {
             delete usersData.dataValues.password;
             delete usersData.dataValues.tipo_usuario_id;
                         
-            usersData.setDataValue("endpointImg", "http://localhost:3000/images/users/" + usersData.profiles.avatar);
+            usersData.setDataValue("endpointImg", `http://localhost:${process.env.PORT || '3000'}/images/users/` + usersData.profiles.avatar);
             let resultado = {
                 meta: {
                     status: 200,
                     total: usersData.length,
-                    url: "/api/users/"
+                    url: `/api/users/${usersData.id}`
                 },
                 data: usersData
             };

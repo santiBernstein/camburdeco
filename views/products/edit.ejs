@@ -13,7 +13,7 @@
             <div>
                 <p><label for="">NOMBRE</label></p>
                 <input id="name" class="ingresar" type="text" name="name" value="<%= product.name %>">
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.name != 'undefined') { %>
                     <p class="errors"><%= errors.name.msg %> </p>
                 <% } %>
             </div>
@@ -32,9 +32,6 @@
             <div>
                 <p><label for="">Precio</label></p>
                 <input class="ingresar" type="text" name="price" value="<%= product.price %>">
-                <% if(typeof errors != 'undefined') { %>
-                    <p class="errors"><%= errors.price.msg %> </p>
-                <% } %>
             </div>
             <div>
                 <p><label for="">Stock</label></p>
@@ -49,9 +46,6 @@
                    <% }) %> 
                     <input name="style" type="checkbox" value=<%= style.id %> <%= checked %>> <%= style.name%></input> 
                 <% }) %>            
-                <% if(typeof errors != 'undefined') { %>
-                    <p class="errors"><%= errors.style.msg %> </p>
-                <% } %> 
             </div>
             <div>
                 <p><label for="">Color</label></p> 
@@ -62,16 +56,13 @@
                    <% }) %> 
                     <input name="color" type="checkbox" value=<%= color.id %> <%= checked %>> <%= color.name%></input> 
                 <% }) %>        
-                <% if(typeof errors != 'undefined') { %>
-                    <p class="errors"><%= errors.color.msg %> </p>
-                <% } %>     
             </div>
             
         
             <div>
                 <p><label for="">Descripción</label></p>
                 <textarea id="description" name="description" cols="30" rows="10" ><%= product.description %></textarea>
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.description != 'undefined') { %>
                     <p class="errors"><%= errors.description.msg %> </p>
                 <% } %>
             </div>
@@ -82,7 +73,7 @@
                     <img class="img-edit" src="/images/<%= product.img %>" alt="imagenproducto">
                 </div>
                 <input id="img" type="file" name="img">  
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.img != 'undefined') { %>
                     <p class="errors"><%= errors.img.msg %> </p>
                 <% } %>  
             </div>

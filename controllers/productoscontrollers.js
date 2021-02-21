@@ -6,6 +6,7 @@ const fs = require('fs')
 let allCategories = []
 let allColors = []
 let allStyles = []
+let productToEdit = []
 
 module.exports = {
     productos : (req, res) => {
@@ -145,6 +146,10 @@ module.exports = {
         let pedidoColor = db.Color.findAll()
         Promise.all([pedidoProduct, pedidoCategory, pedidoStyle, pedidoColor])
         .then(function([product, categories, styles, colors]){
+            productToEdit = product
+            allCategories = categories
+            allColors = colors
+            allStyles = styles
             res.render('products/edit', { product, categories, styles, colors } )
         })
         .catch(error => {
@@ -156,12 +161,13 @@ module.exports = {
         let errors = validationResult(req)
         if(errors.errors.length){
             console.log(errors.mapped())
-            return res.render('products/create', { 
+            return res.render('products/edit', { 
                 errors : errors.mapped(),
                 data : req.body,
+                product: productToEdit,
                 categories: allCategories,
-                color: allColors,
-                style: allStyles
+                colors: allColors,
+                styles: allStyles
             })
         }
 
@@ -171,7 +177,7 @@ module.exports = {
             category_id: req.body.category,
             stock: req.body.stock,
             price: req.body.price,
-            img: req.file.filename,
+            img: req.file != undefined ? req.file.filename : req.body.img,
             top: 0
         }, {
             where: {

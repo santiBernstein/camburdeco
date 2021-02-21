@@ -34,7 +34,7 @@
             <div>
                 <p><label for="">Precio</label></p>
                 <input class="ingresar" type="number" name="price" placeholder="Precio">
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.price != 'undefined') { %>
                     <p class="errors"><%= errors.price.msg %> </p>
                 <% } %>
             </div>
@@ -48,7 +48,7 @@
                     <input type="checkbox" name="style" value="<%= style[i].id %>">
                     <%= style[i].name %> 
                 <% } %>                 
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.style != 'undefined') { %>
                     <p class="errors"><%= errors.style.msg %> </p>
                 <% } %>
             </div>
@@ -58,7 +58,7 @@
                     <input type="checkbox" name="color" value="<%= color[i].id %>">
                     <%= color[i].name %> 
                 <% } %>
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.color != 'undefined') { %>
                     <p class="errors"><%= errors.color.msg %> </p>
                 <% } %>
             </div>
@@ -66,7 +66,7 @@
             <div>
                 <p><label for="">Descripción</label></p>
                 <textarea id="description" name="description" cols="30" rows="10"></textarea>
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.description != 'undefined') { %>
                     <p class="errors"><%= errors.description.msg %> </p>
                 <% } %>
             </div>
@@ -74,7 +74,7 @@
             <div>
                 <p><label for="img">Foto del Producto</label></p>
                 <input id="img" type="file" name="img">   
-                <% if(typeof errors != 'undefined') { %>
+                <% if(typeof errors != 'undefined' && typeof errors.img != 'undefined') { %>
                     <p class="errors"><%= errors.img.msg %> </p>
                 <% } %>
             </div>
