@@ -6,6 +6,7 @@ var logger = require('morgan');
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 const session = require('express-session');
 const remember = require('./middlewares/remember');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,6 +23,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -48,7 +50,6 @@ app.use('/products', productsRouter);
 app.use('/carrito', carritoRouter);
 app.use('/api/products', apiProducts);
 app.use('/api/users', apiUsers);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

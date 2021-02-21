@@ -2,6 +2,7 @@ let fs = require('fs')
 let path = require('path')
 const db = require('../database/models');
 let bcryptjs = require('bcryptjs');
+const imgFilePath = path.join(__dirname,"../data/imagenes.json")
 
 function findByName(name){
         db.User.findOne({
@@ -75,11 +76,21 @@ function contar(dataBase){
         })
 }
 
+function selectImg() {
+        let content = JSON.parse(fs.readFileSync(imgFilePath, {encoding: 'utf-8'}))
+        let namber = content.length
+        while (namber > (content.length - 1)) {
+                namber = Math.trunc(Math.random() * 10)
+        };
+        return (content[namber])
+}
+
 module.exports = {
         contar,
         findByName,
         findByEmail,
         findById,
         lastest,
-        compare
+        compare,
+        selectImg,
 }
