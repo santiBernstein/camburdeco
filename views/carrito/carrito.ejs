@@ -38,13 +38,17 @@
                         </div>
                     </div>
                     <div class="articles">
+
+                        <% if(productsData.length != 0) {%> 
+                            <% productsData.forEach(product => { %> 
+
                         <article class="producto">
                             <figure class="cont-img">
-                                <img src="/images/gala.jpg" alt="gala">
+                                <img src="/images/<%= productsData.img %>" alt="<%= productsData.name %>" >
                             </figure>
                             <div class="cont-detalle">
                                 <div class="detalle">
-                                    <p class="">Maceta Gala</p>
+                                    <p class=""><%= productsData.name %></p>
                                     <select name="cantidad" id="cantidad">
                                         <option value="1">1 unidad</option>
                                         <option value="2">2 unidades</option>
@@ -54,59 +58,23 @@
                                     </select>
                                 </div>
                                 <div class="cont-elim-price">
-                                    <div><button type="button" class="eliminar"><i class="far fa-trash-alt"></i>
-                                            </buttom>
+
+                                    <div>
+                                        <form action="/carrito/deleteFromCart" method="POST">
+                                        <input type="hidden" value="<%= productsData.id %>">
+                                        <button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom>                                            
+                                        </form>
                                     </div>
-                                    <p class="product-price">$350</p>
+                                    <p class="product-price">$ <%= productsData.price %>.-</p>
                                 </div>
                             </div>
                         </article>
-                        <article class="producto">
-                            <figure class="cont-img">
-                                <img src="/images/bono.gif" alt="almendra">
-                            </figure>
-                            <div class="cont-detalle">
-                                <div class="detalle">
-                                    <p class="">Maceta Gris</p>
-                                    <select name="cantidad" id="cantidad">
-                                        <option value="1">1 unidad</option>
-                                        <option value="2">2 unidades</option>
-                                        <option value="3">3 unidades</option>
-                                        <option value="4">4 unidades</option>
-                                        <option value="5">5 unidades</option>
-                                    </select>
-                                </div>
-                                <div class="cont-elim-price">
-                                    <div><button type="button" class="eliminar"><i class="far fa-trash-alt"></i>
-                                            </buttom>
-                                    </div>
-                                    <p class="product-price">$200</p>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="producto">
-                            <figure class="cont-img">
-                                <img src="/images/cali.jpg" alt="cali">
-                            </figure>
-                            <div class="cont-detalle">
-                                <div class="detalle">
-                                    <p class="">Cali</p>
-                                    <select name="cantidad" id="cantidad">
-                                        <option value="1">1 unidad</option>
-                                        <option value="2">2 unidades</option>
-                                        <option value="3">3 unidades</option>
-                                        <option value="4">4 unidades</option>
-                                        <option value="5">5 unidades</option>
-                                    </select>
-                                </div>
-                                <div class="cont-elim-price">
-                                    <div><button type="button" class="eliminar"><i class="far fa-trash-alt"></i>
-                                            </buttom>
-                                    </div>
-                                    <p class="product-price">$150</p>
-                                </div>
-                            </div>
-                        </article>
+
+                        <% }); %> 
+                                <% }else{ %> 
+                                        <p class="product-title">Tu carrito está vacío</p>
+                      <% } %> 
+                        
                     </div>
                     <div class="d-flex space-bet">
                         <button type="button" class="boton" onclick="window.location.href='/';"><i
@@ -120,7 +88,7 @@
                     <div class="cont-total-boton">
                         <div class="cont-total">
                             <p class="font-total">Subtotal</p>
-                            <p class="product-subtotal">$700</p>
+                            <p class="product-subtotal"></p>
                         </div>
                         <button type="button" class="boton-continuar"
                             onclick="window.location.href='/carrito/send';">Continuar</button>
