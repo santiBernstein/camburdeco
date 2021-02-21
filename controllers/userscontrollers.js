@@ -10,7 +10,8 @@ const Profile = require('../database/models/Profile');
 
 module.exports = {
     logearse: (req, res) => {
-        res.render('users/login',{ data : { }, errors: { } }); 
+        let imgShow = userData.selectImg()
+        res.render('users/login',{ data : { }, errors: { }, imgShow }); 
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
@@ -65,7 +66,8 @@ module.exports = {
             })
     },
     registro: (req, res) => {
-        res.render('users/register',{ data : {}, errors: {}, avatar: true }); 
+        let imgShow = userData.selectImg()
+        res.render('users/register',{ data : {}, errors: {}, avatar: true, imgShow }); 
     },
     store: (req, res) => {        
         let errors = validationResult(req)
