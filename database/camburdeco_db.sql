@@ -92,6 +92,30 @@ INSERT INTO `colors` VALUES (1,'BLANCO'),(2,'CELESTE'),(3,'ROSA'),(4,'GRIS');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `newsletters`
+--
+
+DROP TABLE IF EXISTS `newsletters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `newsletters` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `newsletters`
+--
+
+LOCK TABLES `newsletters` WRITE;
+/*!40000 ALTER TABLE `newsletters` DISABLE KEYS */;
+INSERT INTO `newsletters` VALUES (1,'Email@net.com'),(2,'kike@net.com'),(3,'montoto@gmail.com'),(4,'lisacieloazul@net.com');
+/*!40000 ALTER TABLE `newsletters` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `payments`
 --
 
@@ -269,7 +293,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,'Abril','Abril','avatar-1606682398339.jpg',' ','La Plata','Argentina',1),(2,'Kamila','Camil',' ',' ','Bs. As.','Argentina',2),(3,'Tomasina','Tamous',' ',' ','General Pico','Argentina',3),(4,'Ken','Keny',' ',' ','Bariloche','Argentina',4),(5,'Emyle','Emilia',' ',' ','San Rafael','Argentina',5),(6,'Melosa','Mel',' ',' ','Santa Fe','Argentina',6),(7,'Craig','Crac',' ',' ','Cordoba','Argentina',7),(8,'Tonye','Toni',' ',' ','Bahia Blanca','Argentina',8),(9,'Mitchel','Miguel',' ',' ','Parana','Argentina',9),(10,'Eustace','Esta',' ',' ','San Nicolas','Argentina',10),(11,'Guss','Gomez',' ',' ','Junin','Argentina',11),(12,'Ramon','Ramon','avatar-1606682398336.jpg','La vecindad puerta 72','Mexico','Mexico',12),(13,'','','avatar-1612907504704.jpg','','','',13),(14,'','','avatar-1612907688613.jpg','','','',14);
+INSERT INTO `profiles` VALUES (1,'Abril','Abril','avatar-1606682398339.jpg',' ','La Plata','Argentina',1),(2,'Kamila','Camil',' ',' ','Bs. As.','Argentina',2),(3,'Tomasina','Tamous',' ',' ','General Pico','Argentina',3),(4,'Ken','Keny',' ',' ','Bariloche','Argentina',4),(5,'Emyle','Emilia',' ',' ','San Rafael','Argentina',5),(6,'Melosa','Mel',' ',' ','Santa Fe','Argentina',6),(7,'Craig','Crac',' ',' ','Cordoba','Argentina',7),(8,'Tonye','Toni',' ',' ','Bahia Blanca','Argentina',8),(9,'Mitchel','Miguel',' ',' ','Parana','Argentina',9),(10,'Eustace','Esta',' ',' ','San Nicolas','Argentina',10),(11,'Guss','Gomez',' ',' ','Junin','Argentina',11),(12,'Don','Ramon','avatar-1606682398336.jpg','Puerta 72','La vecindad','Mexico',12),(13,'Lisa','Simpsom','avatar-1612907504704.jpg','Av. Siempreviva 765','Springfield','E E U U',13),(14,'Bartolomeo','Simpsom ','avatar-1612907688613.jpg','Av. Siempreviva 765','Springfield','E E U U',14);
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,4 +386,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-11 20:17:53
+-- Dump completed on 2021-02-20 10:42:28

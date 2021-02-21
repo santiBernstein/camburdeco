@@ -3,8 +3,6 @@ var router = express.Router();
 const productosControllers = require('../controllers/productoscontrollers');
 const productsValidator = require('../middlewares/productsValidator');
 
-
-//middleware para subir fotos
 let multer = require('multer');
 let path = require('path');
 
@@ -13,7 +11,6 @@ let storage = multer.diskStorage({
 			cb(null, 'public/images')
 		},
 		filename : function(req,file,cb){
-			console.log(file)
 			cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
 		 }
 })
@@ -23,7 +20,7 @@ let upload = multer({
 	limits: {
 		field: 1,
 		fieldNameSize: 50,
-		fieldSize: 20000,
+		fieldSize: 200000,
 		fileSize: 1024*1024,
 	},
 	fileFilter: function(req,file,cb){
@@ -42,7 +39,6 @@ function checkFileType(file,cb){
 	}
 }
 
-
 router.get('/', productosControllers.productos);
 
 router.get('/create', productosControllers.create);
@@ -54,6 +50,5 @@ router.get('/:id/edit', productosControllers.edit);
 router.put('/:id', upload.single('img'), productsValidator, productosControllers.update);
 
 router.delete('/:id', productosControllers.destroy);
-
 
 module.exports = router;

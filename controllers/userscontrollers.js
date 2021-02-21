@@ -9,8 +9,9 @@ const User = require('../database/models/User');
 const Profile = require('../database/models/Profile');
 
 module.exports = {
-    logearse : (req, res) => {
-        res.render('users/login',{ data : { }, errors: { } }); 
+    logearse: (req, res) => {
+        let imgShow = userData.selectImg()
+        res.render('users/login',{ data : { }, errors: { }, imgShow }); 
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
@@ -38,8 +39,7 @@ module.exports = {
                         errors : errors.mapped(),
                         data : req.body
                     }) 
-                }
-                
+                } 
             })
             .catch((error) => {
                 console.log(error);
@@ -64,12 +64,12 @@ module.exports = {
                 console.log(error);
                 return error;
             })
-
     },
-    registro : (req, res) => {
-        res.render('users/register',{ data : {}, errors: {}, avatar: true }); 
+    registro: (req, res) => {
+        let imgShow = userData.selectImg()
+        res.render('users/register',{ data : {}, errors: {}, avatar: true, imgShow }); 
     },
-    store : (req, res) => {        
+    store: (req, res) => {        
         let errors = validationResult(req)
         let avatars = true;
         if(req.files[0] == null){
@@ -84,7 +84,7 @@ module.exports = {
         }
         let salt = bcryptjs.genSaltSync(10);
         return db.User.create({
-            email: req.body.email,
+                email: req.body.email,
                 password: bcryptjs.hashSync(req.body.password,salt),
                 user_name: req.body.name,
                 tipo_usuario_id: 2,    
@@ -102,7 +102,6 @@ module.exports = {
             }]
         })
             .then((result) => {
-                console.log('result1',result)
                 res.redirect('/')
             })
             .catch((error) => {
@@ -110,7 +109,7 @@ module.exports = {
                 return error;
             })
     }, 
-    perfil : (req,res) => {
+    perfil: (req,res) => {
         let errors = validationResult(req)
         ids = req.params.id
         db.User.findByPk(ids,
@@ -122,18 +121,21 @@ module.exports = {
                     }
                 )   
     },
-    detail : (req,res) => {
+    detail: (req,res) => {
         ids = req.params.id
         db.User.findByPk(ids,
             {
                 include: ["profiles","tiposUsuarios"]
             })
             .then((data) => {
+                if ( data.profiles.avatar.length < 20 ) {
+                    data.profiles.avatar = "not_image.png"
+                }
                 res.render('users/users', { data, ids })
             }
         )   
     },
-    edit : (req, res) => {
+    edit: (req, res) => {
         let errors = validationResult(req)
         if (!errors.msg) {
             db.Profile.update({
@@ -153,11 +155,8 @@ module.exports = {
             res.render('users/perfil', { errors : errors.mapped(), data : req.body });
         }
     },    
-    upgrade : (req, res) => {
-        console.log('UPGRADE1', req.body)
-        console.log('params', req.params.id)
+    upgrade: (req, res) => {
         db.User.update({
-            
             tipo_usuario_id: req.body.tipousuario,
         }, {
             where: {
@@ -166,13 +165,40 @@ module.exports = {
         })
         res.redirect('/users/list');
     },  
-    recuperar : (req, res) => {
+    recuperar: (req, res) => {
         res.render('users/recupero'); 
     },
-    contacto : (req, res) => {
-        res.render('users/contact'); 
+    newsLetter: (req, res) => {
+        let errors = validationResult(req)
+        if (!errors.errors[0]) {
+            return db.Newsletter.create({
+                email: req.body.email_news,
+            })
+            .then((result) => {
+                res.render('users/mensaje', { errors : "Su e-mail ha sido registrado", data : req.body, mensaje: "NEWSLETER" });
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            })
+        } else {
+            res.render('users/mensaje', { errors : errors.errors[0].msg, data : req.body, mensaje: "NEWSLETERS" });
+        }
     },
-    quienesSomos : (req, res) => {
+    contacto: (req, res) => {
+        let errors = validationResult(req)
+        res.render('users/contact', { errors : errors, data : req.body }); 
+    },
+    sendMsg: (req,res) => {
+        let errors = validationResult(req)
+        if(errors.errors.length <= 0){
+            res.render('users/mensaje', { errors : "Su mensaje ha sido enviado. Pronto estaremos respondiendo su inquietud.", data : req.body, mensaje: "CONTACTO" });
+        } else {
+            errors = errors.mapped()
+            res.render('users/contact', { errors : errors, data : req.body });
+        }
+    },
+    quienesSomos: (req, res) => {
         res.render('users/quienes-somos');
     }
 }

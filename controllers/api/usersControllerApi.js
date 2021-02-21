@@ -57,8 +57,6 @@ module.exports = {
                 },
                 data: usersData
             };
-            
-            //console.log(resultado)
 
                         
             res.json(resultado)

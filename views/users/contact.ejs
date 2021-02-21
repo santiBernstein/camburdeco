@@ -19,18 +19,30 @@
             <article class="registrointerior">
 
                 <div class="formulario">
-                    <form action="/" method="GET">
-
+                    <form id="form" action="/users/contact" method="POST">
                         <p><label for="name">Nombre:</label></p>
-                        <input class="contacto" type="text" id="nombre" name="nombre">
+                        <% if (errors.nombre != undefined){  %> 
+                            <p><input class="contacto" type="text" id="nombre" name="nombre"></p>
+                            <p class="errors"><%= errors.nombre.msg %> </p>
+                        <% }else{ %>
+                            <p><input class="contacto" type="text" id="nombre" name="nombre" value="<%= data.nombre %>"></p>
+                        <% } %>                      
                         <p><label for="e-mail">E-mail:</label></p>
-                        <input class="contacto" type="email" id="email" name="email">
+                        <% if (errors.email != undefined){  %> 
+                            <p><input class="contacto" type="email" id="email" name="email"></p>
+                            <p class="errors"><%= errors.email.msg %> </p>
+                        <% }else{ %>
+                            <p><input class="contacto" type="email" id="email" name="email" value="<%= data.email %>"></p>
+                        <% } %>
                         <p><label for="telefono">Teléfono (opcional):</label></p>
                         <input class="contacto" type="text" id="telefono" name="telefono">
-
                         <p><label for="mesage">Mensaje:</label></p>
-                        <textarea class="contacto" name="mensaje" id="message" cols="30" rows="10"></textarea>
-
+                        <% if (errors.mensaje != undefined){  %> 
+                            <textarea class="contacto" name="mensaje" id="message" cols="30" rows="10"></textarea>
+                            <p class="errors"><%= errors.mensaje.msg %> </p>
+                        <% }else{ %>
+                            <textarea class="contacto" name="mensaje" id="message" cols="30" rows="10" value="<%= data.mensaje %>"></textarea>
+                        <% } %> 
                         <p><input class="boton" type="submit" value="Enviar"></p>
                     </form>
                 </div>
@@ -41,6 +53,7 @@
     <footer>
         <%- include("../partials/footer") %>
     </footer>
+    <script src="/script/contact.js"></script>
 </body>
 
 </html>

@@ -10,7 +10,6 @@ window.addEventListener("load", () => {
     let errors = {}
 
     form.addEventListener("submit", (e)=> {
-        console.log(errors)
         if(Object.keys(errors).length > 0){
             e.preventDefault(); 
         }

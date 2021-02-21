@@ -101,14 +101,38 @@
     margin: 10px 0px;
     border: solid 2px;
     padding: 5px;
+    border-color: var(--main-color);
                         
 }
 .registrointerior label {
     font-weight: bolder;
     font-size: 14px;
     padding: 5px;
+    color: #17cff3;
 }
 
+.registrointerior .label1 {
+    font-weight: bolder;
+    font-size: 14px;
+    padding: 5px;
+    color: rgba(220, 20, 103);
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.registrointerior .label2 {
+    font-weight: bolder;
+    font-size: 14px;
+    padding: 5px;
+    color: black;
+}
+
+.registrointerior .errormsg {
+    color: rgba(220, 20, 103);
+    font-size: 24px;
+}
 
 @media (max-width: 599px) {
     .registrointerior .vista {
