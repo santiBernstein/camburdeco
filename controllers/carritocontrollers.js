@@ -7,15 +7,33 @@ module.exports = {
 
     cart : (req, res) => {  
 
-        db.Product.findAll({
+        db.Carrito.findAll({
           where: {
+            user_id : 12
             // userId: req.session.user.id,
             // state: 1,
           },
-          include: [{association:"category"}, {association:"style"}, {association:"colores"}],
-        }).then((productsData) => {
-          return res.render('carrito/carrito', {productsData})
-        });
+          include: [{association:"users"}, {association:"product"}],
+        }).then((carritoData) => {
+          console.log('carrito', carritoData)
+            db.Product_Carrito.findAll({
+              where: {
+              carrito_id : 1
+              }
+            })
+            .then((productsCarritoData) => {   
+              console.log(productsCarritoData)
+              db.Product.findByPk(3)
+
+             .then((productsData) => {
+              return res.render('carrito/carrito', {productsData : [productsData]})
+             }) 
+              
+         })          
+        })
+        
+     .catch((e) => console.log(e));
+
     },
 
     addToCart : (req, res) => {

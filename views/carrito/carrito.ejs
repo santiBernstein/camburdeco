@@ -44,11 +44,11 @@
 
                         <article class="producto">
                             <figure class="cont-img">
-                                <img src="/images/<%= productsData.img %>" alt="<%= productsData.name %>" >
+                                <img src="/images/<%= product.img %>" alt="<%= product.name %>" >
                             </figure>
                             <div class="cont-detalle">
                                 <div class="detalle">
-                                    <p class=""><%= productsData.name %></p>
+                                    <p class=""><%= product.name %></p>
                                     <select name="cantidad" id="cantidad">
                                         <option value="1">1 unidad</option>
                                         <option value="2">2 unidades</option>
@@ -61,11 +61,11 @@
 
                                     <div>
                                         <form action="/carrito/deleteFromCart" method="POST">
-                                        <input type="hidden" value="<%= productsData.id %>">
+                                        <input type="hidden" value="<%= product.id %>">
                                         <button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom>                                            
                                         </form>
                                     </div>
-                                    <p class="product-price">$ <%= productsData.price %>.-</p>
+                                    <p class="product-price">$ <%= product.price %>.-</p>
                                 </div>
                             </div>
                         </article>
