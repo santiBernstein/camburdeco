@@ -170,58 +170,62 @@ module.exports = {
                 styles: allStyles
             })
         }
-
+        db.Product_Style.destroy({
+            where: {product_id: req.params.id}
+        })
+        .then(result => {
+            let estilos = req.body.style.length < 2 ? [req.body.style] : req.body.style
+            estilos.forEach( style => {
+                db.Product_Style.create({
+                    product_id: req.params.id,
+                    style_id: style
+                })
+            })
+        })
+        db.Product_Color.destroy({
+            where: {product_id: req.params.id}
+        })
+        .then(result => {
+            let colores = req.body.color.length < 2 ? [req.body.color] : req.body.color
+            colores.forEach( color => {
+                db.Product_Color.create({
+                    product_id: req.params.id,
+                    color_id: color
+                })
+            })
+        })
         db.Product.update({
             name: req.body.name,
             description: req.body.description,
-            category_id: req.body.category,
             stock: req.body.stock,
             price: req.body.price,
             img: req.file != undefined ? req.file.filename : req.body.img,
-            top: 0
+            top: 0,   
+            category_id: req.body.category,
         }, {
+            include: [
+                {association: "category"},
+            ],
             where: {
                 id: req.params.id
-            }
-        }).then(resultado=>{
-            let estilos =  (req.body.style.length < 2 )? [req.body.style] : req.body.style 
-            estilos.forEach(estiloId=>{
-                db.Product_Style.update({
-                    product_id: resultado.null,
-                    style_id: estiloId
-                },{
-                    where: {
-                        product_id: req.params.id
-                    }
-                })
-            })
-            let colores =  (req.body.color.length < 2 )? [req.body.color] : req.body.color 
-            colores.forEach(colorId=>{
-                db.Product_Color.create({
-                    product_id: resultado.null,
-                    color_id: colorId
-                },{
-                    where: {
-                        product_id: req.params.id
-                    }
-                })
-            })
-             res.redirect('/')
+            }          
         })
-        .catch((error) => {
-            console.log(error);
-            return error;
-        })   
-      
-     
+        .then((result) => {   
+            res.render('users/mensaje', { errors : "El producto fue actualizado", data : req.body, mensaje: "MODIFICACIÓN DE PRODUCTO" });
+
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+        })
     },
     destroy : (req,res) => {
         db.Product.findByPk(req.params.id)
         .then(resultado=>{
-            const imagePath = path.join(__dirname,"../public/images",resultado.img);
-            fs.unlink(imagePath, function (err) {
-                  if (err) throw err;
-            })
+            // const imagePath = path.join(__dirname,"../public/images",resultado.img);
+            // fs.unlink(imagePath, function (err) {
+            //       if (err) throw err;
+            // })
             db.Product_Color.destroy({
                 where: {
                     product_id : req.params.id
@@ -255,7 +259,8 @@ module.exports = {
             })
         })
         .then(resultado => {
-            res.redirect('/')
+            res.render('users/mensaje', { errors : "El producto fue eliminado", data : req.body, mensaje: "ELIMINAR PRODUCTO" });
+
         })
         .catch(error=>{
             console.log(error)
