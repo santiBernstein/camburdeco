@@ -21,9 +21,9 @@
                         <input class="ingreso" type="text" id="name" name="name" placeholder="Nombre" value="<%= data.profiles.first_name %>" disabled>
                         <input class="ingreso" type="text" id="apellido" name="apellido" placeholder="Apellido" value="<%= data.profiles.last_name %>" disabled>
                         <input class="ingreso" type="email" id="email" name="email" placeholder="e-mail" value="<%= data.email %>" disabled>    
-                        <label for="" class="form-label">Tipo de Usuario</label>
-                        <input class="ingreso" type="text" id="tipousuario" name="tipousuario" placeholder="Tipo Usuario" value="<%= data.tipo_usuario_id %>"></p>
-            
+                        <div class="filter-nav-div" >
+                            <p><%- include("../partials/selectorDos", {SELECTOR: dataUser, SELECCION: data.tipo_usuario_id, NAME: "tipousuario", LABEL: "Tipo de Usuario"}) %></p>
+                        </div>
                         <p><button class="boton" type="submit" value="actualizar">Continuar</p>                        
                     </form>
                 </div>
