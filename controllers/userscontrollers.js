@@ -123,17 +123,26 @@ module.exports = {
     },
     detail: (req,res) => {
         ids = req.params.id
-        db.User.findByPk(ids,
-            {
-                include: ["profiles","tiposUsuarios"]
+        let dataUser 
+        db.Tipo_Usuario.findAll()         
+            .then((result) => {
+                dataUser = result
+                db.User.findByPk(ids,
+                    {
+                        include: ["profiles","tiposUsuarios"]
+                    })
+                    .then((data) => {
+                        if ( data.profiles.avatar.length < 20 ) {
+                            data.profiles.avatar = "not_image.png"
+                        }
+                        res.render('users/users', { data, ids, dataUser })
+                    }
+                )   
             })
-            .then((data) => {
-                if ( data.profiles.avatar.length < 20 ) {
-                    data.profiles.avatar = "not_image.png"
-                }
-                res.render('users/users', { data, ids })
-            }
-        )   
+            .catch((error) => {
+                console.log(error);
+                return error;
+            }) 
     },
     edit: (req, res) => {
         let errors = validationResult(req)
