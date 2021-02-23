@@ -184,6 +184,9 @@ module.exports = {
         res.redirect('/users/list');
     },  
     recuperar: (req, res) => {
+        res.render('users/recupero');
+    },
+    sendToken: (req,res)=>{
         res.render('users/mensaje', { errors : "Se ha enviado una nueva contraseña a su email.", data : req.body, mensaje: "RECUPERAR CONTRASEÑA" });
     },
     newsLetter: (req, res) => {

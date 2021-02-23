@@ -10,9 +10,15 @@ module.exports = function(req,res,next){
         })
         .then((userData) => {
             req.session.user = userData.user_name
+            req.session.ides = userData.id                    
+            req.session.tipoUsuario = userData.tiposUsuarios.tipo
+            next()
         })
         .catch((error) => {
             return error;
         })		
-    }  next()
+    }  
+    else{
+        next()
+    }
 }

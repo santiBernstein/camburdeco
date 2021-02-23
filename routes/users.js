@@ -39,6 +39,7 @@ router.get('/detail/:id', usersControllers.detail);
 router.put('/upgrade/:id',usersControllers.upgrade);
 
 router.get('/recupero', usersControllers.recuperar);
+router.post('/recupero', usersControllers.sendToken);
 router.put('/:id', upload.any(), userPerfilValidator, usersControllers.edit);
 router.get('/perfil/:id', usersControllers.perfil);
 
