@@ -127,3 +127,23 @@
 ## Dejar de Hacer
 * En último momento la integración
 
+# Sprint-8
+
+## Comenzar a hacer
+* Asados de festejo
+    
+
+## Hacer más
+* Reuniones semanales para estar al tanto del avance del proyecto
+* Mejorar el trabajo de manera coordinada.  
+* Revisar más las actualizaciones del grupo en GIT
+
+## Continuar haciendo
+* 
+
+
+## Hacer menos
+
+
+## Dejar de Hacer
+* En último momento la integración

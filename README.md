@@ -28,6 +28,10 @@ Cómo referencia para el desarrollo del Ecommerce se toman en cuenta las siguien
 - [Sprint 7](https://trello.com/b/DEHTThgT/sprint-7)
 - [Sprint-8](https://trello.com/b/IyshkU2w/sprint-8)
 
+## Repositorio dashboard
+
+- [Dashboard](https://github.com/KevinScalesi/camburdeco-dashboard)
+
 ## Integrantes del grupo:
 
 - **Kevin Scalesi:** Tengo 31 años, vivo en la ciudad de Mendoza. Soy Ingeniero en Mecatrónica y trabajo como desarrollador de software junior de sistemas tecnologícos complejos. Tengo conocimientos en programación, sin embargo esta área es completamente nueva para mi. Espero poder aportar mi tiempo y conocimiento al desarrollo de este nuevo desafío.
