@@ -13,6 +13,8 @@
         <div class="titulo">
             Detalle del producto
         </div>
+
+
         <div class="produc">
             <img class="image" src="/images/<%= productsData.img %>" alt="imagenproducto">
             <div class="infoproducto">
@@ -20,6 +22,8 @@
                 <p class="nombreprod"><%= productsData.name %></p>
                 <p class="precioprod">$ <%= productsData.price %>.-</p>
                 <p class="description"> <%= productsData.description %></p>
+
+                
 
                 <nav class="w-80 tipes" d-flex filter>
 
@@ -33,6 +37,8 @@
             
                 </nav>
                 <form action="/carrito/addToCart" method="POST">
+                   <input style="display: none;" name="productId" type="number" value="<%= productsData.id %>">
+
                     <input class="boton" type="submit" value="Agregar al carrito">
                 </form>
             </div>

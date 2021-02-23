@@ -61,14 +61,14 @@
 
                                     <div>
                                         <form action="/carrito/deleteFromCart" method="POST">
-                                        <input type="hidden" value="<%= product.id %>">
-                                        <button type="button" class="eliminar"><i class="far fa-trash-alt"></i></buttom>                                            
+                                        <input name="productId" type="hidden" value="<%= product.id %>">
+                                        <button type="submit" class="eliminar"><i class="far fa-trash-alt"></i></button>                                            
                                         </form>
                                     </div>
                                     <p class="product-price">$ <%= product.price %>.-</p>
                                 </div>
                             </div>
-                        </article>
+                        </article> 
 
                         <% }); %> 
                                 <% }else{ %> 
@@ -87,11 +87,10 @@
                     <p class="bar ">TOTAL DE CARRO</p>
                     <div class="cont-total-boton">
                         <div class="cont-total">
-                            <p class="font-total">Subtotal</p>
-                            <p class="product-subtotal"></p>
+                            <p class="font-total">Subtotal $<%= subTotal %></p>
+                            <p class="product-subtotal">  </p>
                         </div>
-                        <button type="button" class="boton-continuar"
-                            onclick="window.location.href='/carrito/send';">Continuar</button>
+                        <button type="button" class="boton-continuar" href='#'>Continuar</button>
                     </div>
                 </div>
             </section>

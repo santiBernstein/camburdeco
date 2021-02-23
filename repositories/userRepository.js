@@ -84,6 +84,16 @@ function selectImg() {
         };
         return (content[namber])
 }
+function sumaSubTotal (products){
+        
+        let subTotal = 0
+
+        products.forEach(element => {
+                        
+                subTotal = subTotal + element.price
+        });
+        return subTotal
+}
 
 module.exports = {
         contar,
@@ -93,4 +103,5 @@ module.exports = {
         lastest,
         compare,
         selectImg,
+        sumaSubTotal
 }
