@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
         }
     });
     name.addEventListener("keyup", ()=> {
-        if (name.value.length < 4 || name.value.length == 0) {
+        if (name.value.length < 3 || name.value.length == 0) {
             name.style.border = "2px solid red"
             errors[name]="name"
         } else {
@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
         }
     });
     apellido.addEventListener("keyup", ()=> {
-        if (apellido.value.length < 8 || apellido.value.length == 0) {
+        if (apellido.value.length < 3 || apellido.value.length == 0) {
             apellido.style.border = "2px solid red"
             errors[apellido]="apellido"
         } else {

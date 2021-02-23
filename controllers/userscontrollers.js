@@ -15,9 +15,10 @@ module.exports = {
     },
     processLogin: (req, res) => {
         let errors = validationResult(req)
+        let imgShow = userData.selectImg()
         if(errors.errors.length > 0){
             errors = errors.mapped()
-            res.render('users/login', { errors, data : req.body })  
+            res.render('users/login', { errors, data : req.body, imgShow })  
         } else {
             db.User.findOne({
                 include: [{association:"tiposUsuarios"}],
@@ -35,9 +36,14 @@ module.exports = {
                     }
                     return res.redirect('/')
                 } else { 
+                    let newError = errors.mapped()
+                    newError.password = {
+                        msg : "Password incorrecto"
+                    }
                     return res.render('users/login', {
-                        errors : errors.mapped(),
-                        data : req.body
+                        errors : newError,
+                        data : req.body,
+                        imgShow
                     }) 
                 } 
             })
@@ -76,10 +82,12 @@ module.exports = {
             avatars = false;
         }
         if(errors.errors.length || !avatars){
+            let imgShow = userData.selectImg()
             return res.render('users/register', { 
 				errors : errors.mapped(),
                 data : req.body,
-                avatar: avatars
+                avatar: avatars,
+                imgShow
             })
         }
         let salt = bcryptjs.genSaltSync(10);
@@ -102,7 +110,8 @@ module.exports = {
             }]
         })
             .then((result) => {
-                res.redirect('/')
+                res.render('users/mensaje', { errors : "Su usuario ha sido registrado con éxito.", data : req.body, mensaje: "REGISTRO DE USUARIO" });
+
             })
             .catch((error) => {
                 console.log(error);
@@ -175,7 +184,7 @@ module.exports = {
         res.redirect('/users/list');
     },  
     recuperar: (req, res) => {
-        res.render('users/recupero'); 
+        res.render('users/mensaje', { errors : "Se ha enviado una nueva contraseña a su email.", data : req.body, mensaje: "RECUPERAR CONTRASEÑA" });
     },
     newsLetter: (req, res) => {
         let errors = validationResult(req)

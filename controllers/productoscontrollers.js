@@ -134,7 +134,7 @@ module.exports = {
             console.log(error);
             return error;
         })   
-       res.redirect('/')
+        res.render('users/mensaje', { errors : "El producto ha sido agregado con éxito.", data : req.body, mensaje: "NUEVO PRODUCTO" });
     },
     edit : (req, res) => {
         let id = Number(req.params.id);
@@ -160,7 +160,6 @@ module.exports = {
     update : (req, res) => {
         let errors = validationResult(req)
         if(errors.errors.length){
-            console.log(errors.mapped())
             return res.render('products/edit', { 
                 errors : errors.mapped(),
                 data : req.body,
